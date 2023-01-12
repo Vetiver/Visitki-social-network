@@ -40,3 +40,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+@media screen and (max-width: 500px) {
+  .headerProfileName {
+    display: none;
+  }
+}
