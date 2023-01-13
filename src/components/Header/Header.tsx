@@ -5,7 +5,7 @@ const Header: FC = () => {
   return (
     <div className={styles.header}>
       <svg
-        className={styles.headerLogo}
+        className={styles.header__Logo}
         viewBox="0 0 130 26"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -37,13 +37,13 @@ const Header: FC = () => {
         <path d="M130 0.832226V25.1322H125.595V0.832226H130Z" fill="#FF00A8" />
       </svg>
       {/* Здесь будет условие нужно ли отрисовывать профиль или нет */}
-      <div className={styles.headerProfile}>
+      <div className={styles.header__Profile}>
         <img
-            className={styles.headerProfilePhoto}
+            className={styles.header__ProfilePhoto}
           src="https://aif-s3.aif.ru/images/019/507/eeba36a2a2d37754bab8b462f4262d97.jpg"
           alt="profile-photo"
         />
-        <p className={styles.headerProfileName}>Константин Константинопольский</p>
+        <p className={styles.header__ProfileName}>Константин Константинопольский</p>
       </div>
     </div>
   );

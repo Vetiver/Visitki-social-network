@@ -12,7 +12,7 @@
   color:rgba(16, 12, 52, 0.5) ;
 
 }
-.footerLeft {
+.footer__copyright {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -21,7 +21,7 @@
   max-width: 80px;
   max-height: 24px;
 }
-.footerRight {
+.footer__author {
     max-width: 141px;
     max-height: 24px;
     font-weight: 400;
