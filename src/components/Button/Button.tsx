@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { TButton } from "../../utils/types";
 import styles from "./Button.module.css";
 
