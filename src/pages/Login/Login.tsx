@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import styles from "./Login.module.css";
 const Login: FC = () => {
-  // Функция для срабатывания при нажатии на Enter: 
+  // Функция для хендлера при нажатии на Enter: 
   // вместо console.log("Enter") кладём наш onClick и готово
   useEffect(() => {
     function handleEnterKeydown(evt: KeyboardEvent) {

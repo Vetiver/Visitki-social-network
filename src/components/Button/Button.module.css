@@ -8,13 +8,14 @@
   border-radius: 4px;
   border: none;
   cursor: url(/public/cursor.png) 25 25, pointer;
-  transition: all 0.4s ease-in-out;
+  transition: hover 0.4s ease-in-out;
 }
 .button:hover {
   opacity: 0.85;
 }
 .button:active {
-  opacity: 0.2;
+  transform: scale(0.99);
+  opacity: 0.8;
 }
 .button:disabled{
   background: #BFBFBF;

@@ -8,6 +8,7 @@
   max-width: 1340px;
   width: 100%;
   background-color: #ffffff;
+  min-height: calc(100vh - 195px);
   
 }
 .login__title {
@@ -24,9 +25,7 @@
     line-height: 42px;
     margin: 85px 0 25px;
   }
-  .login__button {
-    width: 250px;
-    height: 60px;
-    margin: 0 0 158px 0;
+  .login{
+    min-height: calc(100vh - 160px);
   }
 }
