@@ -24,7 +24,7 @@
   color: #f0f0f0;
   border-radius: 4px;
   box-sizing: border-box;
-  cursor: pointer;
+  cursor: url('../../icons/pointer_main.svg'), auto;;
   transition: all 0.4s ease-in-out;
 }
 .login__button:hover{

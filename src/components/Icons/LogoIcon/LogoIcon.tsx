@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../icons/Logo.svg';
 
-const Logo: FC = () => {
+const LogoIcon: FC = () => {
   return (
     <HandySvg
         src={iconSrc}
@@ -12,4 +12,4 @@ const Logo: FC = () => {
    );
 };
 
-export default Logo;
+export default LogoIcon;
