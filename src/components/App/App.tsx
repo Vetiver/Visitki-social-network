@@ -11,6 +11,7 @@ const App: FC = () => {
       <div className={styles.main}>
         <Login />
       </div>
+      
       <Footer />
     </div>
   );
