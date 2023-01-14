@@ -22,7 +22,7 @@ const Login: FC = () => {
       {/* В кнопку передаем текст и size для смены размеров,
       loginButton для кнопки входа, chooseFileButton для кнопки выбора файла.
       Третьим параметром передаем disabled={true/false} */}
-      <Button text={"Войти с Яндекс ID"} size={"loginButton"} disabled={false}/>
+      <Button text="Войти с Яндекс ID" size={"loginButton"} disabled={false}/>
     </div>
   );
 };
