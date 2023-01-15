@@ -1,50 +1,19 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    /* В макете ширина указана 1440px, но если накинуть пёрфект пиксель, то вообще не совпадает
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* В макете ширина указана 1440px, но если накинуть пёрфект пиксель, то вообще не совпадает
       Пока оставлю так, если что поправишь. P.S В футере тоже самое */
-    max-width: 1340px;
-    box-sizing: border-box;
-    max-height: 112px;
-    padding: 40px;
-    background-color: #FFFFFF;
-    margin: auto;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 20px;
-}
-.header__Logo {
-  max-width:130px;
-  max-height:25px;
+  max-width: 1340px;
+  box-sizing: border-box;
+  max-height: 112px;
+  padding: 40px;
+  background-color: #FFFFFF;
+  margin: auto;
 }
 
-.header__Profile{
-    display: flex;
-    align-items: center;
-    
-}
-.header__ProfilePhoto{
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 80%;
-    margin: 0 5px 0 0;
-}
-.header__ProfileName{
-    color: #100C34;
-    margin: 0;
-    max-width: 212px;
-    max-height: 20px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
 @media screen and (max-width: 500px) {
-  .header__ProfileName {
-    display: none;
-  }
   .header {
     padding: 24px;
-}
+  }
 }
