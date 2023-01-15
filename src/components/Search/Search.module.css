@@ -1,0 +1,81 @@
+.content_box {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 40px;
+}
+
+.button_wrapper {
+  width: 100%;
+  display: flex;
+  gap: 81px;
+}
+
+.button {
+  color: black;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.search_wrapper {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.search_title {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  color: #100c34;
+}
+
+.search {
+  max-width: 1015px;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-top: 4px;
+  transition: 0.3s linear;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.search:hover {
+  border: 1px solid #ff00a8;
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #ff00a8;
+}
+
+.search::placeholder {
+  color: #83828f;
+}
+
+.serch_users_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.serch_users_page {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: minmax(250px, 1015px) 1fr;
+  column-gap: 40px;
+}
+
+.search_comments_page {
+  margin-top: 48px;
+}

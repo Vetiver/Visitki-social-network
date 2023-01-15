@@ -1,0 +1,78 @@
+.list_wrapper {
+  max-width: 100%;
+  margin-top: 11px;
+  padding-right: 24px;
+  height: calc(100vh - 360px);
+  overflow: auto;
+}
+
+.list_flags_wrapper {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.list_flags {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 70px) minmax(0, 100px) minmax(0, 190px) minmax(0, 190px)
+    minmax(0, 180px) minmax(0, 442px) 1fr;
+  column-gap: 24px;
+  text-align: left;
+  color: #83828f;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 11px;
+  color: #100c34;
+}
+
+.list_item {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 70px) minmax(0, 100px) minmax(0, 190px) minmax(0, 190px)
+    minmax(0, 180px) minmax(0, 442px) 1fr;
+  column-gap: 24px;
+  text-align: left;
+  border-bottom: 1px solid #83828f;
+  padding: 12px 0 12px 0;
+}
+
+.list_item_text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.list_item:first-child {
+  border-top: 1px solid #83828f;
+}
+
+.list_wrapper::-webkit-scrollbar {
+  background-color: inherit;
+  width: 4px;
+}
+
+.list_wrapper::-webkit-scrollbar-thumb {
+  background-color: #83828f;
+  border-radius: 7px;
+}
+
+.icon_wrapper {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.icon_wrapper:hover {
+  opacity: 0.6;
+}
