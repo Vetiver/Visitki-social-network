@@ -18,6 +18,31 @@
   margin: 160px 0 72px;
 }
 
+.login__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 410px 0;
+  width: 400px;
+  height: 60px;
+  background: linear-gradient(269.17deg, #3b23b7 30.28%, #c914e7 63.24%);
+  color: #f0f0f0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: url('../../icons/pointer_main.svg'), auto;;
+  transition: all 0.4s ease-in-out;
+}
+.login__button:hover{
+    opacity: 0.85;
+}
+.login__buttonText {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  box-sizing: border-box;
+}
+
+
 @media screen and (max-width: 500px) {
   .login__title {
     font-size: 32px;
