@@ -1,24 +1,28 @@
 .list_wrapper {
-  max-width: 100%;
+  width: 100%;
   margin-top: 11px;
   padding-right: 24px;
   height: calc(100vh - 360px);
   overflow: auto;
+  box-sizing: border-box;
 }
 
 .list_flags_wrapper {
-  width: 100%;
+  min-width: 944px;
   margin-top: 60px;
 }
 
 .list_flags {
   margin: 0;
-  padding: 0;
+  padding: 0 28px 0 0;
   list-style-type: none;
   display: grid;
   grid-template-columns:
-    minmax(0, 70px) minmax(0, 100px) minmax(0, 190px) minmax(0, 190px)
-    minmax(0, 180px) minmax(0, 442px) 1fr;
+    minmax(20px, 70px) minmax(20px, 100px) minmax(20px, 190px) minmax(
+      20px,
+      190px
+    )
+    minmax(20px, 180px) minmax(20px, 442px) 22px;
   column-gap: 24px;
   text-align: left;
   color: #83828f;
@@ -27,6 +31,7 @@
 }
 
 .list {
+  min-width: 916px;
   list-style-type: none;
   padding: 0;
   margin-top: 11px;
@@ -37,8 +42,11 @@
   max-width: 100%;
   display: grid;
   grid-template-columns:
-    minmax(0, 70px) minmax(0, 100px) minmax(0, 190px) minmax(0, 190px)
-    minmax(0, 180px) minmax(0, 442px) 1fr;
+    minmax(20px, 70px) minmax(20px, 100px) minmax(20px, 190px) minmax(
+      20px,
+      190px
+    )
+    minmax(20px, 180px) minmax(20px, 442px) 22px;
   column-gap: 24px;
   text-align: left;
   border-bottom: 1px solid #83828f;
@@ -49,6 +57,8 @@
   margin: 0;
   font-size: 16px;
   line-height: 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .list_item:first-child {
@@ -58,6 +68,7 @@
 .list_wrapper::-webkit-scrollbar {
   background-color: inherit;
   width: 4px;
+  height: 4px;
 }
 
 .list_wrapper::-webkit-scrollbar-thumb {
@@ -75,4 +86,15 @@
 
 .icon_wrapper:hover {
   opacity: 0.6;
+}
+
+.content_wrapper {
+  width: 100%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .list_flags_wrapper {
+    margin-top: 30px;
+  }
 }

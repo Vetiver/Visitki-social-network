@@ -4,7 +4,7 @@ import deleteIcon from "../../images/delete.png";
 
 export const CommentList = () => {
   return (
-    <>
+    <div className={styles.content_wrapper}>
       <div className={styles.list_flags_wrapper}>
         <ul className={styles.list_flags}>
           <li>Когорта</li>
@@ -32,6 +32,6 @@ export const CommentList = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };

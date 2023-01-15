@@ -3,14 +3,12 @@ import { psevdoApi } from "../../utils/psevdoApi";
 
 export const StudentList = () => {
   return (
-    <>
-      <div className={styles.list_flags_wrapper}>
-        <ul className={styles.list_flags}>
-          <li>Номер когорты</li>
-          <li>E-mail</li>
-          <li>Имя и фамилия студента</li>
-        </ul>
-      </div>
+    <div className={styles.content_wrapper}>
+      <ul className={styles.list_flags}>
+        <li>Номер когорты</li>
+        <li>E-mail</li>
+        <li>Имя и фамилия студента</li>
+      </ul>
       <div className={styles.list_wrapper}>
         <ul className={styles.list}>
           {psevdoApi.map((el, index) => (
@@ -22,6 +20,6 @@ export const StudentList = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
