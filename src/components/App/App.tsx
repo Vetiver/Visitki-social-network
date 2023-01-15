@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import Login from '../../pages/Login/Login';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -10,8 +10,10 @@ const App:FC = () => {
   return (
     <div className={styles.page}>
       <Header/>
+      <div className={styles.main}>
       <Login/>
-      <Footer/>
+      </div>
+      <Footer />
     </div>
   );
 }

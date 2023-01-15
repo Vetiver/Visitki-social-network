@@ -2,9 +2,13 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 195px);
   max-width: 1340px;
+  width: 100%;
   background-color: #ffffff;
+  
 }
 .login__title {
   color: #000000;
@@ -13,6 +17,7 @@
   line-height: 52px;
   margin: 160px 0 72px;
 }
+
 .login__button {
   display: flex;
   align-items: center;
@@ -37,15 +42,14 @@
   box-sizing: border-box;
 }
 
+
 @media screen and (max-width: 500px) {
   .login__title {
     font-size: 32px;
     line-height: 42px;
     margin: 85px 0 25px;
   }
-  .login__button {
-    width: 250px;
-    height: 60px;
-    margin: 0 0 158px 0;
+  .login{
+    min-height: calc(100vh - 160px);
   }
 }
