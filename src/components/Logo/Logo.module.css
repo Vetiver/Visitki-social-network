@@ -1,3 +1,8 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo:hover {
   cursor: url('../../icons/pointer_main.svg'), auto;
 }

@@ -2,30 +2,25 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 195px);
-  max-width: 1340px;
+  min-height: calc(100vh - 177px);
   width: 100%;
   background-color: #ffffff;
-  min-height: calc(100vh - 195px);
-  
+  transition: all 0.7s ease-out;
 }
+
 .login__title {
   color: #000000;
   font-weight: 700;
   font-size: 40px;
   line-height: 52px;
-  margin: 160px 0 72px;
+  margin: 200px 0 72px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 420px) {
   .login__title {
     font-size: 32px;
     line-height: 42px;
-    margin: 85px 0 25px;
-  }
-  .login{
-    min-height: calc(100vh - 160px);
+    margin: 108px 0 32px;
   }
 }

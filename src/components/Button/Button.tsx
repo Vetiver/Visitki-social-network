@@ -9,13 +9,13 @@ import styles from "./Button.module.css";
 const Button: FC<TButton> = ({ text, size, disabled }) => {
 
   const buttonStyle = (size: string) => {
-    const loginButton = styles.loginButton;
-    const chooseFileButton = styles.chooseFileButton;
+    const largeButton = styles.largeButton;
+    const smallButton = styles.smallButton;
 
-    if (size === "loginButton") {
-      return loginButton;
+    if (size === "largeButton") {
+      return largeButton;
     } else {
-      return chooseFileButton;
+      return smallButton;
     }
   };
   return (
