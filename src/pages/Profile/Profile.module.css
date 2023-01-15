@@ -6,55 +6,255 @@
 
 .form {
   display: flex;
-  width: 440px;
+  max-width: 440px;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 16px;
+  margin: 0 auto;
 }
 
-.photo__conteiner {
+.photo__container {
   width: 440px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-
-
 .profile__button {
-    display: flex;
-    border: 0;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 410px 0;
-    width: 400px;
+  width: 100%;
+  display: flex;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 410px 0;
+  height: 60px;
+  background: linear-gradient(269.17deg, #3b23b7 30.28%, #c914e7 63.24%);
+  color: #f0f0f0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.profile__button:hover {
+  opacity: 0.85;
+}
+
+.input__container {
+  position: relative;
+}
+
+.input__label {
+  position: relative;
+}
+
+.input__title {
+  margin: 0;
+  padding-bottom: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+}
+
+.input {
+  padding: 14px 16px;
+  width: 100%;
+  max-height: 48px;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: #666;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #666;
+  filter: drop-shadow(0px 0px 4px rgba(78, 59, 255, 0.25));
+  border-radius: 4px;
+  outline: none;
+}
+
+.select__tag {
+  padding: 14px 16px;
+  width: 100%;
+  max-height: 48px;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+}
+
+.select__tag:hover {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.textarea {
+  font-family: inherit;
+  padding: 14px 16px;
+  min-width: 100%;
+  max-width: 100%;
+  height: 118px;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+}
+
+.input__caption {
+  margin: 0;
+  padding-top: 4px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.textarea::placeholder,
+.input::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.input[type="date"] {
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.warning {
+  margin: 0;
+}
+
+input[type="date"],
+textarea {
+  position: relative;
+}
+
+.input__icon {
+  position: absolute;
+  background-color: #fff;
+  width: 24px;
+  height: 24px;
+  top: 40px;
+  right: 15px;
+}
+
+input[type="date"] + .input__icon {
+  top: 0;
+  right: 15px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.input__label_type_file {
+  display: block;
+
+  padding: 14px 16px;
+  width: 100%;
+  max-height: 48px;
+  min-height: 48px;
+  background: #fff;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+  cursor: pointer;
+}
+
+.input__label_type_file:hover {
+  border-color: #666;
+}
+
+.input__label_type_file .input__icon {
+  top: 10px;
+  right: 15px;
+}
+select {
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+}
+select + .input__icon {
+  background: transparent;
+  top: 40px;
+  right: 14px;
+}
+
+@media screen and (max-width: 500px) {
+  .profile__title {
+    font-size: 32px;
+    line-height: 42px;
+    margin: 85px 0 25px;
+  }
+  .profile__button {
+    width: 250px;
     height: 60px;
-    background: linear-gradient(269.17deg, #3b23b7 30.28%, #c914e7 63.24%);
-    color: #f0f0f0;
-    border-radius: 4px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
+    margin: 0 0 158px 0;
   }
-  .profile__button:hover{
-      opacity: 0.85;
-  }
-  .profile__buttonText {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    box-sizing: border-box;
-  }
-  
-  @media screen and (max-width: 500px) {
-    .profile__title {
-      font-size: 32px;
-      line-height: 42px;
-      margin: 85px 0 25px;
-    }
-    .profile__button {
-      width: 250px;
-      height: 60px;
-      margin: 0 0 158px 0;
-    }
-  }
+}
+
+.select__container {
+  position: relative;
+}
+
+.select {
+  background-color: #fff;
+  position: absolute;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: 2;
+  max-height: 192px;
+  overflow-y: scroll;
+}
+
+.select__list {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.select__item {
+  padding: 6px 16px;
+  font: 400 16px/1.5 "IBM Plex Sans";
+  color: #100c34;
+}
+
+.select__item_selected {
+  background: #ff00a8;
+  color: #fff;
+}
+
+.select__item:hover {
+  color: #100c34;
+  background: #f9f9f9;
+}
