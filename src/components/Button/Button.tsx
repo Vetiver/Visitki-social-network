@@ -6,7 +6,7 @@ import styles from "./Button.module.css";
 // loginButton для кнопки входа, chooseFileButton для кнопки выбора файла.
 // Третьим параметром передаем disabled={true/false} 
 
-const Button: FC<TButton> = ({ text, size, disabled }) => {
+const Button: FC<TButton> = ({ text, size, disabled, click }) => {
 
   const buttonStyle = (size: string) => {
     const largeButton = styles.largeButton;
@@ -21,6 +21,7 @@ const Button: FC<TButton> = ({ text, size, disabled }) => {
   return (
     <>
       <button
+        onClick={click}
         disabled={disabled}
         className={`${styles.button} ${buttonStyle(size)}`}
       >
