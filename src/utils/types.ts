@@ -12,12 +12,14 @@ export type TButton = {
 export type TAuth= {
   isAuth: boolean;
   token: string | null;
+  isAdmin: boolean;
   userData: {
     _id: string;
     createdAt: null;
     email: string;
     cohort: string;
     name: string;
+
   } | null;
 };
 
