@@ -2,7 +2,8 @@ export const psevdoApi = [
   {
     team: 123,
     email: "yaLubluDetey@mail.ru",
-    fullName: "Папич",
+    fullName:
+      "Папичsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
     date: "12.04.1488",
     block: "Из блочного блока",
     comment: "Я ходил за пивом",
