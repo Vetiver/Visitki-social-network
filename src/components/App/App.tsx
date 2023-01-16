@@ -1,9 +1,11 @@
 import { FC, useState } from "react";
 import Login from "../../pages/Login/Login";
+import Main from "../../pages/Main/Main";
 import { AuthContext } from "../../services/AuthContext";
 import { TAuth } from "../../utils/types";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import { SearchPage } from "../SearchPage/SearchPage";
 import styles from "./App.module.css";
 
 const App: FC = () => {
@@ -18,7 +20,8 @@ const App: FC = () => {
       <div className={styles.page}>
         <Header />
         <div className={styles.main}>
-          <Login />
+          {/* <Login /> */}
+          <Main/>
         </div>
         <Footer />
       </div>
