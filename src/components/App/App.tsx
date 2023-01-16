@@ -8,7 +8,7 @@ import styles from "./App.module.css";
 import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from '../../services/ProtectedRoute/ProtectedRoute'
 import { SearchPage } from "../SearchPage/SearchPage";
-import { Profile } from "../../pages/Profile/Profile";
+import  Profile  from "../../pages/Profile/Profile";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
