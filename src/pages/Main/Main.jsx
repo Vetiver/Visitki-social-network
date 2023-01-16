@@ -3,7 +3,16 @@ import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./Main.module.css";
 
 const Main = () => {
-  const data = ["йцуйцуй", "йцуйцу", "йцуйцуйц", "йцуйцуйц","йцуйцуй", "йцуйцу", "йцуйцуйц", "йцуйцуйц"];
+  const data = [
+    "Венеция",
+    "Венеция",
+    "Венеция",
+    "Венеция",
+    "Венеция",
+    "Венеция",
+    "Венеция",
+    "Венеция",
+  ];
 
   return (
     <main className={styles.main}>
@@ -19,7 +28,7 @@ const Main = () => {
           </div>
           <ul className={styles.mainTownFilterMenu}>
             {data.map((item) => {
-            return  <li className={styles.mainTownFilterMenuItem}>{item}</li>;
+              return <li className={styles.mainTownFilterMenuItem}>{item}</li>;
             })}
           </ul>
         </div>
@@ -28,6 +37,55 @@ const Main = () => {
         </a>
       </div>
       <div className={styles.cardContainer}>
+        <div className={styles.card}>
+          <img
+            className={styles.cardImg}
+            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            alt=""
+          />
+          <p className={styles.cardName}>Степанов Дмитрий</p>
+          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          <div className={styles.cardIcon}>
+            <ChatIcon />
+          </div>
+        </div>
+        <div className={styles.card}>
+          <img
+            className={styles.cardImg}
+            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            alt=""
+          />
+          <p className={styles.cardName}>Степанов Дмитрий</p>
+          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          <div className={styles.cardIcon}>
+            <ChatIcon />
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <img
+            className={styles.cardImg}
+            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            alt=""
+          />
+          <p className={styles.cardName}>Степанов Дмитрий</p>
+          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          <div className={styles.cardIcon}>
+            <ChatIcon />
+          </div>
+        </div>
+        <div className={styles.card}>
+          <img
+            className={styles.cardImg}
+            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            alt=""
+          />
+          <p className={styles.cardName}>Степанов Дмитрий</p>
+          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          <div className={styles.cardIcon}>
+            <ChatIcon />
+          </div>
+        </div>
         <div className={styles.card}>
           <img
             className={styles.cardImg}

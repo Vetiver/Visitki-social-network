@@ -31,9 +31,6 @@
   cursor: url("../../icons/pointer_main.svg"), pointer;
   transition: all 0.2s ease-in-out;
 }
-.mainTownFilter:hover {
-  opacity: 0.7;
-}
 
 .mainTownFilterContent {
   display: flex;
@@ -58,23 +55,33 @@
 .mainTownFilterMenu {
   z-index: 2;
   position: absolute;
-  top:49px;
+  top:46px;
   right: -1px;
   max-width: 325px;
+  max-height: 260px;
   width: 100%;
   margin: 0;
   padding: 0;
   border-right: 1px solid #100C34;
   border-left: 1px solid #100C34;
   border-bottom: 1px solid #100C34;
-
+  background: white; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 0 8px 8px;
+}
+.mainTownFilterMenu::-webkit-scrollbar {
+  width: 6px;
+}
+.mainTownFilterMenu::-webkit-scrollbar-thumb {
+  background-color: #dbd3d3dc;
+  border-radius: 12px;
 }
 .mainTownFilterMenuItem{
-  z-index: 100;
+  z-index: 2;
   list-style-type: none;
   padding: 12px 16px;
   margin: 0;
-  background: white;
   cursor: pointer;
 }
 
