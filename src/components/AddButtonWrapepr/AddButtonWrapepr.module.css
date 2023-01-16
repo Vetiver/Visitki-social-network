@@ -1,0 +1,36 @@
+.button_wrapper {
+  width: 285px;
+}
+
+.button_title {
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+  text-align: left;
+}
+
+.button_text {
+  padding: 0;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  margin: 12px 0 0 0;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+  height: 44px;
+  border: none;
+  background: linear-gradient(269.17deg, #3b23b7 30.28%, #c914e7 63.24%);
+  border-radius: 4px;
+  color: #f0f0f0;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

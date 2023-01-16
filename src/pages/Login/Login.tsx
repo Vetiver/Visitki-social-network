@@ -8,7 +8,7 @@
 
 
 import { FC, useEffect, useContext } from "react";
-//import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { AuthContext } from "../../services/AuthContext";
 import { registrationUser } from "../../utils/api/api";
@@ -66,7 +66,7 @@ const Login: FC = () => {
       localStorage.removeItem("previousPage");
     }
   }, []);
-  console.log(state)
+  
   useEffect(() => {
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
@@ -98,3 +98,4 @@ const Login: FC = () => {
 };
 
 export default Login;
+

@@ -25,4 +25,3 @@ export type TContext = {
   state: TAuth;
   setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
 } | any;
-
