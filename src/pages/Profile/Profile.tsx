@@ -4,6 +4,7 @@ import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
 import { ReactComponent as Calendar } from "../../images/logo/calendar.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
+import Avatar from 'react-avatar-edit'
 
 const dataForSelect: Array<string> = ["moscow", "minsk", "kyiv", "moscow", "minsk", "kyiv"];
 const dataForLine = ["серьезный", "несерьезный"];
@@ -30,6 +31,9 @@ function Profile() {
     <main className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
+        <Avatar   
+          width={390}
+          height={295}/>
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
