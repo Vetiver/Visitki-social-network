@@ -1,36 +1,53 @@
+import React from "react";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./Main.module.css";
 
-const Main = () => {
+
   const data = [
-    "Венеция",
-    "Венеция",
-    "Венеция",
-    "Венеция",
-    "Венеция",
-    "Венеция",
-    "Венеция",
-    "Венеция",
-  ];
+  { city: "Все города" },
+  { city: "Венеция" },
+  { city: "Новочеркасск" },
+  { city: "Старочеркасск" },
+  { city: "Среднечеркасск" },
+  { city: "Ростовочеркасск" },
+  { city: "Москвочеркасск" },
+  { city: "Екатеринбургочеркасск" },
+  { city: "Темирчеркасск" },
+];
+
+const Main = () => {
+  const [isOpened, setIsOpened] = React.useState(false);
+  const [selectedItem, setSelectedItem] = React.useState({selected: "Все города"});
+
+  // Открытие/закрытие фильтра
+  const filterSet = () => {
+    setIsOpened(!isOpened)
+  }
+
+  // Изменение фильтра
+  const selectItem = (city:string) => {
+    setSelectedItem({...selectItem, selected: city})
+  }
+
 
   return (
     <main className={styles.main}>
       <div className={styles.mainOptions}>
-        <div className={styles.mainTownFilter}>
+        <div className={styles.mainTownFilter} onClick={filterSet}>
           <div className={styles.mainTownFilterContent}>
-            <p className={styles.mainTownFilterContentText}>Все города</p>
+            <p className={styles.mainTownFilterContentText}>{selectedItem.selected}</p>
             <img
               className={styles.mainTownFilterContentImg}
               src={arrowIcon}
               alt=""
             />
           </div>
-          <ul className={styles.mainTownFilterMenu}>
+          {isOpened && <ul className={styles.mainTownFilterMenu}>
             {data.map((item) => {
-              return <li className={styles.mainTownFilterMenuItem}>{item}</li>;
+              return <li className={styles.mainTownFilterMenuItem} onClick={()=>selectItem(item.city)}>{item.city}</li>;
             })}
-          </ul>
+          </ul>}
         </div>
         <a href="#" className={styles.mainOptionsMapLink}>
           Посмотреть на карте

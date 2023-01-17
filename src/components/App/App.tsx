@@ -9,7 +9,6 @@ import { SearchPage } from "../SearchPage/SearchPage";
 import styles from "./App.module.css";
 import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from '../../services/ProtectedRoute/ProtectedRoute'
-import { SearchPage } from "../SearchPage/SearchPage";
 import  Profile  from "../../pages/Profile/Profile";
 
 const App: FC = () => {
@@ -24,10 +23,10 @@ const App: FC = () => {
     <AuthContext.Provider value={{state, setState}}>
       <div className={styles.page}>
         <Header />
-        <Switch>
+       {/*  <Switch>
         <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
         <div className={styles.main}>
-          {/* <Login /> */}
+          {/* <Login /> 
           <Main/>
         </div>
         </ProtectedRoute>
@@ -45,8 +44,8 @@ const App: FC = () => {
         </ProtectedRoute>
 
 
-        </Switch>
-        
+        </Switch> */}
+        <Main/>
        
         <Footer />
       </div>
