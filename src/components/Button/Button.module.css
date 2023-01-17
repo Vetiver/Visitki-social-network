@@ -8,7 +8,7 @@
   border: none;
   cursor: url(/public/cursor.png) 25 25, pointer;
   opacity: 1;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .button:hover {
   opacity: 0.85;

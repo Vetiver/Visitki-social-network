@@ -3,8 +3,7 @@ import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./Main.module.css";
 
-
-  const data = [
+const data = [
   { city: "Все города" },
   { city: "Венеция" },
   { city: "Новочеркасск" },
@@ -18,36 +17,49 @@ import styles from "./Main.module.css";
 
 const Main = () => {
   const [isOpened, setIsOpened] = React.useState(false);
-  const [selectedItem, setSelectedItem] = React.useState({selected: "Все города"});
+  const [selectedItem, setSelectedItem] = React.useState({
+    selected: "Все города",
+  });
 
   // Открытие/закрытие фильтра
   const filterSet = () => {
-    setIsOpened(!isOpened)
-  }
+    setIsOpened(!isOpened);
+  };
 
   // Изменение фильтра
-  const selectItem = (city:string) => {
-    setSelectedItem({...selectItem, selected: city})
-  }
-
+  const selectItem = (city: string) => {
+    setSelectedItem({ ...selectItem, selected: city });
+  };
 
   return (
     <main className={styles.main}>
       <div className={styles.mainOptions}>
         <div className={styles.mainTownFilter} onClick={filterSet}>
           <div className={styles.mainTownFilterContent}>
-            <p className={styles.mainTownFilterContentText}>{selectedItem.selected}</p>
+            <p className={styles.mainTownFilterContentText}>
+              {selectedItem.selected}
+            </p>
             <img
               className={styles.mainTownFilterContentImg}
               src={arrowIcon}
               alt=""
             />
           </div>
-          {isOpened && <ul className={styles.mainTownFilterMenu}>
-            {data.map((item) => {
-              return <li className={styles.mainTownFilterMenuItem} onClick={()=>selectItem(item.city)}>{item.city}</li>;
-            })}
-          </ul>}
+          {isOpened && (
+            <ul className={styles.mainTownFilterMenu}>
+              {data.map((item, index) => {
+                return (
+                  <li
+                    className={styles.mainTownFilterMenuItem}
+                    key={index}
+                    onClick={() => selectItem(item.city)}
+                  >
+                    {item.city}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
         <a href="#" className={styles.mainOptionsMapLink}>
           Посмотреть на карте
