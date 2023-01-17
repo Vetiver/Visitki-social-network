@@ -45,7 +45,11 @@ const App: FC = () => {
 
 
         </Switch> */}
-        <Main/>
+        <div className={styles.main}>
+
+        {/* <Main/> */}
+        <Login/>
+        </div>
        
         <Footer />
       </div>

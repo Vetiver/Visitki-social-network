@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  max-width: 1440px;
   box-sizing: border-box;
   max-height: 72px;
   height: 100%;
