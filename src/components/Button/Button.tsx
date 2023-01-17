@@ -3,7 +3,7 @@ import { TButton } from "../../utils/types";
 import styles from "./Button.module.css";
 
 // В кнопку передаем текст и size для смены размеров,
-// loginButton для кнопки входа, chooseFileButton для кнопки выбора файла.
+// largeButton для кнопки входа, smallButton для кнопки выбора файла.
 // Третьим параметром передаем disabled={true/false} 
 
 const Button: FC<TButton> = ({ text, size, disabled, click }) => {

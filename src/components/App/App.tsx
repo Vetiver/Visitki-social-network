@@ -1,14 +1,15 @@
 import { FC, useState } from "react";
 import Login from "../../pages/Login/Login";
+import Main from "../../pages/Main/Main";
 import { AuthContext } from "../../services/AuthContext";
 import { TAuth } from "../../utils/types";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import { SearchPage } from "../SearchPage/SearchPage";
 import styles from "./App.module.css";
 import { Switch, Route } from "react-router-dom";
-import ProtectedRoute from '../../services/ProtectedRoute/ProtectedRoute'
-import { SearchPage } from "../SearchPage/SearchPage";
-import  Profile  from "../../pages/Profile/Profile";
+import ProtectedRoute from "../../services/ProtectedRoute/ProtectedRoute";
+import Profile from "../../pages/Profile/Profile";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -19,32 +20,27 @@ const App: FC = () => {
   });
 
   return (
-    <AuthContext.Provider value={{state, setState}}>
+    <AuthContext.Provider value={{ state, setState }}>
       <div className={styles.page}>
         <Header />
-        <Switch>
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
         <div className={styles.main}>
-          <Login />
-        </div>
-        </ProtectedRoute>
-        
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/moder" exact={true}>
-        <div className={styles.main}>
+          <Switch>
+            <Login />
+
+            {/* <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
+          <Main/>
+        </ProtectedRoute>  */}
+
+            {/* <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/moder" exact={true}>
           <SearchPage />
-        </div>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
 
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/profile" exact={true}>
-        <div className={styles.main}>
+            {/* <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/profile" exact={true}>
           <Profile />
+        </ProtectedRoute>  */}
+          </Switch>
         </div>
-        </ProtectedRoute>
 
-
-        </Switch>
-        
-       
         <Footer />
       </div>
     </AuthContext.Provider>
