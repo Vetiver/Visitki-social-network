@@ -25,11 +25,11 @@ const App: FC = () => {
         <Header />
         <div className={styles.main}>
           <Switch>
-            {/* <Login /> */}
+            <Login />
 
-            <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
+            {/* <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
           <Main/>
-        </ProtectedRoute> 
+        </ProtectedRoute>  */}
 
             {/* <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/moder" exact={true}>
           <SearchPage />
