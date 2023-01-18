@@ -31,13 +31,11 @@ const LoginPage: FC = () => {
   const previousPage = localStorage.getItem("previousPage") || null;
 
   if (!previousPage) {
-    localStorage.setItem("previousPage", location.state?.from.pathname || "/");
+    localStorage.setItem("previousPage", "/");
+    // localStorage.setItem("previousPage", location.state?.from.pathname || "/");
   }
 
   useEffect(() => {
-    if (state.isAuth) {
-      navigate("/", { replace: true });
-    }
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
         //Фейковая авторизация
@@ -52,12 +50,14 @@ const LoginPage: FC = () => {
   }, []);
 
   useEffect(() => {
+    if (state.isAuth) {
+      navigate("/", { replace: true });
+      localStorage.removeItem("previousPage");
+    }
+
     const tokenFromHash = location.hash.split("&")[0].split("=")[1] || null;
     if (tokenFromHash) {
       logIn(previousPage, tokenFromHash);
-    }
-
-    if (state.isAuth) {
       localStorage.removeItem("previousPage");
     }
   }, []);
