@@ -38,15 +38,14 @@ function Profile() {
   function handleChange(e:any) {
       console.log(e.target.files);
       setFile(URL.createObjectURL(e.target.files[0]));
+    
   }
-
-
 
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>
-        <label className={styles.avatar} htmlFor="file"><Avatar style={{position: 'relative', border: '1px solid black'}} src={file == null ? '' : file} color="white" round="100px" size="150px"></Avatar><img className={styles.photo__hover} src={photo} alt="photo" /></label>
-        <input className={styles.avatar} type="file" onChange={handleChange} name="file" id="file"/>
+        <label className={styles.avatar} htmlFor="file"><Avatar style={{position: 'relative', border: '1px solid black'}} src={file == (null) ? '' : file} color="white" round="100px" size="150px"></Avatar><img className={styles.photo__hover} src={photo} alt="photo" /></label>
+        <input className={styles.avatar} type="file" accept="image/*" onChange={handleChange} name="file" id="file"/>
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
