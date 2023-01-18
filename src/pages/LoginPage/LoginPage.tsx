@@ -11,15 +11,21 @@ const LoginPage: FC = () => {
   const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);
 
-  function logIn(previousPage: string | null, tokenFromHash: string | null): void {
+  if (state.isAuth) {
+    navigate("/", { replace: true });
+  }
 
-    if (previousPage) {
+  function logIn(
+    previousPage: string | null,
+    tokenFromHash: string | null
+  ): void {
+    if (previousPage && tokenFromHash) {
       setState({ ...state, token: tokenFromHash, isAuth: true });
-      navigate(previousPage, { replace: true })
+      localStorage.setItem("token", tokenFromHash);
+      navigate(previousPage, { replace: true });
     }
   }
 
-  //Фейковая авторизация
   //Запрос на Яндекс ID (OAuth) для авторизации пользователя
   const authorizationRequest = (): void => {
     //После подключения роутинга должна заработать авторизация
@@ -34,18 +40,6 @@ const LoginPage: FC = () => {
   }
 
   useEffect(() => {
-    //Заготовка для использования реального токена, возвращаемого Яндекс OAuth
-    const tokenFromHash = location.hash.split("&")[0].split("=")[1] || null;
-    if (tokenFromHash) {
-      logIn(previousPage, tokenFromHash)
-    }
-
-    if (state.isAuth) {
-      localStorage.removeItem("previousPage");
-    }
-  }, []);
-
-  useEffect(() => {
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
         //Фейковая авторизация
@@ -57,6 +51,17 @@ const LoginPage: FC = () => {
     return () => {
       document.removeEventListener("keydown", handleEnterKeydown);
     };
+  }, []);
+
+  useEffect(() => {
+    const tokenFromHash = location.hash.split("&")[0].split("=")[1] || null;
+    if (tokenFromHash) {
+      logIn(previousPage, tokenFromHash);
+    }
+
+    if (state.isAuth) {
+      localStorage.removeItem("previousPage");
+    }
   }, []);
 
   return (
