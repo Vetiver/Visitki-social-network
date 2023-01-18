@@ -10,12 +10,12 @@ const LoginPage: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);
-
-  //Заготовка для использования реального токена, возвращаемого Яндекс OAuth
-  const tokenFromHash = location.hash.split("&")[0].split("=")[1] || null;
+  console.log(state);
 
   function logIn(page: string | null, tokenFromHash: string | null): void {
+
     if (page) {
+      setState({ ...state, token: tokenFromHash, isAuth: true });
       navigate(page, { replace: true })
     }
   }
@@ -23,42 +23,34 @@ const LoginPage: FC = () => {
   //Фейковая авторизация
   //Запрос на Яндекс ID (OAuth) для авторизации пользователя
   const authorizationRequest = (): void => {
-    logIn(previousPage, tokenFromHash);
-
     //После подключения роутинга должна заработать авторизация
     window.location.href =
       "https://oauth.yandex.ru/authorize?response_type=token&client_id=6fba40ed9ec943f3b046eed3854650a3";
-
-    //Временная заглушка на данном этапе разработки бекенда
-    // registrationUser(tokenFromHash).then(res => {setState({...state, isAuth: true, token: tokenFromHash, userData: res})})
-
-    
   };
 
   const previousPage = localStorage.getItem("previousPage") || null;
+
   if (!previousPage) {
-    localStorage.setItem("previousPage", location.state.from.pathname || "/")
+    localStorage.setItem("previousPage", location.state?.from.pathname || "/");
   }
 
   useEffect(() => {
+    //Заготовка для использования реального токена, возвращаемого Яндекс OAuth
+    const tokenFromHash = location.hash.split("&")[0].split("=")[1] || null;
     if (tokenFromHash) {
-      setState({...state, isAuth: true, token: tokenFromHash});
-    };
-    
-    
+      logIn(previousPage, tokenFromHash)
+    }
+
     if (state.isAuth) {
       localStorage.removeItem("previousPage");
     }
   }, []);
-  
+
   useEffect(() => {
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
         //Фейковая авторизация
         authorizationRequest();
-        //После подключения реальных данных из Яндекс ID необходимо убрать
-        //функцию logIn() отсюда
-        logIn(previousPage, state.token);
       }
     }
     document.addEventListener("keydown", handleEnterKeydown);
@@ -82,4 +74,3 @@ const LoginPage: FC = () => {
 };
 
 export default LoginPage;
-

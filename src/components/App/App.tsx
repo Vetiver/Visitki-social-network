@@ -16,7 +16,9 @@ const App: FC = () => {
     userData: null,
     isAdmin: false,
   });
-
+  
+  console.log("писька")
+  console.log(state.token)
   return (
     <AuthContext.Provider value={{ state, setState }}>
       <Routes>

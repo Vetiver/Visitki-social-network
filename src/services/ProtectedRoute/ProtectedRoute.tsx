@@ -4,9 +4,10 @@ import { AuthContext } from "../AuthContext";
 
 export const ProtectedRoute: FC = () => {
   const location = useLocation();
-  const { token } = useContext(AuthContext);
-
-  if (!token) {
+  const { state } = useContext(AuthContext);
+  console.log("попка")
+  console.log(state.token)
+  if (!state.token) {
     return <Navigate to={"/login"} state={{ from: location }} />;
   }
 
