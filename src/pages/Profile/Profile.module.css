@@ -285,3 +285,29 @@ select + .input__icon {
 .sb-avatar__text {
   position: relative;
 }
+
+photo__hover {
+  width: 152px;
+  height: 152px;
+  left: 0;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+
+.avatar {
+  position: relative;
+}
+
+.avatar:hover {
+  opacity: 1;
+}
+
+.avatar:hover .photo__hover{
+  display: inline;
+}
+
+.sb-avatar__text {
+  position: relative;
+}
