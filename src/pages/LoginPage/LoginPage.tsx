@@ -10,13 +10,12 @@ const LoginPage: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);
-  console.log(state);
 
-  function logIn(page: string | null, tokenFromHash: string | null): void {
+  function logIn(previousPage: string | null, tokenFromHash: string | null): void {
 
-    if (page) {
+    if (previousPage) {
       setState({ ...state, token: tokenFromHash, isAuth: true });
-      navigate(page, { replace: true })
+      navigate(previousPage, { replace: true })
     }
   }
 

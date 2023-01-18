@@ -17,16 +17,15 @@ const App: FC = () => {
     isAdmin: false,
   });
   
-  console.log("писька")
-  console.log(state.token)
   return (
     <AuthContext.Provider value={{ state, setState }}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route element={<ProtectedRoute />}>
-            <Route index element={<MainPage />} />
-            <Route element={<ProfilePage />} />
-            <Route element={<SearchPage />} />
+            <Route index path="main" element={<MainPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            
+            <Route path="search" element={<SearchPage />} />
             
           </Route>
           <Route path="/login" element={<LoginPage />} />
