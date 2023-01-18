@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
@@ -20,6 +20,7 @@ const dataForLine = ["серьезный", "несерьезный"];
 type TSelect = {
   data: Array<string>;
 };
+
 function Select({ data }: TSelect) {
   return (
     <div className={styles.select}>
@@ -38,6 +39,12 @@ function Select({ data }: TSelect) {
 }
 
 function Profile() {
+  const [file, setFile] = useState<any>();
+  function handleChange(e: any) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>

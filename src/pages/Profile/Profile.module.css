@@ -17,6 +17,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .profile__button {
@@ -257,4 +258,30 @@ select + .input__icon {
 .select__item:hover {
   color: #100c34;
   background: #f9f9f9;
+}
+
+.photo__hover {
+  width: 152px;
+  height: 152px;
+  left: 0;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+
+.avatar {
+  position: relative;
+}
+
+.avatar:hover {
+  opacity: 1;
+}
+
+.avatar:hover .photo__hover{
+  display: inline;
+}
+
+.sb-avatar__text {
+  position: relative;
 }
