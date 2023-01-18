@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useState} from 'react';
 import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
 import { ReactComponent as Calendar } from "../../images/logo/calendar.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
-import Avatar from 'react-avatar-edit'
+import photo from '../../images/Ellipse.png'
+
+import Avatar from 'react-avatar';
+
 
 const dataForSelect: Array<string> = ["moscow", "minsk", "kyiv", "moscow", "minsk", "kyiv"];
 const dataForLine = ["серьезный", "несерьезный"];
@@ -12,6 +15,9 @@ const dataForLine = ["серьезный", "несерьезный"];
 type TSelect = {
   data: Array<string>;
 };
+
+
+
 function Select({ data }: TSelect) {
   return (
     <div className={styles.select}>
@@ -27,13 +33,20 @@ function Select({ data }: TSelect) {
 }
 
 function Profile() {
+
+  const [file, setFile] = useState<any>();
+  function handleChange(e:any) {
+      console.log(e.target.files);
+      setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+
+
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>
-        <h4 className={styles.photo__load}>Загрузите фото*</h4>
-        <Avatar   
-          width={390}
-          height={295}/>
+        <label className={styles.avatar} htmlFor="file"><Avatar style={{position: 'relative', border: '1px solid black'}} src={file == null ? '' : file} color="white" round="100px" size="150px"></Avatar><img className={styles.photo__hover} src={photo} alt="photo" /></label>
+        <input className={styles.avatar} type="file" onChange={handleChange} name="file" id="file"/>
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
