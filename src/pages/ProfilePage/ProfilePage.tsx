@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import styles from "./Profile.module.css";
+import styles from "./ProfilePage.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
 import { ReactComponent as Calendar } from "../../images/logo/calendar.svg";
@@ -38,7 +38,7 @@ function SelectContent({ data, onClick }: TSelect) {
   );
 }
 
-function Profile() {
+function ProfilePage () {
   const selectForRegion = useRef<HTMLDivElement>(null);
   const selectForStyles = useRef<HTMLDivElement>(null);
   const [selectStyleData, setSelectStyleData] = useState({
@@ -238,4 +238,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfilePage;
