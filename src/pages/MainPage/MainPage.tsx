@@ -2,6 +2,7 @@ import React from "react";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
+import { Link } from "react-router-dom";
 
 const data = [
   { city: "Все города" },
@@ -61,9 +62,11 @@ const MainPage = () => {
             </ul>
           )}
         </div>
-        <a href="#" className={styles.mainOptionsMapLink}>
+        <Link to='/map'>
+          <a href="#" className={styles.mainOptionsMapLink}>
           Посмотреть на карте
-        </a>
+          </a>
+        </Link>
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.card}>
