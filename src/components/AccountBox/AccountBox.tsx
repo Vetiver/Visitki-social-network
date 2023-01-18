@@ -7,7 +7,7 @@ const AccountBox = () => {
     //После добавления роутинка тег a надо заменить на <Link to="..."/>
     //Согласно условию путь для студента будет to="/cohort/{name}"
     //А администратора надо переадрисовывать на главную админкм to="/admin"
-    <Link to="/profile" className={styles.accountBox}>
+    <Link to="profile" className={styles.accountBox}>
       {/* Сюда нужно будет подгружать инфу пользователя полученную  сервера */}
       <img
         className={styles.profilePhoto}

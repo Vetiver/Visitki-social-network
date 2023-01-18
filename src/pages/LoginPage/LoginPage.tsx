@@ -11,10 +11,6 @@ const LoginPage: FC = () => {
   const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);
 
-  if (state.isAuth) {
-    navigate("/", { replace: true });
-  }
-
   function logIn(
     previousPage: string | null,
     tokenFromHash: string | null
@@ -40,6 +36,9 @@ const LoginPage: FC = () => {
   }
 
   useEffect(() => {
+    if (state.isAuth) {
+      navigate("/", { replace: true });
+    }
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
         //Фейковая авторизация
