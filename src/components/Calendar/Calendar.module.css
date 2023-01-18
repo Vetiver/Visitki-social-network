@@ -10,6 +10,7 @@
   top: 14px;
   right: 18px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .calendar_box {
@@ -22,6 +23,10 @@
   background-color: white;
   box-sizing: border-box;
   overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 47px;
+  right: 0;
 }
 
 .buttons_wrapper {
@@ -104,9 +109,14 @@
   cursor: default;
 }
 
-.day_box:hover {
-  background-color: #ff75d1;
-  color: white;
+.psevdo_box:last-child,
+.psevdo_box:nth-last-child(2) {
+  color: #ff00a8;
+}
+
+.day_box:nth-child(7n + 6),
+.day_box:nth-child(7n) {
+  color: #ff00a8;
 }
 
 .pinky {

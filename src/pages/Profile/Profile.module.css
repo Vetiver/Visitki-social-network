@@ -17,7 +17,6 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
 }
 
 .profile__button {
@@ -71,27 +70,28 @@
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+  cursor: pointer;
 }
 
 input:hover,
-textarea:hover,
-select:hover {
+textarea:hover {
   border-color: #666;
 }
 
 input:focus,
-textarea:focus,
-select:focus {
+textarea:focus {
   border-color: #666;
   filter: drop-shadow(0px 0px 4px rgba(78, 59, 255, 0.25));
   border-radius: 4px;
   outline: none;
 }
 
-.select__tag {
+.select {
   padding: 14px 16px;
   width: 100%;
   max-height: 48px;
+  height: 48px;
+  background: #fff;
   border: 1px solid #100c34;
   border-radius: 4px;
   box-sizing: border-box;
@@ -99,12 +99,15 @@ select:focus {
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+  cursor: pointer;
 }
 
-.select__tag:hover {
+.select:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  
 }
+
 .textarea {
   font-family: inherit;
   padding: 14px 16px;
@@ -159,11 +162,11 @@ textarea {
   background-color: #fff;
   width: 24px;
   height: 24px;
-  top: 40px;
+  top: 14px;
   right: 15px;
 }
 
-input[type="date"] + .input__icon {
+input[type="date"]+.input__icon {
   top: 0;
   right: 15px;
 }
@@ -198,16 +201,7 @@ input[type="file"] {
   top: 10px;
   right: 15px;
 }
-select {
-  appearance: none;
-  position: relative;
-  cursor: pointer;
-}
-select + .input__icon {
-  background: transparent;
-  top: 40px;
-  right: 14px;
-}
+
 
 @media screen and (max-width: 500px) {
   .profile__title {
@@ -215,6 +209,7 @@ select + .input__icon {
     line-height: 42px;
     margin: 85px 0 25px;
   }
+
   .profile__button {
     width: 250px;
     height: 60px;
@@ -226,7 +221,10 @@ select + .input__icon {
   position: relative;
 }
 
-.select {
+.select__content {
+  border: 1px solid #000;
+  display: block;
+  box-sizing: border-box;
   background-color: #fff;
   position: absolute;
   min-width: 100%;
@@ -236,11 +234,14 @@ select + .input__icon {
   overflow-y: scroll;
 }
 
+.select:hover+.select {
+  display: block;
+}
+
 .select__list {
   padding-left: 0;
   margin: 0;
   list-style: none;
-  border: 1px solid #000;
   cursor: pointer;
 }
 

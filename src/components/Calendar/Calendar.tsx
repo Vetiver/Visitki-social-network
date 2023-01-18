@@ -13,17 +13,12 @@ export const Calendar = () => {
     years.push(i);
   }
 
-  for (let i = 1; i <= 10; i++) {
-    psevdoDays.push(i);
-  }
-
   let [isShow, setShow] = useState(false);
   let [date, setDay] = useState(1);
   let [year, setYear] = useState(todayYear);
   let [month, setMonth] = useState("Январь");
 
   const showCalendar = () => {
-    console.log(isShow);
     setShow((isShow) => !isShow);
   };
 
@@ -65,6 +60,12 @@ export const Calendar = () => {
     Ноябрь: "11",
     Декабрь: "12",
   };
+
+  const psevdoDaysLeft = 35 - days.length;
+
+  for (let i = 1; i <= psevdoDaysLeft; i++) {
+    psevdoDays.push(i);
+  }
 
   return (
     <div className={styles.section_wrapper}>

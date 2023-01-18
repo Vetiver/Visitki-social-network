@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, {
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
-import { ReactComponent as CalendarIcon } from "../../images/logo/calendar.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
 import Avatar from "react-avatar";
 import { Calendar } from "../../components/Calendar/Calendar";
-import photo from '../../images/Ellipse.png'
+import photo from "../../images/Ellipse.png";
 
-const dataForSelect: Array<string> = [
+const dataForSelectRegion: Array<string> = [
   "moscow",
   "minsk",
   "kyiv",
@@ -16,24 +21,20 @@ const dataForSelect: Array<string> = [
   "minsk",
   "kyiv",
 ];
-const dataForLine = ["серьезный", "несерьезный"];
+const dataForSelectStyles = ["серьезный", "несерьезный"];
 
 type TSelect = {
   data: Array<string>;
+  onClick: (e: SyntheticEvent) => void;
 };
 
-function Select({ data }: TSelect) {
+function SelectContent({ data, onClick }: TSelect) {
   return (
-    <div className={styles.select}>
-      <ul className={styles.select__list}>
+    <div className={styles.select__content}>
+      <ul className={styles.select__list} onClick={onClick}>
         {data.map((el) => (
           <li className={styles.select__item}>{el}</li>
         ))}
-        <li
-          className={`${styles.select__item} ${styles.select__item_selected}`}
-        >
-          {"fdvmkl"}
-        </li>
       </ul>
     </div>
   );
@@ -42,16 +43,69 @@ function Select({ data }: TSelect) {
 function Profile() {
   const [file, setFile] = useState<any>();
   function handleChange(e: any) {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+
+  const selectForRegion = useRef<HTMLDivElement>(null);
+  const selectForStyles = useRef<HTMLDivElement>(null);
+  const [selectStyleData, setSelectStyleData] = useState({
+    content: "",
+    active: false,
+  });
+  const [selectRegionData, setSelectRegionData] = useState({
+    content: "",
+    active: false,
+  });
+
+  const setSelectRegionActive = () => {
+    setSelectRegionData({
+      ...selectRegionData,
+      active: !selectRegionData.active,
+    });
+  };
+  const setSelectStylesActive = () => {
+    setSelectStyleData({ ...selectStyleData, active: !selectStyleData.active });
+  };
+
+  useEffect(() => {
+    selectForRegion.current!.innerHTML = selectRegionData.content;
+    selectForStyles.current!.innerHTML = selectStyleData.content;
+  }, [selectRegionData, selectStyleData]);
+
+  const setSelectRegionDataContent = (e: SyntheticEvent) => {
+    const target = e.target as HTMLLIElement;
+    const targetValue = target.innerText;
+    setSelectRegionData({ active: false, content: targetValue });
+  };
+
+  const setSelectStyleDataContent = (e: SyntheticEvent) => {
+    const target = e.target as HTMLLIElement;
+    const targetValue = target.innerText;
+    setSelectStyleData({ active: false, content: targetValue });
+  };
 
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
-      <label className={styles.avatar} htmlFor="file"><Avatar style={{position: 'relative', border: '1px solid black'}} src={file == (null) ? '' : file} color="white" round="100px" size="150px"></Avatar><img className={styles.photo__hover} src={photo} alt="photo" /></label>
-        <input className={styles.avatar} type="file" accept="image/*" onChange={handleChange} name="file" id="file"/>
+        <label className={styles.avatar} htmlFor="file">
+          <Avatar
+            style={{ position: "relative", border: "1px solid black" }}
+            src={file == null ? "" : file}
+            color="white"
+            round="100px"
+            size="150px"
+          ></Avatar>
+          <img className={styles.photo__hover} src={photo} alt="photo" />
+        </label>
+        <input
+          className={styles.avatar}
+          type="file"
+          accept="image/*"
+          onChange={handleChange}
+          name="file"
+          id="file"
+        />
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
@@ -63,11 +117,23 @@ function Profile() {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите город *</p>
-          <div className="styles.select__container">
-            <select className={styles.select__tag} name="" id=""></select>
-            <Select data={dataForSelect} />
-            <ArrowDown className={styles.input__icon} />
-            {/* <ArrowUp className={styles.input__icon}/> */}
+          <div className={styles.select__container}>
+            <div
+              className={styles.select}
+              ref={selectForRegion}
+              onClick={setSelectRegionActive}
+            ></div>
+            {selectRegionData.active && (
+              <SelectContent
+                data={dataForSelectRegion}
+                onClick={setSelectRegionDataContent}
+              />
+            )}
+            {selectRegionData.active ? (
+              <ArrowUp className={styles.input__icon} />
+            ) : (
+              <ArrowDown className={styles.input__icon} />
+            )}
           </div>
         </div>
 
@@ -95,12 +161,24 @@ function Profile() {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите шаблон *</p>
-          <select className={styles.select__tag} name="" id="">
-            <option value="серьезный">серьезный</option>
-            <option value="несерьезный">несерьезный</option>
-          </select>
-          <ArrowDown className={styles.input__icon} />
-          {/* <ArrowUp className={styles.input__icon}/> */}
+          <div className={styles.select__container}>
+            <div
+              className={styles.select}
+              ref={selectForStyles}
+              onClick={setSelectStylesActive}
+            ></div>
+            {selectStyleData.active && (
+              <SelectContent
+                data={dataForSelectStyles}
+                onClick={setSelectStyleDataContent}
+              />
+            )}
+            {selectStyleData.active ? (
+              <ArrowUp className={styles.input__icon} />
+            ) : (
+              <ArrowDown className={styles.input__icon} />
+            )}
+          </div>
         </div>
 
         <div className={styles.input__container}>
@@ -116,7 +194,6 @@ function Profile() {
           <p className={styles.input__title}> Увлечения, досуг, интересы</p>
           <label
             className={`${styles.input__label} ${styles.input__label_type_file}`}
-            htmlFor=""
           >
             <input className={styles.input} type="file" />
             <Clip className={styles.input__icon} />
