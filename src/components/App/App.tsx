@@ -6,9 +6,10 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import styles from "./App.module.css";
 import { Switch, Route } from "react-router-dom";
-import ProtectedRoute from '../../services/ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from "../../services/ProtectedRoute/ProtectedRoute";
 import { SearchPage } from "../SearchPage/SearchPage";
-import  Profile  from "../../pages/Profile/Profile";
+import Profile from "../../pages/Profile/Profile";
+import { Calendar } from "../Calendar/Calendar";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -19,32 +20,43 @@ const App: FC = () => {
   });
 
   return (
-    <AuthContext.Provider value={{state, setState}}>
+    <AuthContext.Provider value={{ state, setState }}>
       <div className={styles.page}>
         <Header />
         <Switch>
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} anonymous={true} path="/login" exact={true}>
-        <div className={styles.main}>
-          <Login />
-        </div>
-        </ProtectedRoute>
-        
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/moder" exact={true}>
-        <div className={styles.main}>
-          <SearchPage />
-        </div>
-        </ProtectedRoute>
+          <ProtectedRoute
+            isAuth={state.isAuth}
+            isAdmin={state.isAdmin}
+            anonymous={true}
+            path="/login"
+            exact={true}
+          >
+            <div className={styles.main}>
+              <Login />
+            </div>
+          </ProtectedRoute>
 
-        <ProtectedRoute isAuth={state.isAuth} isAdmin={state.isAdmin} path="/profile" exact={true}>
-        <div className={styles.main}>
-          <Profile />
-        </div>
-        </ProtectedRoute>
+          <ProtectedRoute
+            isAuth={state.isAuth}
+            isAdmin={state.isAdmin}
+            path="/moder"
+            exact={true}
+          >
+            <div className={styles.main}>
+              <SearchPage />
+            </div>
+          </ProtectedRoute>
 
-
+          <ProtectedRoute
+            isAuth={state.isAuth}
+            isAdmin={state.isAdmin}
+            path="/profile"
+            exact={true}
+          >
+            <div className={styles.main}></div>
+          </ProtectedRoute>
         </Switch>
-        
-       
+        <Profile />
         <Footer />
       </div>
     </AuthContext.Provider>

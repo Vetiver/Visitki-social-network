@@ -2,11 +2,19 @@ import React from "react";
 import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
-import { ReactComponent as Calendar } from "../../images/logo/calendar.svg";
+import { ReactComponent as CalendarIcon } from "../../images/logo/calendar.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
-import Avatar from 'react-avatar-edit'
+import Avatar from "react-avatar-edit";
+import { Calendar } from "../../components/Calendar/Calendar";
 
-const dataForSelect: Array<string> = ["moscow", "minsk", "kyiv", "moscow", "minsk", "kyiv"];
+const dataForSelect: Array<string> = [
+  "moscow",
+  "minsk",
+  "kyiv",
+  "moscow",
+  "minsk",
+  "kyiv",
+];
 const dataForLine = ["серьезный", "несерьезный"];
 
 type TSelect = {
@@ -19,8 +27,11 @@ function Select({ data }: TSelect) {
         {data.map((el) => (
           <li className={styles.select__item}>{el}</li>
         ))}
-				 <li className={`${styles.select__item} ${styles.select__item_selected}`}>{'fdvmkl'}</li>
-				
+        <li
+          className={`${styles.select__item} ${styles.select__item_selected}`}
+        >
+          {"fdvmkl"}
+        </li>
       </ul>
     </div>
   );
@@ -31,18 +42,14 @@ function Profile() {
     <main className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
-        <Avatar   
-          width={390}
-          height={295}/>
+        <Avatar width={390} height={295} />
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-          <label className={styles.input__label} htmlFor="">
-            <input className={styles.input} type="date" />
-            <Calendar className={styles.input__icon} />
-          </label>
+
+          <Calendar />
         </div>
 
         <div className={styles.input__container}>
