@@ -15,7 +15,7 @@ import { registrationUser } from "../../utils/api/api";
 import { TContext } from "../../utils/types";
 import styles from "./Login.module.css";
 
-const Login: FC = () => {
+const LoginPage: FC = () => {
   //const location = useLocation();
   //const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);
@@ -97,5 +97,5 @@ const Login: FC = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
 

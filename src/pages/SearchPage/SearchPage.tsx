@@ -1,5 +1,5 @@
 import styles from "./SearchPage.module.css";
-import { Search } from "../Search/Search";
+import { Search } from "../../components/Search/Search";
 
 export const SearchPage = () => {
   return (

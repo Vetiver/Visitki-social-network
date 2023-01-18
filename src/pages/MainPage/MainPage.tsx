@@ -1,7 +1,7 @@
 import React from "react";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
-import styles from "./Main.module.css";
+import styles from "./MainPage.module.css";
 
 const data = [
   { city: "Все города" },
@@ -15,7 +15,7 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
-const Main = () => {
+const MainPage = () => {
   const [isOpened, setIsOpened] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState({
     selected: "Все города",
@@ -169,4 +169,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainPage;
