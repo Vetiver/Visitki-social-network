@@ -39,7 +39,7 @@ const App: FC = () => {
             <Route index element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
             {/* Название компонента непонятное. Страница поиска чего именно? Надо поменять */}
-            <Route path="search" element={<SearchPage />} />
+            <Route path="/" element={<SearchPage />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />

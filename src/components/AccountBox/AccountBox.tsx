@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./AccountBox.module.css";
 
 const AccountBox = () => {
@@ -6,8 +7,7 @@ const AccountBox = () => {
     //После добавления роутинка тег a надо заменить на <Link to="..."/>
     //Согласно условию путь для студента будет to="/cohort/{name}"
     //А администратора надо переадрисовывать на главную админкм to="/admin"
-    <a href="#" className={styles.accountBox}>
-      <div className={styles.accountBox}>
+    <Link to="/profile" className={styles.accountBox}>
       {/* Сюда нужно будет подгружать инфу пользователя полученную  сервера */}
       <img
         className={styles.profilePhoto}
@@ -18,9 +18,7 @@ const AccountBox = () => {
         {/* Сюда нужно будет подгружать инфу пользователя полученную  сервера */}
         Константин Константинопольский
       </p>
-    </div>
-    </a>
-    
+    </Link>
   );
 };
 
