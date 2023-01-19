@@ -5,6 +5,8 @@ import { AuthContext } from "../../services/AuthContext";
 import { TContext } from "../../utils/types";
 import styles from "./LoginPage.module.css";
 
+import "../../utils/api"
+
 const LoginPage: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -32,13 +34,12 @@ const LoginPage: FC = () => {
 
   if (!previousPage) {
     localStorage.setItem("previousPage", "/");
-    // localStorage.setItem("previousPage", location.state?.from.pathname || "/");
+    // localStorage.setItem("previousPage", location.state?.from?.pathname || "/");
   }
 
   useEffect(() => {
     function handleEnterKeydown(evt: KeyboardEvent) {
       if (evt.key === "Enter") {
-        //Фейковая авторизация
         authorizationRequest();
       }
     }
@@ -50,7 +51,8 @@ const LoginPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (state.isAuth) {
+    console.log(state);
+    if (state.isAuth || localStorage.getItem("token")) {
       navigate("/", { replace: true });
       localStorage.removeItem("previousPage");
     }
@@ -63,15 +65,19 @@ const LoginPage: FC = () => {
   }, []);
 
   return (
-    <div className={styles.login}>
-      <h1 className={styles.login__title}>С кем я учусь?</h1>
-      <Button
-        click={authorizationRequest}
-        text="Войти с Яндекс ID"
-        size={"largeButton"}
-        disabled={false}
-      />
-    </div>
+    <>
+      {!state.isAuth && (
+        <div className={styles.login}>
+          <h1 className={styles.login__title}>С кем я учусь?</h1>
+          <Button
+            click={authorizationRequest}
+            text="Войти с Яндекс ID"
+            size={"largeButton"}
+            disabled={false}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
