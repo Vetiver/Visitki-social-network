@@ -11,7 +11,6 @@ export type TButton = {
 
 export type TAuth= {
   isAuth: boolean;
-  token: string | null;
   isAdmin: boolean;
   userData: {
     _id: string;
@@ -27,3 +26,7 @@ export type TContext = {
   state: TAuth;
   setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
 } | any;
+
+export type TProfileDataRequest = {
+  
+}
