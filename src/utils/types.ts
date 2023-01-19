@@ -3,10 +3,10 @@ import { Dispatch, SetStateAction } from "react";
 export type TFcVoid = () => void;
 
 export type TButton = {
-  click: () => void;
+  click?: () => void;
   text: string;
   size: string;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export type TAuth= {

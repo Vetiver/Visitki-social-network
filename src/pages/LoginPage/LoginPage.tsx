@@ -1,5 +1,5 @@
 import { FC, useEffect, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { AuthContext } from "../../services/AuthContext";
 import { TContext } from "../../utils/types";
@@ -61,6 +61,8 @@ const LoginPage: FC = () => {
       localStorage.removeItem("previousPage");
     }
   }, []);
+
+    if (state.isAuth) { return <Navigate to={"/"} state={{ from: location }} />; }
 
   return (
     <div className={styles.login}>
