@@ -7,7 +7,7 @@ import { ProtectedRoute } from "../../services/ProtectedRoute/ProtectedRoute";
 import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import MainPage from "../../pages/MainPage/MainPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
-import NotFoundPage from "../../pages/NoteFoundPage/NotFoundPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 
 const App: FC = () => {
@@ -20,7 +20,7 @@ const App: FC = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("previousPage", location.state?.from.pathname || "/")
+    localStorage.setItem("previousPage", location.state?.from.pathname || "/");
     const tokenLocal = localStorage.getItem("token") || null;
     const checkLocalToken = tokenLocal ? true : false;
     if (checkLocalToken) {
@@ -35,9 +35,8 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route element={<ProtectedRoute />}>
-            <Route index element={<MainPage />} />
+            <Route path="" element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
-            {/* Название компонента непонятное. Страница поиска чего именно? Надо поменять */}
             <Route path="admin" element={<AdminPage />} />
           </Route>
           <Route path="login" element={<LoginPage />} />
