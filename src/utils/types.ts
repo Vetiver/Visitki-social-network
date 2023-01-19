@@ -28,5 +28,4 @@ export type TContext = {
 } | any;
 
 export type TProfileDataRequest = {
-  
 }
