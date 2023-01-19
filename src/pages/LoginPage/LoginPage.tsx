@@ -5,8 +5,6 @@ import { AuthContext } from "../../services/AuthContext";
 import { TContext } from "../../utils/types";
 import styles from "./LoginPage.module.css";
 
-import "../../utils/api"
-
 const LoginPage: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
