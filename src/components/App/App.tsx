@@ -9,6 +9,8 @@ import MainPage from "../../pages/MainPage/MainPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
+import MapPage from "../../pages/MapPage/MapPage";
+
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -33,6 +35,8 @@ const App: FC = () => {
             <Route index element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="admin" element={<AdminPage />} />
+            <Route path="/map" element={<MapPage />} />
+
           </Route>
           <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
