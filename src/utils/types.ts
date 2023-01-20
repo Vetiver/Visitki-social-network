@@ -9,8 +9,7 @@ export type TButton = {
   disabled?: boolean;
 };
 
-export type TAuth= {
-  token?: string | null;
+export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: {
@@ -19,7 +18,6 @@ export type TAuth= {
     email: string;
     cohort: string;
     name: string;
-
   } | null;
 };
 
