@@ -75,6 +75,7 @@
 
 input:hover,
 textarea:hover {
+
   border-color: #666;
 }
 
@@ -99,13 +100,12 @@ textarea:focus {
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+
   cursor: pointer;
 }
 
 .select:hover {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  
 }
 
 .textarea {
@@ -166,6 +166,7 @@ textarea {
   right: 15px;
 }
 
+
 input[type="date"]+.input__icon {
   top: 0;
   right: 15px;
@@ -203,12 +204,16 @@ input[type="file"] {
 }
 
 
+
+
 @media screen and (max-width: 500px) {
   .profile__title {
     font-size: 32px;
     line-height: 42px;
     margin: 85px 0 25px;
   }
+
+
 
   .profile__button {
     width: 250px;
@@ -224,6 +229,7 @@ input[type="file"] {
 .select__content {
   border: 1px solid #000;
   display: block;
+
   box-sizing: border-box;
   background-color: #fff;
   position: absolute;
@@ -233,6 +239,7 @@ input[type="file"] {
   max-height: 192px;
   overflow-y: scroll;
 }
+
 
 .select:hover+.select {
   display: block;
@@ -312,3 +319,4 @@ photo__hover {
 .sb-avatar__text {
   position: relative;
 }
+

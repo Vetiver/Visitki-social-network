@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+
 import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
@@ -12,6 +13,7 @@ import { ReactComponent as Clip } from "../../images/logo/clip.svg";
 import Avatar from "react-avatar";
 import { Calendar } from "../../components/Calendar/Calendar";
 import photo from "../../images/Ellipse.png";
+
 
 const dataForSelectRegion: Array<string> = [
   "moscow",
@@ -40,11 +42,13 @@ function SelectContent({ data, onClick }: TSelect) {
   );
 }
 
-function Profile() {
+
+function ProfilePage() {
   const [file, setFile] = useState<any>();
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+
 
   const selectForRegion = useRef<HTMLDivElement>(null);
   const selectForStyles = useRef<HTMLDivElement>(null);
@@ -106,12 +110,12 @@ function Profile() {
           name="file"
           id="file"
         />
+
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-
           <Calendar />
         </div>
 
@@ -261,4 +265,6 @@ function Profile() {
   );
 }
 
-export default Profile;
+
+export default ProfilePage;
+
