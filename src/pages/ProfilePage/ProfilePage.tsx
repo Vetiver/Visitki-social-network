@@ -1,6 +1,6 @@
 import React, {
+  ChangeEvent,
   SyntheticEvent,
-  useCallback,
   useEffect,
   useRef,
   useState,
@@ -101,7 +101,7 @@ function ProfilePage() {
             round="100px"
             size="150px"
           ></Avatar>
-          <img className={styles.photo__hover} src={photo} alt="photo" />
+          <img className={styles.photo__hover} src={photo} alt="фото" />
         </label>
         <input
           className={styles.avatar}
