@@ -17,6 +17,7 @@ const App: FC = () => {
     isAuth: false,
     userData: null,
     isAdmin: false,
+    token: null,
   });
 
 

@@ -275,6 +275,7 @@ input[type="file"] {
   position: absolute;
   display: none;
   cursor: pointer;
+
 }
 
 
@@ -294,13 +295,14 @@ input[type="file"] {
   position: relative;
 }
 
-photo__hover {
+.photo__hover {
   width: 152px;
   height: 152px;
   left: 0;
   position: absolute;
   display: none;
   cursor: pointer;
+  cursor: url('../../icons/pointer_main.svg'), auto;
 }
 
 
@@ -320,3 +322,6 @@ photo__hover {
   position: relative;
 }
 
+.cover {
+  object-fit: cover;
+}

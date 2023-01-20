@@ -10,6 +10,7 @@ export type TButton = {
 };
 
 export type TAuth= {
+  token?: string | null;
   isAuth: boolean;
   isAdmin: boolean;
   userData: {

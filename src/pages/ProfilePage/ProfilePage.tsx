@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 
-import styles from "./Profile.module.css";
+import styles from "./ProfilePage.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
@@ -94,7 +94,8 @@ function ProfilePage() {
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
         <label className={styles.avatar} htmlFor="file">
           <Avatar
-            style={{ position: "relative", border: "1px solid black" }}
+            style={{ position: "relative", border: "1px solid black"}}
+            className={styles.cover}
             src={file == null ? "" : file}
             color="white"
             round="100px"

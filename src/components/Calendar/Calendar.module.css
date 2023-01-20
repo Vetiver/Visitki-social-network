@@ -5,12 +5,14 @@
   align-items: flex-end;
 }
 
+
 .icon {
   position: absolute;
   top: 14px;
   right: 18px;
   cursor: pointer;
   z-index: 2;
+  cursor: url('../../icons/pointer_main.svg'), auto;
 }
 
 .calendar_box {
@@ -34,6 +36,13 @@
   display: flex;
   gap: 8px;
   justify-content: space-around;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
 
 .days_list {
@@ -148,4 +157,5 @@
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+  cursor: url('../../icons/pointer_main.svg'), auto;
 }
