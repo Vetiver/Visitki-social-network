@@ -1,9 +1,16 @@
-export const psevdoApi = [
+export let psevdoApi = [
   {
     team: 123,
     email: "yaLubluDetey@mail.ru",
-    fullName:
-      "Папичsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+    fullName: "Fasdtq qweqwewe",
+    date: "12.04.1488",
+    block: "Из блочного блока",
+    comment: "Я ходил за пивом",
+  },
+  {
+    team: 123,
+    email: "yaLubluDetedasday@mail.ru",
+    fullName: "Папич 1234asd",
     date: "12.04.1488",
     block: "Из блочного блока",
     comment: "Я ходил за пивом",
@@ -11,18 +18,10 @@ export const psevdoApi = [
   {
     team: 123,
     email: "yaLubluDetey@mail.ru",
-    fullName: "Папич",
+    fullName: "Папичdasdzxczxc",
     date: "12.04.1488",
     block: "Из блочного блока",
-    comment: "Я ходил за пивом",
-  },
-  {
-    team: 123,
-    email: "yaLubluDetey@mail.ru",
-    fullName: "Папич",
-    date: "12.04.1488",
-    block: "Из блочного блока",
-    comment: "Я ходил за пивом",
+    comment: "Я ходил за пивом rqwrqweqweqwe",
   },
   {
     team: 123,

@@ -18,13 +18,20 @@ const App: FC = () => {
     userData: null,
     isAdmin: false,
   });
-//Проверяем, записан ли токен в локальном хранилище, если да, то записываем в переменную.
-    const tokenLocal = localStorage.getItem("token") || null;
+
+
+  const tokenLocal = localStorage.getItem("token") || null;
+
   useEffect(() => {
-    
-    if (tokenLocal) {
-      setState({ ...state, isAuth: true });
-    }
+    const checkLocalToken = () => {
+      if (tokenLocal) {
+        setState({ ...state, isAuth: true, token: tokenLocal });
+        return true;
+      }
+      return false;
+    };
+    if (checkLocalToken())
+      setState({ ...state, token: tokenLocal, isAuth: true });
   }, []);
 
   return (
