@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
 import styles from "./MapPage.module.css";
-import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from "react-yandex-maps";
 
-
-function MapPage() {
+const MapPage = () => {
   const mapState = { center: [55.76, 37.64], zoom: 6 };
   return (
-    <main>
-        <Map className={styles.map} state={mapState}>
- 
-
+    <YMaps>
+      <div className={styles.map}>
+        <Map defaultState={mapState}>
+          
         </Map>
-    </main>
+      </div>
+      
+    </YMaps>
   );
 }
 
