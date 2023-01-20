@@ -1,15 +1,13 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import ProtectedLink from "../../HOC/ProtectedLink";
 import LogoIcon from "../Icons/LogoIcon/LogoIcon";
 import styles from "./Logo.module.css";
 
 const Logo: FC = () => {
   return (
-    //После добавления роутинка тег a надо заменить на <Link to="/"/>
-    <Link to="/" className={styles.logo}>
+    <ProtectedLink to="/" className={styles.logo}>
       <LogoIcon />
-    </Link>
+    </ProtectedLink>
   );
 };
 
