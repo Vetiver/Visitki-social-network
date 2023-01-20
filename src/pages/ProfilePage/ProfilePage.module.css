@@ -75,7 +75,6 @@
 
 input:hover,
 textarea:hover {
-
   border-color: #666;
 }
 
@@ -83,29 +82,7 @@ input:focus,
 textarea:focus {
   border-color: #666;
   filter: drop-shadow(0px 0px 4px rgba(78, 59, 255, 0.25));
-  border-radius: 4px;
   outline: none;
-}
-
-.select {
-  padding: 14px 16px;
-  width: 100%;
-  max-height: 48px;
-  height: 48px;
-  background: #fff;
-  border: 1px solid #100c34;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #100c34;
-
-  cursor: pointer;
-}
-
-.select:hover {
-  border-bottom-left-radius: 0;
 }
 
 .textarea {
@@ -133,19 +110,13 @@ textarea:focus {
 
 .textarea::placeholder,
 .input::placeholder {
-  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .input[type="date"] {
-  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-}
-
-.input::-webkit-calendar-picker-indicator {
-  opacity: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .warning {
@@ -166,8 +137,7 @@ textarea {
   right: 15px;
 }
 
-
-input[type="date"]+.input__icon {
+input[type="date"] + .input__icon {
   top: 0;
   right: 15px;
 }
@@ -178,7 +148,6 @@ input[type="file"] {
 
 .input__label_type_file {
   display: block;
-
   padding: 14px 16px;
   width: 100%;
   max-height: 48px;
@@ -204,70 +173,6 @@ input[type="file"] {
 }
 
 
-
-
-@media screen and (max-width: 500px) {
-  .profile__title {
-    font-size: 32px;
-    line-height: 42px;
-    margin: 85px 0 25px;
-  }
-
-
-
-  .profile__button {
-    width: 250px;
-    height: 60px;
-    margin: 0 0 158px 0;
-  }
-}
-
-.select__container {
-  position: relative;
-}
-
-.select__content {
-  border: 1px solid #000;
-  display: block;
-
-  box-sizing: border-box;
-  background-color: #fff;
-  position: absolute;
-  min-width: 100%;
-  max-width: 100%;
-  z-index: 2;
-  max-height: 192px;
-  overflow-y: scroll;
-}
-
-
-.select:hover+.select {
-  display: block;
-}
-
-.select__list {
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-  cursor: pointer;
-}
-
-.select__item {
-  padding: 6px 16px;
-  font: 400 16px/1.5 "IBM Plex Sans";
-  color: #100c34;
-}
-
-.select__item_selected {
-  background: #ff00a8;
-  color: #fff;
-}
-
-.select__item:hover {
-  color: #100c34;
-  background: #f9f9f9;
-}
-
 .photo__hover {
   width: 152px;
   height: 152px;
@@ -275,9 +180,7 @@ input[type="file"] {
   position: absolute;
   display: none;
   cursor: pointer;
-
 }
-
 
 .avatar {
   position: relative;
@@ -287,7 +190,7 @@ input[type="file"] {
   opacity: 1;
 }
 
-.avatar:hover .photo__hover{
+.avatar:hover .photo__hover {
   display: inline;
 }
 
@@ -301,10 +204,8 @@ input[type="file"] {
   left: 0;
   position: absolute;
   display: none;
-  cursor: pointer;
-  cursor: url('../../icons/pointer_main.svg'), auto;
+  cursor: url("../../icons/pointer_main.svg"), auto;
 }
-
 
 .avatar {
   position: relative;
@@ -314,7 +215,7 @@ input[type="file"] {
   opacity: 1;
 }
 
-.avatar:hover .photo__hover{
+.avatar:hover .photo__hover {
   display: inline;
 }
 
@@ -324,4 +225,18 @@ input[type="file"] {
 
 .cover {
   object-fit: cover;
+}
+
+@media screen and (max-width: 500px) {
+  .profile__title {
+    font-size: 32px;
+    line-height: 42px;
+    margin: 85px 0 25px;
+  }
+
+  .profile__button {
+    width: 250px;
+    height: 60px;
+    margin: 0 0 158px 0;
+  }
 }

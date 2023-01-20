@@ -1,10 +1,10 @@
-import React, {
+import  {
   SyntheticEvent,
-  useCallback,
   useEffect,
   useRef,
   useState,
 } from "react";
+import SelectRegionInput from "../../components/SelectRegionInput/SelectRegionInput";
 
 import styles from "./ProfilePage.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
@@ -13,35 +13,7 @@ import { ReactComponent as Clip } from "../../images/logo/clip.svg";
 import Avatar from "react-avatar";
 import { Calendar } from "../../components/Calendar/Calendar";
 import photo from "../../images/Ellipse.png";
-
-
-const dataForSelectRegion: Array<string> = [
-  "moscow",
-  "minsk",
-  "kyiv",
-  "moscow",
-  "minsk",
-  "kyiv",
-];
-const dataForSelectStyles = ["серьезный", "несерьезный"];
-
-type TSelect = {
-  data: Array<string>;
-  onClick: (e: SyntheticEvent) => void;
-};
-
-function SelectContent({ data, onClick }: TSelect) {
-  return (
-    <div className={styles.select__content}>
-      <ul className={styles.select__list} onClick={onClick}>
-        {data.map((el) => (
-          <li className={styles.select__item}>{el}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
+import SelectStyleInput from "../../components/SelectStyleInput/SelectStyleInput";
 
 function ProfilePage() {
   const [file, setFile] = useState<any>();
@@ -49,59 +21,20 @@ function ProfilePage() {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-
-  const selectForRegion = useRef<HTMLDivElement>(null);
-  const selectForStyles = useRef<HTMLDivElement>(null);
-  const [selectStyleData, setSelectStyleData] = useState({
-    content: "",
-    active: false,
-  });
-  const [selectRegionData, setSelectRegionData] = useState({
-    content: "",
-    active: false,
-  });
-
-  const setSelectRegionActive = () => {
-    setSelectRegionData({
-      ...selectRegionData,
-      active: !selectRegionData.active,
-    });
-  };
-  const setSelectStylesActive = () => {
-    setSelectStyleData({ ...selectStyleData, active: !selectStyleData.active });
-  };
-
-  useEffect(() => {
-    selectForRegion.current!.innerHTML = selectRegionData.content;
-    selectForStyles.current!.innerHTML = selectStyleData.content;
-  }, [selectRegionData, selectStyleData]);
-
-  const setSelectRegionDataContent = (e: SyntheticEvent) => {
-    const target = e.target as HTMLLIElement;
-    const targetValue = target.innerText;
-    setSelectRegionData({ active: false, content: targetValue });
-  };
-
-  const setSelectStyleDataContent = (e: SyntheticEvent) => {
-    const target = e.target as HTMLLIElement;
-    const targetValue = target.innerText;
-    setSelectStyleData({ active: false, content: targetValue });
-  };
-
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
         <label className={styles.avatar} htmlFor="file">
           <Avatar
-            style={{ position: "relative", border: "1px solid black"}}
+            style={{ position: "relative", border: "1px solid black" }}
             className={styles.cover}
             src={file == null ? "" : file}
             color="white"
             round="100px"
             size="150px"
           ></Avatar>
-          <img className={styles.photo__hover} src={photo} alt="photo" />
+          <img className={styles.photo__hover} src={photo} alt="avatar" />
         </label>
         <input
           className={styles.avatar}
@@ -123,22 +56,7 @@ function ProfilePage() {
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите город *</p>
           <div className={styles.select__container}>
-            <div
-              className={styles.select}
-              ref={selectForRegion}
-              onClick={setSelectRegionActive}
-            ></div>
-            {selectRegionData.active && (
-              <SelectContent
-                data={dataForSelectRegion}
-                onClick={setSelectRegionDataContent}
-              />
-            )}
-            {selectRegionData.active ? (
-              <ArrowUp className={styles.input__icon} />
-            ) : (
-              <ArrowDown className={styles.input__icon} />
-            )}
+            <SelectRegionInput />
           </div>
         </div>
 
@@ -166,7 +84,7 @@ function ProfilePage() {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите шаблон *</p>
-          <div className={styles.select__container}>
+          {/* <div className={styles.select__container}>
             <div
               className={styles.select}
               ref={selectForStyles}
@@ -183,7 +101,8 @@ function ProfilePage() {
             ) : (
               <ArrowDown className={styles.input__icon} />
             )}
-          </div>
+          </div> */}
+          <SelectStyleInput/>
         </div>
 
         <div className={styles.input__container}>
@@ -266,6 +185,4 @@ function ProfilePage() {
   );
 }
 
-
 export default ProfilePage;
-
