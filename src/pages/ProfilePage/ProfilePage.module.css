@@ -70,17 +70,17 @@
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+  cursor: pointer;
 }
 
 input:hover,
-textarea:hover,
-select:hover {
+textarea:hover {
+
   border-color: #666;
 }
 
 input:focus,
-textarea:focus,
-select:focus {
+textarea:focus {
   border-color: #666;
   filter: drop-shadow(0px 0px 4px rgba(78, 59, 255, 0.25));
   border-radius: 4px;
@@ -100,11 +100,12 @@ select:focus {
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
+
+  cursor: pointer;
 }
 
 .select:hover {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .textarea {
@@ -165,7 +166,8 @@ textarea {
   right: 15px;
 }
 
-input[type="date"] + .input__icon {
+
+input[type="date"]+.input__icon {
   top: 0;
   right: 15px;
 }
@@ -200,16 +202,9 @@ input[type="file"] {
   top: 10px;
   right: 15px;
 }
-select {
-  appearance: none;
-  position: relative;
-  cursor: pointer;
-}
-select + .input__icon {
-  background: transparent;
-  top: 40px;
-  right: 14px;
-}
+
+
+
 
 @media screen and (max-width: 500px) {
   .profile__title {
@@ -217,6 +212,9 @@ select + .input__icon {
     line-height: 42px;
     margin: 85px 0 25px;
   }
+
+
+
   .profile__button {
     width: 250px;
     height: 60px;
@@ -231,7 +229,8 @@ select + .input__icon {
 .select__content {
   border: 1px solid #000;
   display: block;
-  box-sizing:border-box;
+
+  box-sizing: border-box;
   background-color: #fff;
   position: absolute;
   min-width: 100%;
@@ -241,7 +240,8 @@ select + .input__icon {
   overflow-y: scroll;
 }
 
-.select:hover + .select {
+
+.select:hover+.select {
   display: block;
 }
 
@@ -267,3 +267,56 @@ select + .input__icon {
   color: #100c34;
   background: #f9f9f9;
 }
+
+.photo__hover {
+  width: 152px;
+  height: 152px;
+  left: 0;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+
+.avatar {
+  position: relative;
+}
+
+.avatar:hover {
+  opacity: 1;
+}
+
+.avatar:hover .photo__hover{
+  display: inline;
+}
+
+.sb-avatar__text {
+  position: relative;
+}
+
+photo__hover {
+  width: 152px;
+  height: 152px;
+  left: 0;
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+
+.avatar {
+  position: relative;
+}
+
+.avatar:hover {
+  opacity: 1;
+}
+
+.avatar:hover .photo__hover{
+  display: inline;
+}
+
+.sb-avatar__text {
+  position: relative;
+}
+

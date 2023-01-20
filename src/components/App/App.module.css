@@ -1,3 +1,4 @@
+
 .page {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
@@ -21,8 +22,11 @@
   min-height: calc(100vh - 177px);
   width: 100%;
   max-width: 1440px;
-
+  background: #ffffff;
 }
+a {
+  text-decoration: none;
+  }
 @media screen and (max-width: 500px) {
   .main {
     min-height: calc(100vh - 145px);

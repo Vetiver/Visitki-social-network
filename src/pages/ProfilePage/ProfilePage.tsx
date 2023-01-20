@@ -5,11 +5,15 @@ import React, {
   useRef,
   useState,
 } from "react";
-import styles from "./ProfilePage.module.css";
+
+import styles from "./Profile.module.css";
 import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
-import { ReactComponent as Calendar } from "../../images/logo/calendar.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
+import Avatar from "react-avatar";
+import { Calendar } from "../../components/Calendar/Calendar";
+import photo from "../../images/Ellipse.png";
+
 
 const dataForSelectRegion: Array<string> = [
   "moscow",
@@ -38,7 +42,14 @@ function SelectContent({ data, onClick }: TSelect) {
   );
 }
 
-function ProfilePage () {
+
+function ProfilePage() {
+  const [file, setFile] = useState<any>();
+  function handleChange(e: any) {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+
   const selectForRegion = useRef<HTMLDivElement>(null);
   const selectForStyles = useRef<HTMLDivElement>(null);
   const [selectStyleData, setSelectStyleData] = useState({
@@ -76,19 +87,36 @@ function ProfilePage () {
     const targetValue = target.innerText;
     setSelectStyleData({ active: false, content: targetValue });
   };
+
   return (
     <main className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
+        <label className={styles.avatar} htmlFor="file">
+          <Avatar
+            style={{ position: "relative", border: "1px solid black" }}
+            src={file == null ? "" : file}
+            color="white"
+            round="100px"
+            size="150px"
+          ></Avatar>
+          <img className={styles.photo__hover} src={photo} alt="photo" />
+        </label>
+        <input
+          className={styles.avatar}
+          type="file"
+          accept="image/*"
+          onChange={handleChange}
+          name="file"
+          id="file"
+        />
+
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
       </div>
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-          <label className={styles.input__label} htmlFor="">
-            <input className={styles.input} type="date" />
-            <Calendar className={styles.input__icon} />
-          </label>
+          <Calendar />
         </div>
 
         <div className={styles.input__container}>
@@ -170,7 +198,6 @@ function ProfilePage () {
           <p className={styles.input__title}> Увлечения, досуг, интересы</p>
           <label
             className={`${styles.input__label} ${styles.input__label_type_file}`}
-            htmlFor=""
           >
             <input className={styles.input} type="file" />
             <Clip className={styles.input__icon} />
@@ -238,4 +265,6 @@ function ProfilePage () {
   );
 }
 
+
 export default ProfilePage;
+

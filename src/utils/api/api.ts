@@ -36,19 +36,19 @@ export const getProfiles = async () => {
 
 //Запрос профиля конкретного пользователя.
 export const getUserProfile = async (_id: string) => {
-  return await request(`/profiles${_id}`, {
+  return await request(`/profiles/:${_id}`, {
     method: "GET",
     headers: api.headers,
   });
 };
 
 //Изменение данных пользователя
-export const putchUserProfile = async (
+export const patchUserProfile = async (
   _id: string,
   profileData: { profile: any; info: any }
 ) => {
-  return await request(`/profiles${_id}`, {
-    method: "PUT",
+  return await request(`/profiles/:${_id}`, {
+    method: "PATCH",
     headers: api.headers,
     body: JSON.stringify({
       profileData,
@@ -58,7 +58,7 @@ export const putchUserProfile = async (
 
 //Получение всех реакций
 export const getReactionsData = async (_id: string) => {
-  return await request(`/profiles/${_id}/reactions`, {
+  return await request(`/profiles/:${_id}/reactions`, {
     method: "GET",
     headers: api.headers,
   });
@@ -69,7 +69,7 @@ export const postReactionsData = async (
   _id: string,
   reaction: { target: string; text: string }
 ) => {
-  return await request(`/profiles/${_id}/reactions`, {
+  return await request(`/profiles/:${_id}/reactions`, {
     method: "POST",
     headers: api.headers,
     body: JSON.stringify({ reaction }),
@@ -94,7 +94,7 @@ export const changesUsersData = async (
   cohort: string,
   _id: string
 ) => {
-  return await request(`/users${_id}`, {
+  return await request(`/users/:${_id}`, {
     method: "PUT",
     headers: api.headers,
     body: JSON.stringify({
@@ -114,7 +114,7 @@ export const getCommentsData = async () => {
 
 //Удаление комментария. Для администратора.
 export const deleteComment = async (_id: string) => {
-  return await request(`/comments/${_id}`, {
+  return await request(`/comments/:${_id}`, {
     method: "DELETE",
     headers: api.headers,
   });
