@@ -1,14 +1,8 @@
 import  {
-  SyntheticEvent,
-  useEffect,
-  useRef,
   useState,
 } from "react";
 import SelectRegionInput from "../../components/SelectRegionInput/SelectRegionInput";
-
 import styles from "./ProfilePage.module.css";
-import { ReactComponent as ArrowDown } from "../../images/logo/arrow-down.svg";
-import { ReactComponent as ArrowUp } from "../../images/logo/arrow-up.svg";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
 import Avatar from "react-avatar";
 import { Calendar } from "../../components/Calendar/Calendar";
@@ -84,24 +78,6 @@ function ProfilePage() {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите шаблон *</p>
-          {/* <div className={styles.select__container}>
-            <div
-              className={styles.select}
-              ref={selectForStyles}
-              onClick={setSelectStylesActive}
-            ></div>
-            {selectStyleData.active && (
-              <SelectContent
-                data={dataForSelectStyles}
-                onClick={setSelectStyleDataContent}
-              />
-            )}
-            {selectStyleData.active ? (
-              <ArrowUp className={styles.input__icon} />
-            ) : (
-              <ArrowDown className={styles.input__icon} />
-            )}
-          </div> */}
           <SelectStyleInput/>
         </div>
 

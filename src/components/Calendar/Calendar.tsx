@@ -69,10 +69,10 @@ export const Calendar = () => {
 
   return (
     <div className={styles.section_wrapper}>
-      <img className={styles.icon} src={calendarIcon} onClick={showCalendar} />
+      <img className={styles.icon} src={calendarIcon} onClick={showCalendar} alt="Календарь"/>
       <input
         className={styles.input}
-        value={`${date}.${monthsNumbers[month]}.${year}`}
+        defaultValue={`${date}.${monthsNumbers[month]}.${year}`}
       ></input>
       {isShow && (
         <div className={styles.calendar_box}>
