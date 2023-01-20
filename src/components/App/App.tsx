@@ -9,6 +9,7 @@ import ProfilePage from "../../pages/ProfilePage/ProfilePage";
 import MainPage from "../../pages/MainPage/MainPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NoteFoundPage/NotFoundPage";
+import MapPage from "../../pages/MapPage/MapPage";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -41,6 +42,7 @@ const App: FC = () => {
             <Route path="profile" element={<ProfilePage />} />
             {/* Название компонента непонятное. Страница поиска чего именно? Надо поменять */}
             <Route path="/" element={<SearchPage />} />
+            <Route path="/map" element={<MapPage />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
