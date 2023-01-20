@@ -5,6 +5,13 @@
   align-items: flex-end;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  cursor: pointer;
+}
 
 .icon {
   position: absolute;
@@ -12,7 +19,6 @@
   right: 18px;
   cursor: pointer;
   z-index: 2;
-  cursor: url('../../icons/pointer_main.svg'), auto;
 }
 
 .calendar_box {
@@ -36,13 +42,6 @@
   display: flex;
   gap: 8px;
   justify-content: space-around;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
 }
 
 .days_list {
@@ -101,11 +100,6 @@ select {
   transition: 0.2s linear;
 }
 
-.active {
-  background-color: #ff00a8;
-  color: white;
-}
-
 .psevdo_box {
   font-size: 12px;
   line-height: 16px;
@@ -126,6 +120,11 @@ select {
 .day_box:nth-child(7n + 6),
 .day_box:nth-child(7n) {
   color: #ff00a8;
+}
+
+.day_box.active {
+  background-color: #ff00a8;
+  color: #fff;
 }
 
 .pinky {
@@ -157,5 +156,4 @@ select {
   font-size: 16px;
   line-height: 1.5;
   color: #100c34;
-  cursor: url('../../icons/pointer_main.svg'), auto;
 }
