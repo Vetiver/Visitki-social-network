@@ -8,10 +8,10 @@ function MapPage() {
   return (
     <main>
       <YMaps>
-      <Map className={styles.map} state={mapState}>
+        <Map className={styles.map} state={mapState}>
  
 
-    </Map>
+        </Map>
       
       </YMaps>
     </main>
