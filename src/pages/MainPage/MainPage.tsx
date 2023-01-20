@@ -21,6 +21,7 @@ const MainPage = () => {
   const [selectedItem, setSelectedItem] = React.useState({
     selected: "Все города",
   });
+  const sortRef = React.useRef<any>();
 
   // Открытие/закрытие фильтра
   const filterSet = () => {
@@ -32,10 +33,24 @@ const MainPage = () => {
     setSelectedItem({ ...selectItem, selected: city });
   };
 
+  React.useEffect(() => {
+
+    const handleCloseOutsideClick = (evt:Event) => {
+      if (!sortRef.current.contains(evt.target)) {
+        setIsOpened(false);
+      }
+    };
+    document.body.addEventListener("click", handleCloseOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleCloseOutsideClick);
+    };
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.mainOptions}>
-        <div className={styles.mainTownFilter} onClick={filterSet}>
+        <div className={styles.mainTownFilter} onClick={filterSet}  ref={sortRef}>
           <div className={styles.mainTownFilterContent}>
             <p className={styles.mainTownFilterContentText}>
               {selectedItem.selected}
