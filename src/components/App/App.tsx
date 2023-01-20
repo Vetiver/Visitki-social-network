@@ -12,28 +12,21 @@ import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 
-
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
     isAuth: false,
     userData: null,
     isAdmin: false,
-    token: null,
   });
 
-
+  //Проверяем, записан ли токен в локальном хранилище, если да,
+  //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;
-
+  
   useEffect(() => {
-    const checkLocalToken = () => {
-      if (tokenLocal) {
-        setState({ ...state, isAuth: true, token: tokenLocal });
-        return true;
-      }
-      return false;
-    };
-    if (checkLocalToken())
-      setState({ ...state, token: tokenLocal, isAuth: true });
+    if (tokenLocal) {
+      setState({ ...state, isAuth: true });
+    }
   }, []);
 
   return (
@@ -45,8 +38,7 @@ const App: FC = () => {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="details" element={<ProfileDetailsPage />} />
             <Route path="admin" element={<AdminPage />} />
-            <Route path="/map" element={<MapPage />} />
-
+            <Route path="map" element={<MapPage />} />
           </Route>
           <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
