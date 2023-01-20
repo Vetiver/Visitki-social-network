@@ -1,37 +1,122 @@
-import { psevdoApi } from "../../utils/psevdoApi";
 import styles from "./CommentList.module.css";
 import deleteIcon from "../../images/delete.png";
+import { useState, useEffect } from "react";
+import { getCommentsData } from "../../utils/api/api";
+import clearIcon from "../../images/clear.png";
 
 export const CommentList = () => {
+  let [commentsArr, setCommentsArr] = useState([]);
+
+  const updateCommentList = () => {
+    getCommentsData().then((res) => {
+      let temp: any = [];
+      res.items.map((el: any) => {
+        temp.push(el);
+      });
+      setCommentsArr((commentsArr = temp));
+    });
+  };
+
+  useEffect(() => {
+    updateCommentList();
+  }, []);
+
+  let temp: any = [];
+  let [result, setResult] = useState([]);
+  let [word, handleChange] = useState("");
+
+  const userInput = (evt: any) => {
+    handleChange((word = evt.target.value));
+    if (word != "") {
+      searchInList();
+    }
+  };
+
+  const clearSearch = () => {
+    handleChange((word = ""));
+  };
+
+  const searchInList = () => {
+    commentsArr.map((el: any) => {
+      let fake = [];
+      fake.push(el.from.name);
+      fake.map((w) => {
+        if (w.includes(word)) {
+          temp.push(el);
+        } else {
+          temp.pop();
+        }
+      });
+    });
+    setResult((result = temp));
+  };
+
   return (
-    <div className={styles.content_wrapper}>
-      <div className={styles.list_flags_wrapper}>
-        <ul className={styles.list_flags}>
-          <li>Когорта</li>
-          <li>Дата</li>
-          <li>Отправитель</li>
-          <li>Получатель</li>
-          <li>Откуда комментарий</li>
-          <li>Текст комментария</li>
-        </ul>
+    <>
+      <p className={styles.search_title}>Фильтровать</p>
+
+      <div className={styles.search_box}>
+        <input
+          className={styles.search}
+          placeholder="По имени или фамилии или почте или номеру когорты (введите любой из этих параметров)"
+          value={word}
+          onChange={userInput}
+        />
+        <img
+          src={clearIcon}
+          className={styles.clearIcon}
+          onClick={clearSearch}
+        />
       </div>
-      <div className={styles.list_wrapper}>
-        <ul className={styles.list}>
-          {psevdoApi.map((el, index) => (
-            <li className={styles.list_item} key={index}>
-              <p className={styles.list_item_text}>{el.team}</p>
-              <p className={styles.list_item_text}>{el.date}</p>
-              <p className={styles.list_item_text}>{el.fullName}</p>
-              <p className={styles.list_item_text}>{el.fullName}</p>
-              <p className={styles.list_item_text}>{el.block}</p>
-              <p className={styles.list_item_text}>{el.comment}</p>
-              <div className={styles.icon_wrapper}>
-                <img src={deleteIcon} />
-              </div>
-            </li>
-          ))}
-        </ul>
+
+      <div className={styles.content_wrapper}>
+        <div className={styles.list_flags_wrapper}>
+          <ul className={styles.list_flags}>
+            <li>Когорта</li>
+            <li>Дата</li>
+            <li>Отправитель</li>
+            <li>Получатель</li>
+            <li>Откуда комментарий</li>
+            <li>Текст комментария</li>
+          </ul>
+        </div>
+        <div className={styles.list_wrapper}>
+          <ul className={styles.list}>
+            {!word &&
+              commentsArr?.map((el: any) => (
+                <li className={styles.list_item} key={el._id}>
+                  <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                  <p className={styles.list_item_text}>{/*el.date*/}</p>
+                  <p className={styles.list_item_text}>{el.from.name}</p>
+                  <p className={styles.list_item_text}>{el.to.name}</p>
+                  <p
+                    className={styles.list_item_text}
+                  >{`Из блока ${el.target}`}</p>
+                  <p className={styles.list_item_text}>{el.text}</p>
+                  <div className={styles.icon_wrapper}>
+                    <img src={deleteIcon} />
+                  </div>
+                </li>
+              ))}
+            {word &&
+              result.map((el: any) => (
+                <li className={styles.list_item} key={el._id}>
+                  <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                  <p className={styles.list_item_text}>{/*el.date*/}</p>
+                  <p className={styles.list_item_text}>{el.from.name}</p>
+                  <p className={styles.list_item_text}>{el.to.name}</p>
+                  <p
+                    className={styles.list_item_text}
+                  >{`Из блока ${el.target}`}</p>
+                  <p className={styles.list_item_text}>{el.text}</p>
+                  <div className={styles.icon_wrapper}>
+                    <img src={deleteIcon} />
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

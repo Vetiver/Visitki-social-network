@@ -17,19 +17,19 @@ const App: FC = () => {
     userData: null,
     isAdmin: false,
   });
-  
+
   const tokenLocal = localStorage.getItem("token") || null;
 
   useEffect(() => {
     const checkLocalToken = () => {
       if (tokenLocal) {
-        setState({...state, isAuth: true, token: tokenLocal})
-        return true
+        setState({ ...state, isAuth: true, token: tokenLocal });
+        return true;
       }
-      return false
-    }
+      return false;
+    };
     if (checkLocalToken())
-      setState({...state, token: tokenLocal, isAuth: true})
+      setState({ ...state, token: tokenLocal, isAuth: true });
   }, []);
 
   return (

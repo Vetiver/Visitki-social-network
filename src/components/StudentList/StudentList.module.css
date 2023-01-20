@@ -7,6 +7,54 @@
   box-sizing: border-box;
 }
 
+.student_list_wrapper {
+  width: 1015px;
+}
+
+.search_title {
+  margin: 48px 0 0 0;
+  padding: 0;
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  color: #100c34;
+}
+
+.search_box {
+  margin-top: 4px;
+  max-width: 1015px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  position: relative;
+}
+
+.search {
+  max-width: 1015px;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 0;
+  transition: 0.3s linear;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.search:hover {
+  border: 1px solid #ff00a8;
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #ff00a8;
+}
+
+.search::placeholder {
+  color: #83828f;
+}
+
 .list {
   list-style-type: none;
   padding: 0;
@@ -30,12 +78,23 @@
 }
 
 .list_item_text {
+  cursor: pointer;
+  border: none;
   margin: 0;
   font-size: 16px;
   line-height: 24px;
   color: #100c34;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.list_item_text:first-child {
+  max-width: 80px;
+}
+
+.list_item_text:focus {
+  cursor: auto;
+  border-color: #83828f;
 }
 
 .list_flags {
@@ -68,20 +127,18 @@
 }
 
 .content_wrapper {
-  width: 100%;
-  overflow: auto;
+  display: flex;
+  gap: 40px;
 }
 
-@media screen and (max-width: 768px) {
-  .list_flags {
-    grid-template-columns: 120px 202px 190px;
-    gap: 18px;
-  }
+.clearIcon {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  cursor: pointer;
+  transition: 0.3s linear;
 }
 
-@media screen and (max-width: 768px) {
-  .list_item {
-    grid-template-columns: 120px 202px 190px;
-    gap: 18px;
-  }
+.clearIcon:hover {
+  opacity: 0.7;
 }
