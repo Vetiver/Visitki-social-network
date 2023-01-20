@@ -10,6 +10,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
+import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 
 
 const App: FC = () => {
@@ -42,6 +43,7 @@ const App: FC = () => {
           <Route element={<ProtectedRoute />}>
             <Route index element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="details" element={<ProfileDetailsPage />} />
             <Route path="admin" element={<AdminPage />} />
             <Route path="/map" element={<MapPage />} />
 
