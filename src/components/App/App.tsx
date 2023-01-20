@@ -1,64 +1,47 @@
-import { FC, useState } from "react";
-import Login from "../../pages/Login/Login";
+import { FC, useState, useEffect } from "react";
 import { AuthContext } from "../../services/AuthContext";
 import { TAuth } from "../../utils/types";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import styles from "./App.module.css";
-import { Switch, Route } from "react-router-dom";
-import ProtectedRoute from "../../services/ProtectedRoute/ProtectedRoute";
-import { SearchPage } from "../SearchPage/SearchPage";
-import Profile from "../../pages/Profile/Profile";
-import { Calendar } from "../Calendar/Calendar";
+import { Route, Routes } from "react-router-dom";
+import Layout from "../Layouts/Layout";
+import { ProtectedRoute } from "../../services/ProtectedRoute/ProtectedRoute";
+import ProfilePage from "../../pages/ProfilePage/ProfilePage";
+import MainPage from "../../pages/MainPage/MainPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import { AdminPage } from "../../pages/AdminPage/AdminPage";
+import MapPage from "../../pages/MapPage/MapPage";
+
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
     isAuth: false,
-    token: null,
     userData: null,
     isAdmin: false,
   });
+//Проверяем, записан ли токен в локальном хранилище, если да, то записываем в переменную.
+    const tokenLocal = localStorage.getItem("token") || null;
+  useEffect(() => {
+    
+    if (tokenLocal) {
+      setState({ ...state, isAuth: true });
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={{ state, setState }}>
-      <div className={styles.page}>
-        <Header />
-        <Switch>
-          <ProtectedRoute
-            isAuth={state.isAuth}
-            isAdmin={state.isAdmin}
-            anonymous={true}
-            path="/login"
-            exact={true}
-          >
-            <div className={styles.main}>
-              <Login />
-            </div>
-          </ProtectedRoute>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route element={<ProtectedRoute />}>
+            <Route index element={<MainPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="admin" element={<AdminPage />} />
+            <Route path="/map" element={<MapPage />} />
 
-          <ProtectedRoute
-            isAuth={state.isAuth}
-            isAdmin={state.isAdmin}
-            path="/moder"
-            exact={true}
-          >
-            <div className={styles.main}>
-              <SearchPage />
-            </div>
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            isAuth={state.isAuth}
-            isAdmin={state.isAdmin}
-            path="/profile"
-            exact={true}
-          >
-            <div className={styles.main}></div>
-          </ProtectedRoute>
-        </Switch>
-        <Profile />
-        <Footer />
-      </div>
+          </Route>
+          <Route path="login" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </AuthContext.Provider>
   );
 };
