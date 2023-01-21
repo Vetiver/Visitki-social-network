@@ -1,6 +1,6 @@
 import { SyntheticEvent, useRef, useState } from "react";
 import styles from "./SelectRegionInput.module.css";
-import { Map, YMaps } from "react-yandex-maps";
+import { Map, YMaps } from "@pbe/react-yandex-maps";
 
 function InputSelect() {
   const selectForRegion = useRef<HTMLInputElement>(null);

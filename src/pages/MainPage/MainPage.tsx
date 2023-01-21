@@ -1,9 +1,8 @@
 import React from "react";
-import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
-import { Link } from "react-router-dom";
+import Card from "../../components/Card/Card";
 
 const data = [
   { city: "Все города" },
@@ -35,7 +34,6 @@ const MainPage = () => {
   };
 
   React.useEffect(() => {
-
     const handleCloseOutsideClick = (evt: Event) => {
       if (!sortRef.current.contains(evt.target)) {
         setIsOpened(false);
@@ -51,7 +49,11 @@ const MainPage = () => {
   return (
     <main className={styles.main}>
       <div className={styles.mainOptions}>
-        <div className={styles.mainTownFilter} onClick={filterSet}  ref={sortRef}>
+        <div
+          className={styles.mainTownFilter}
+          onClick={filterSet}
+          ref={sortRef}
+        >
           <div className={styles.mainTownFilterContent}>
             <p className={styles.mainTownFilterContentText}>
               {selectedItem.selected}
@@ -78,77 +80,12 @@ const MainPage = () => {
             </ul>
           )}
         </div>
-        <ProtectedLink to={'map'} className={styles.mainOptionsMapLink}>
+        <ProtectedLink to={"map"} className={styles.mainOptionsMapLink}>
           Посмотреть на карте
         </ProtectedLink>
       </div>
       <div className={styles.cardContainer}>
-        <div className={styles.card}>
-        <Link to="details">
-          <img
-            className={styles.cardImg}
-            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
-            alt=""
-          />
-          
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          </Link>
-
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-
-        <div className={styles.card}>
-        <Link to="details">
-          <img
-            className={styles.cardImg}
-            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
-            alt=""
-          />
-          
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          </Link>
-
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-        <Link to="details">
-          <img
-            className={styles.cardImg}
-            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
-            alt=""
-          />
-          
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          </Link>
-
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-        <Link to="details">
-          <img
-            className={styles.cardImg}
-            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
-            alt=""
-          />
-          
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          </Link>
-
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        
+      <Card/>
       </div>
     </main>
   );
