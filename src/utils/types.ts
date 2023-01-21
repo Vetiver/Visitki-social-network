@@ -12,13 +12,7 @@ export type TButton = {
 export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
-  userData: {
-    _id: string;
-    createdAt: null;
-    email: string;
-    cohort: string;
-    name: string;
-  } | null;
+  userData: any | null;
 };
 
 export type TContext = {

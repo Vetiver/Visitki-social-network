@@ -11,6 +11,7 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
+import { getProfiles } from "../../utils/api/api";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -22,10 +23,13 @@ const App: FC = () => {
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;
-  
+
   useEffect(() => {
     if (tokenLocal) {
-      setState({ ...state, isAuth: true });
+      //Записываем данные первого пользователя полученного из массива переданного бекендом
+      getProfiles().then((res: Response | any) =>
+        setState({ ...state, isAuth: true, userData: res.items[0] })
+      );
     }
   }, []);
 
