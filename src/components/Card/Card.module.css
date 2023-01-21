@@ -47,7 +47,13 @@
   flex-direction: column;
   align-items: center;
   padding: 12px 0 16px;
+  visibility: hidden;
 }
+.cardImgFeedbackVisibility{
+visibility:visible
+}
+
+
 .cardImgFeedbackText {
   margin: 0;
   max-width: 297px;

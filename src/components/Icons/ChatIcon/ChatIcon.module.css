@@ -1,5 +1,7 @@
 .chatIconContainer{
     display: flex;
+    cursor: url("../../../icons/pointer_main.svg"), pointer;
+
 }
 .chatIcon {
   position: relative;
@@ -21,6 +23,4 @@
     color: white;
     font-size: 12px;
     line-height: 12px;
-
-
 }
