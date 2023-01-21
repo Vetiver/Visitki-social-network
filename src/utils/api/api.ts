@@ -18,7 +18,7 @@ function request(url: string, options: RequestInit) {
   return fetch(url, options).then(checkResponse);
 }
 
-//Запрос всех пользователей
+//Запрос всех пользователей администратором
 export const getUsersData = async () => {
   return await request(`/users`, {
     method: "GET",
@@ -42,7 +42,7 @@ export const getUserProfile = async (_id: string) => {
   });
 };
 
-//Изменение данных пользователя
+//Изменение данных пользователя. Студентом.
 export const patchUserProfile = async (
   _id: string,
   profileData: { profile: any; info: any }
@@ -76,7 +76,7 @@ export const postReactionsData = async (
   });
 };
 
-//Добавить нового пользователя Для администратора.
+//Добавить нового пользователя. Для администратора.
 export const postUsersData = async (email: string, cohort: string) => {
   return await request(`/users`, {
     method: "POST",
