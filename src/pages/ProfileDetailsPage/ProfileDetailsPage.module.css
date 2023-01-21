@@ -6,14 +6,14 @@
   min-height: calc(100vh - 177px);
   width: 100%;
   background-color: #ffffff;
-  transition: all 0.7s ease-out;
+  padding: 0 40px 0;
 }
 
 .profileDetailsMain {
   width: 100%;
   display: flex;
   column-gap: 70px;
-  padding-top: 8px;
+  padding: 8px 0 72px;
 }
 
 .profileDetailsMainInfo {
@@ -23,15 +23,17 @@
   align-items: flex-start;
   max-width: 443px;
   max-height: 440px;
-  padding-left: 40px;
 }
 .profileDetailsMainInfoName {
+  color: #100c34;
   font-weight: 500;
   font-size: 60px;
   line-height: 60px;
   margin: 0 0 97px;
+  letter-spacing: 2.3px;
 }
 .profileDetailsMainInfoTown {
+  color: #100c34;
   margin: 0 0 25px 0;
   font-weight: 400;
   font-size: 16px;
@@ -45,50 +47,39 @@
 }
 
 .profileDetailsMainInfoImgContainer {
+  display: flex;
+  box-sizing: border-box;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.profileDetailsMainInfoImg {
   width: 440px;
   height: 440px;
+  object-fit: cover;
 }
-.profileDetailsMainInfoStatus{
+
+.profileDetailsMainInfoStatus {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 325px;
-  height: 100%;
+  padding: 36px 0 0 15px;
 }
-.profileDetailsMainInfoStatusText{
+.profileDetailsMainInfoStatusText {
+  color: #100c34;
   margin: 0;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
+  max-width: 220px;
+  padding-top: 3px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.profileDetailsOtherBlockImg {
-  width: 210px;
-  height: 130px;
-  object-fit: cover;
+.profileDetailsOther {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 70px;
+  width: 100%;
+  max-width: 1440px;
 }
