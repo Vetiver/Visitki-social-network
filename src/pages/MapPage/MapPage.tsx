@@ -5,7 +5,6 @@ import {
   Map,
   Placemark,
   SearchControl,
-  GeolocationControl,
   TrafficControl,
   ZoomControl,
   FullscreenControl,
@@ -30,7 +29,6 @@ const MapPage = () => {
         usersData: res.items,
       })
     );
-    //console.log(state.usersData);
   }, [dataRequest.isDataRequest]);
 
   return (

@@ -1,11 +1,16 @@
+ymaps[class$="custom-scroll"] {
+  box-shadow: none;
+  border-radius: 6px;
+}
+
 ymaps[class$="balloon__content"] {
   display: flex;
   padding: 6px;
-  border-radius: 6px;
 }
 
 ymaps[class$="balloon__layout"] {
   padding: 0px;
+  border-radius: 6px;
 }
 
 ymaps[class$="balloon__tail"] {
