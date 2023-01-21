@@ -69,7 +69,7 @@ const MapPage = () => {
                       iconImageSize: [60, 68],
                       hideIconOnBalloonOpen: false,
                       balloonCloseButton: false,
-                      balloonOffset: [100, 30],
+                      balloonOffset: [100, 40],
                       balloonMaxHeight: 54,
                       balloonMinWidth: 50,
                       balloonAutoPanCheckZoomRange: true,
