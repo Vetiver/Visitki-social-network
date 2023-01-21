@@ -50,6 +50,7 @@
   width: 15px;
   height: 7.5px;
   padding: 20px 16px 20px 0;
+  
 }
 
 .mainTownFilterMenu {
@@ -137,6 +138,8 @@
   object-fit: cover;
   width: 325px;
   height: 325px;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
 .cardName {
   margin: 0;

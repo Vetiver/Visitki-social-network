@@ -3,6 +3,7 @@ import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
+import { Link } from "react-router-dom";
 
 const data = [
   { city: "Все города" },
@@ -83,103 +84,71 @@ const MainPage = () => {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.card}>
+        <Link to="details">
           <img
             className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
             alt=""
           />
+          
           <p className={styles.cardName}>Степанов Дмитрий</p>
           <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-          <img
-            className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-            alt=""
-          />
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          </Link>
+
           <div className={styles.cardIcon}>
             <ChatIcon />
           </div>
         </div>
 
         <div className={styles.card}>
+        <Link to="details">
           <img
             className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
             alt=""
           />
+          
           <p className={styles.cardName}>Степанов Дмитрий</p>
           <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-          <img
-            className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-            alt=""
-          />
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-          <img
-            className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-            alt=""
-          />
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
-        <div className={styles.card}>
-          <img
-            className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-            alt=""
-          />
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
-          <div className={styles.cardIcon}>
-            <ChatIcon />
-          </div>
-        </div>
+          </Link>
 
-        <div className={styles.card}>
-          <img
-            className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
-            alt=""
-          />
-          <p className={styles.cardName}>Степанов Дмитрий</p>
-          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
           <div className={styles.cardIcon}>
             <ChatIcon />
           </div>
         </div>
         <div className={styles.card}>
+        <Link to="details">
           <img
             className={styles.cardImg}
-            src="https://prophotos.ru/data/articles/0002/2622/image-rectangle_600_x.jpg"
+            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
             alt=""
           />
+          
           <p className={styles.cardName}>Степанов Дмитрий</p>
           <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          </Link>
+
           <div className={styles.cardIcon}>
             <ChatIcon />
           </div>
         </div>
+        <div className={styles.card}>
+        <Link to="details">
+          <img
+            className={styles.cardImg}
+            src="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
+            alt=""
+          />
+          
+          <p className={styles.cardName}>Степанов Дмитрий</p>
+          <p className={styles.cardPlace}>Жемчужное Костромской обл</p>
+          </Link>
+
+          <div className={styles.cardIcon}>
+            <ChatIcon />
+          </div>
+        </div>
+        
       </div>
     </main>
   );
