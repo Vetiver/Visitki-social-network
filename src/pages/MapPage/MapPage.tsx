@@ -51,7 +51,9 @@ const MapPage = () => {
                               src="${student.profile.photo}"
                               alt="Аватар"
                             />
-                            <div>
+                            <div
+                              class="${styles.textBox}" 
+                            >
                               <p class="${styles.name}">
                                 ${student.profile.name}
                               </p>
@@ -64,11 +66,10 @@ const MapPage = () => {
                     options={{
                       iconLayout: "default#image",
                       iconImageHref: placeMarkIcon,
-                      iconImageSize: [46, 63],
+                      iconImageSize: [60, 68],
                       hideIconOnBalloonOpen: false,
-
                       balloonCloseButton: false,
-                      balloonOffset: [90, 45],
+                      balloonOffset: [100, 30],
                       balloonMaxHeight: 54,
                       balloonMinWidth: 50,
                       balloonAutoPanCheckZoomRange: true,
@@ -83,7 +84,6 @@ const MapPage = () => {
                   placeholderContent: "Поиск мест и адресов",
                 }}
               />
-              <GeolocationControl options={{ float: "right" }} />
               <FullscreenControl />
               <TrafficControl />
               <TypeSelector />

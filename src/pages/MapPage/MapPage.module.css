@@ -1,3 +1,17 @@
+ymaps[class$="balloon__content"] {
+  display: flex;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+ymaps[class$="balloon__layout"] {
+  padding: 0px;
+}
+
+ymaps[class$="balloon__tail"] {
+  display: none;
+}
+
 .wrapper {
   width: 100%;
   max-height: 100%;
@@ -20,6 +34,13 @@
   height: 24px;
   border-radius: 50%;
   box-sizing: border-box;
+}
+
+.textBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "IBM Plex Sans";
 }
 
 .name {
