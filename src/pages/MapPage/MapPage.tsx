@@ -12,14 +12,14 @@ import {
 } from "@pbe/react-yandex-maps";
 import { getProfiles } from "../../utils/api/api";
 import placeMarkIcon from "../../icons/placemark.svg";
+import { TStateDataMapPage } from "../../utils/types";
 
 const MapPage = () => {
-  const [dataRequest, setDataRequest] = useState<any>({
+  const [dataRequest, setDataRequest] = useState<TStateDataMapPage>({
     isDataRequest: false,
     usersData: null,
-    preloader: false,
   });
-  const mapState = { center: [55.75, 37.57], zoom: 7, controls: ["zoomControl", "fullscreenControl"], };
+  const mapDefaultState = { center: [55.75, 37.57], zoom: 7, controls: ["zoomControl", "fullscreenControl"], };
 
   useEffect(() => {
     getProfiles().then((res) =>
@@ -36,7 +36,7 @@ const MapPage = () => {
       {dataRequest.usersData && (
         <YMaps query={{ lang: "ru_RU", apikey: '04277aa1-f5ec-4444-81ee-4e0b6eafdcaa' }}>
           <div className={styles.wrapper}>
-            <Map className={styles.map} defaultState={mapState} modules={["control.ZoomControl", "control.FullscreenControl"]}>
+            <Map className={styles.map} defaultState={mapDefaultState} modules={["control.ZoomControl", "control.FullscreenControl"]}>
               {dataRequest.usersData.map((student: any) => {
                 return (
                   <Placemark

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, useState } from "react";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
@@ -16,9 +16,9 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
-const MainPage = () => {
-  const [isOpened, setIsOpened] = React.useState(false);
-  const [selectedItem, setSelectedItem] = React.useState({
+const MainPage: FC = () => {
+  const [isOpened, setIsOpened] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({
     selected: "Все города",
   });
 

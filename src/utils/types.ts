@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { JsxChild } from "typescript";
 
 export type TFcVoid = () => void;
 
@@ -121,3 +122,14 @@ export type TCommentsRequest = {
   total: number;
   items: TComment[];
 };
+
+export type TProtectedLink = {
+  className: string,
+  to: string,
+  children: ReactNode
+}
+
+export type TStateDataMapPage = {
+  isDataRequest: boolean,
+  usersData: TProfileID[] | null
+}

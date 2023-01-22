@@ -1,10 +1,10 @@
 import styles from "./CommentList.module.css";
 import deleteIcon from "../../images/delete.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { getCommentsData } from "../../utils/api/api";
 import clearIcon from "../../images/clear.png";
 
-export const CommentList = () => {
+export const CommentList:FC = () => {
   let [commentsArr, setCommentsArr] = useState([]);
 
   const updateCommentList = () => {

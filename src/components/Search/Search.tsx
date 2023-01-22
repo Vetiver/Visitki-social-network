@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { CommentList } from "../CommentList/CommentList";
 import { StudentList } from "../StudentList/StudentList";
-import clearIcon from "../../images/clear.png";
 import styles from "./Search.module.css";
 
-export const Search = () => {
-  const [isUsers, setChange] = useState(true);
+export const Search: FC = () => {
+  const [isUsers, setChange] = useState<boolean>(true);
   const changeMenu = () => {
     setChange((isUsers) => !isUsers);
   };
