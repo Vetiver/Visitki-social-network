@@ -1,4 +1,6 @@
-import React from "react";
+
+import { FC, useState, useRef, useEffect } from "react";
+import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
@@ -16,12 +18,12 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
-const MainPage = () => {
-  const [isOpened, setIsOpened] = React.useState(false);
-  const [selectedItem, setSelectedItem] = React.useState({
+const MainPage: FC = () => {
+  const [isOpened, setIsOpened] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({
     selected: "Все города",
   });
-  const sortRef = React.useRef<any>(null);
+  const sortRef = useRef<any>(null);
 
   // Открытие/закрытие фильтра
   const filterSet = () => {
@@ -33,7 +35,7 @@ const MainPage = () => {
     setSelectedItem({ ...selectItem, selected: city });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleCloseOutsideClick = (evt: Event) => {
       if (!sortRef.current.contains(evt.target)) {
         setIsOpened(false);

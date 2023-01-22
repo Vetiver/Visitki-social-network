@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
@@ -7,7 +7,7 @@ import ProfilePhotoTest from "../../images/ProfilePhotoTest.jpg";
 import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/ProfileDetailsOtherBlock";
 import styles from "./ProfileDetailsPage.module.css";
 
-const ProfileDetailsPage = () => {
+const ProfileDetailsPage: FC = () => {
   return (
     <main className={styles.profileDetailsContainer}>
       {/* Верхняя часть профиля */}

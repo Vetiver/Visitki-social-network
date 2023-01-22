@@ -1,9 +1,9 @@
 import styles from "./Calendar.module.css";
 import { months } from "../../utils/dates";
-import { useState } from "react";
+import { FC, useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
 
-export const Calendar = () => {
+export const Calendar:FC = () => {
   let todayYear = 0;
   todayYear = new Date().getFullYear();
   let years = [];

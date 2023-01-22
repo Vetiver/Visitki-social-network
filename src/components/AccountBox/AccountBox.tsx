@@ -1,7 +1,8 @@
+import { FC } from "react";
 import ProtectedLink from "../../HOC/ProtectedLink";
 import styles from "./AccountBox.module.css";
 
-const AccountBox = () => {
+const AccountBox: FC = () => {
   return (
     //Тут будет не профиль
     <ProtectedLink to={"profile"} className={styles.accountBox}>

@@ -1,4 +1,5 @@
 import  {
+  FC,
   useState,
 } from "react";
 import SelectRegionInput from "../../components/SelectRegionInput/SelectRegionInput";
@@ -9,7 +10,7 @@ import { Calendar } from "../../components/Calendar/Calendar";
 import photo from "../../images/Ellipse.png";
 import SelectStyleInput from "../../components/SelectStyleInput/SelectStyleInput";
 
-function ProfilePage() {
+const ProfilePage: FC = () => {
   const [file, setFile] = useState<any>();
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));

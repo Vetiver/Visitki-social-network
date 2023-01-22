@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { AuthContext } from "../../services/AuthContext";
-import { TAuth } from "../../utils/types";
+import { TAuth, TUsersDataDetail } from "../../utils/types";
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Layouts/Layout";
 import { ProtectedRoute } from "../../services/ProtectedRoute/ProtectedRoute";
@@ -27,7 +27,7 @@ const App: FC = () => {
   useEffect(() => {
     if (tokenLocal) {
       //Записываем данные первого пользователя полученного из массива переданного бекендом
-      getProfiles().then((res: Response | any) =>
+      getProfiles().then((res: TUsersDataDetail) =>
         setState({ ...state, isAuth: true, userData: res.items[0] })
       );
     }
