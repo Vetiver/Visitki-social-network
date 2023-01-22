@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
@@ -28,7 +28,10 @@ const ProfileDetailsPage: FC = () => {
             src={ProfilePhotoTest}
             alt="ProfilePhoto"
           />
-          {/* <ChatIcon /> */}
+          <div className={styles.profileDetailsMainInfoChatIcon}>
+          <ChatIcon count={2}/>
+          </div>
+          
         </div>
         <div className={styles.profileDetailsMainInfoStatus}>
           <div className={styles.profileDetailsMainInfoStatusIconContainer}>
@@ -40,6 +43,9 @@ const ProfileDetailsPage: FC = () => {
             Эй, приятель, я думаю, ты ошибся дверью, клуб любителей кожаных
             вещей двумя этажами ниже.
           </h3>
+          <div className={styles.profileDetailsMainInfoStatusIcon}>
+          <ChatIcon count={1}/>
+          </div>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import imgBorderSolid from "../../images/BorderSolid.png";
 import imgBorderZig from "../../images/BorderZig.png";
+import ChatIcon from "../Icons/ChatIcon/ChatIcon";
 import styles from "./ProfileDetailsOtherBlock.module.css";
 
 type TProfileDetailsOtherBlock = {
@@ -36,6 +37,9 @@ const ProfileDetailsOtherBlock:FC<TProfileDetailsOtherBlock> = ({theme, title, i
       <p className={styles.profileDetailsOtherBlockDescription}>
         {description}
       </p>
+      <div className={styles.profileDetailsOtherBlockChatIcon}>
+          <ChatIcon count={1}/>
+          </div>
     </div>
   );
 };

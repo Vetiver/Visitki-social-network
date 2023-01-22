@@ -1,10 +1,14 @@
 .profileDetailsOtherBlock{
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 440px;
     min-height: 342px;
     margin-bottom: 56px;
+  }
+  .profileDetailsOtherBlock:hover .profileDetailsOtherBlockChatIcon{
+    visibility: visible;
   }
   .profileDetailsOtherBlockBorder{
     max-height: 6px;
@@ -39,4 +43,11 @@
     max-width: 435px;
     margin: 0;
     padding-top: 15px;
+  }
+
+  .profileDetailsOtherBlockChatIcon{
+    visibility: hidden;
+    position: absolute;
+    top:15px;
+    right: 18px;
   }

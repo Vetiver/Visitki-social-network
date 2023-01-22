@@ -47,16 +47,27 @@
 }
 
 .profileDetailsMainInfoImgContainer {
+  position: relative;
   display: flex;
   box-sizing: border-box;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
+}
+.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon{
+  visibility: visible;
 }
 
 .profileDetailsMainInfoImg {
   width: 440px;
   height: 440px;
   object-fit: cover;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.profileDetailsMainInfoChatIcon{
+  visibility: hidden;
+  position: absolute;
+  top:18px;
+  right: 18px;
 }
 
 .profileDetailsMainInfoStatus {
@@ -65,6 +76,16 @@
   justify-content: center;
   width: 325px;
   padding: 36px 0 0 15px;
+  position: relative;
+}
+.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon{
+  visibility: visible;
+}
+.profileDetailsMainInfoStatusIcon{
+  visibility: hidden;
+  position: absolute;
+  top:70px;
+  right: 18px;
 }
 .profileDetailsMainInfoStatusText {
   color: #100c34;
