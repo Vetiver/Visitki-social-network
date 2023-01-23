@@ -17,7 +17,7 @@ const ProfilePage: FC = (): JSX.Element => {
   }
 
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       <div className={styles.photo__container}>
         <h4 className={styles.photo__load}>Загрузите фото*</h4>
         <label className={styles.avatar} htmlFor="file">
@@ -158,7 +158,7 @@ const ProfilePage: FC = (): JSX.Element => {
         </p>
         <button className={styles.profile__button}>Сохранить</button>
       </form>
-    </main>
+    </div>
   );
 }
 

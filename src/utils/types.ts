@@ -7,6 +7,10 @@ export type TLoaderProps = {
   height: string,
 }
 
+export type TProfileDetailsID = {
+  id?: string
+}
+
 export type TButton = {
   click?: () => void;
   text: string;
@@ -14,8 +18,10 @@ export type TButton = {
   disabled?: boolean;
 };
 
+
 export type TCardProps = {
   img: string,
+  id: string,
   name: string,
   city: string
 }
@@ -53,15 +59,11 @@ export type TUsersDataDetail = {
 
 //Информация для профиля пользователя
 export type TProfile = {
-  name: {
-    value: string;
-  };
-  photo: {
-    value: string;
-  };
+  name: string;
+  photo: string;
   city: {
-    value: string;
-    name?: string;
+    geocode: number[];
+    name: string;
   };
   birthday: string;
   quote: string;
@@ -70,20 +72,18 @@ export type TProfile = {
   template: string;
 };
 
+export type TProfileInfoItem = {
+  text: string,
+  image?: string,
+  reactions: number,
+}
+
 //Информация о личной жизни студента
 export type TProfileInfo = {
-  hobby: {
-    value: string;
-  };
-  status: {
-    value: string;
-  };
-  job: {
-    value: string;
-  };
-  edu: {
-    value: string;
-  };
+  hobby: TProfileInfoItem;
+  status: TProfileInfoItem;
+  job: TProfileInfoItem;
+  edu: TProfileInfoItem;
 };
 
 //Полная детальная информации о студенте по ID (тип для get и patch запросов)

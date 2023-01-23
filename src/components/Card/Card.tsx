@@ -5,7 +5,7 @@ import { TCardProps } from "../../utils/types";
 import FeedbackBlock from "../FeedbackBlock/FeedbackBlock";
 import styles from "./Card.module.css";
 
-const Card:FC<TCardProps> = ({img, name, city}): JSX.Element => {
+const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const openFeedback = () => {
     setIsOpen(!isOpen);
@@ -13,7 +13,7 @@ const Card:FC<TCardProps> = ({img, name, city}): JSX.Element => {
 
   return (
     <div className={styles.card}>
-      <Link to="details">
+      <Link to={`details/:${id}`}>
       <div className={styles.cardImgContainer}>
         <img
           className={styles.cardImg}

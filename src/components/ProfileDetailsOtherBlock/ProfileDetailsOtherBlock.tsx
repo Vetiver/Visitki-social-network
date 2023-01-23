@@ -39,7 +39,7 @@ const ProfileDetailsOtherBlock:FC<TProfileDetailsOtherBlock> = ({theme, title, i
       </p>
       <div className={styles.profileDetailsOtherBlockChatIcon}>
           <ChatIcon count={1}/>
-          </div>
+      </div>
     </div>
   );
 };

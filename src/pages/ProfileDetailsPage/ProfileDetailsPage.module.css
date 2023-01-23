@@ -1,3 +1,9 @@
+.link {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
 .profileDetailsContainer {
   margin: 0 auto;
   display: flex;
@@ -51,7 +57,7 @@
   display: flex;
   box-sizing: border-box;
 }
-.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon{
+.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon {
   visibility: visible;
 }
 
@@ -62,18 +68,29 @@
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
-.profileDetailsMainInfoImgRomantic{
+.profileDetailsMainInfoImgRomantic {
   border-radius: 220px;
 }
 
+.profileDetailsMainInfoImgDaring {
+  clip-path: polygon(
+    50% 0%,
+    80% 10%,
+    100% 35%,
+    100% 70%,
+    80% 90%,
+    50% 100%,
+    20% 90%,
+    0% 70%,
+    0% 35%,
+    20% 10%
+  );
+}
 
-
-
-
-.profileDetailsMainInfoChatIcon{
+.profileDetailsMainInfoChatIcon {
   visibility: hidden;
   position: absolute;
-  top:18px;
+  top: 18px;
   right: 18px;
 }
 
@@ -86,14 +103,13 @@
   position: relative;
 }
 
-
-.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon{
+.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon {
   visibility: visible;
 }
-.profileDetailsMainInfoStatusIcon{
+.profileDetailsMainInfoStatusIcon {
   visibility: hidden;
   position: absolute;
-  top:70px;
+  top: 70px;
   right: 18px;
 }
 .profileDetailsMainInfoStatusText {
@@ -105,8 +121,8 @@
   max-width: 220px;
   padding-top: 3px;
 }
-.profileDetailsMainInfoColor{
-  color: #FF00A8;
+.profileDetailsMainInfoColor {
+  color: #ff00a8;
 }
 
 .profileDetailsOther {

@@ -42,7 +42,7 @@ const App: FC = (): JSX.Element => {
           <Route element={<ProtectedRoute />}>
             <Route index element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
-            <Route path="details" element={<ProfileDetailsPage />} />
+            <Route path="details/:id" element={<ProfileDetailsPage />} />
             <Route path="admin" element={<AdminPage />} />
             <Route path="map" element={<MapPage />} />
           </Route>

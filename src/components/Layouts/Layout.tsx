@@ -8,9 +8,9 @@ const Layout:FC = (): JSX.Element => {
   return (
     <div className={styles.page}>
       <Header />
-      <div className={styles.main}>
+      <main className={styles.main}>
         <Outlet />
-      </div>
+      </main>
       <Footer />
     </div>
   );
