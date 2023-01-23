@@ -1,0 +1,67 @@
+.feedback {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 100%;
+    max-width: 323px;
+    max-height: 273px;
+    min-height: 89px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0 0;
+    visibility: hidden;
+  }
+  .feedbackVisibility{
+  visibility:visible;
+  }
+  
+  
+  .feedbackText {
+    margin: 0;
+    max-width: 297px;
+  }
+  .feedbackTextArea {
+    max-width: 297px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 12px 0 16px;
+    border: none;
+    background-color:#F3F3F3;
+    box-sizing: border-box;
+    padding: 0 8px;
+    resize: none;
+    border-radius: 4px;
+  }
+  .feedbackReactions {
+    max-width: 297px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom:6px;
+  }
+  
+  
+  
+  .feedbackReaction{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 0 10px 10px 0;
+  }
+  .feedbackReactionImg{
+  
+  }
+  .feedbackReactionCount{
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 12px;
+   color: #FF00A8;
+   padding-left: 3px;
+   margin: 0;
+  }
