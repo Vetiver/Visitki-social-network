@@ -10,7 +10,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
-
+import { Search } from "../Search/Search";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
@@ -18,7 +18,6 @@ const App: FC = () => {
     userData: null,
     isAdmin: false,
   });
-
 
   const tokenLocal = localStorage.getItem("token") || null;
 
@@ -43,7 +42,6 @@ const App: FC = () => {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="admin" element={<AdminPage />} />
             <Route path="/map" element={<MapPage />} />
-
           </Route>
           <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />

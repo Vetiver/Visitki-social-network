@@ -1,7 +1,7 @@
 import styles from "./CommentList.module.css";
 import deleteIcon from "../../images/delete.png";
 import { useState, useEffect } from "react";
-import { getCommentsData } from "../../utils/api/api";
+import { deleteComment, getCommentsData } from "../../utils/api/api";
 import clearIcon from "../../images/clear.png";
 
 export const CommentList = () => {
@@ -36,15 +36,19 @@ export const CommentList = () => {
     handleChange((word = ""));
   };
 
+  const removeComment = (id: any) => {
+    deleteComment(id);
+  };
+
   const searchInList = () => {
     commentsArr.map((el: any) => {
       let fake = [];
       fake.push(el.from.name);
       fake.map((w) => {
         if (w.includes(word)) {
-          temp.push(el);
-        } else {
-          temp.pop();
+          if (!temp.includes(el)) {
+            temp.push(el);
+          }
         }
       });
     });
@@ -69,54 +73,66 @@ export const CommentList = () => {
         />
       </div>
 
-      <div className={styles.content_wrapper}>
-        <div className={styles.list_flags_wrapper}>
-          <ul className={styles.list_flags}>
-            <li>Когорта</li>
-            <li>Дата</li>
-            <li>Отправитель</li>
-            <li>Получатель</li>
-            <li>Откуда комментарий</li>
-            <li>Текст комментария</li>
-          </ul>
+      {result.length === 0 && word ? (
+        <p className={styles.error}>
+          Не удалось никого найти. Исправьте запрос или сбросьте фильтр
+        </p>
+      ) : (
+        <div className={styles.content_wrapper}>
+          <div className={styles.list_flags_wrapper}>
+            <ul className={styles.list_flags}>
+              <li>Когорта</li>
+              <li>Дата</li>
+              <li>Отправитель</li>
+              <li>Получатель</li>
+              <li>Откуда комментарий</li>
+              <li>Текст комментария</li>
+            </ul>
+          </div>
+          <div className={styles.list_wrapper}>
+            <ul className={styles.list}>
+              {!word &&
+                commentsArr?.map((el: any) => (
+                  <li className={styles.list_item} key={el._id}>
+                    <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                    <p className={styles.list_item_text}>{/*el.date*/}</p>
+                    <p className={styles.list_item_text}>{el.from.name}</p>
+                    <p className={styles.list_item_text}>{el.to.name}</p>
+                    <p
+                      className={styles.list_item_text}
+                    >{`Из блока ${el.target}`}</p>
+                    <p className={styles.list_item_text}>{el.text}</p>
+                    <div className={styles.icon_wrapper}>
+                      <img
+                        src={deleteIcon}
+                        onClick={() => removeComment(el._id)}
+                      />
+                    </div>
+                  </li>
+                ))}
+              {word &&
+                result.map((el: any) => (
+                  <li className={styles.list_item} key={el._id}>
+                    <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                    <p className={styles.list_item_text}>{/*el.date*/}</p>
+                    <p className={styles.list_item_text}>{el.from.name}</p>
+                    <p className={styles.list_item_text}>{el.to.name}</p>
+                    <p
+                      className={styles.list_item_text}
+                    >{`Из блока ${el.target}`}</p>
+                    <p className={styles.list_item_text}>{el.text}</p>
+                    <div className={styles.icon_wrapper}>
+                      <img
+                        src={deleteIcon}
+                        onClick={() => removeComment(el._id)}
+                      />
+                    </div>
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
-        <div className={styles.list_wrapper}>
-          <ul className={styles.list}>
-            {!word &&
-              commentsArr?.map((el: any) => (
-                <li className={styles.list_item} key={el._id}>
-                  <p className={styles.list_item_text}>{/*el.cohort*/}</p>
-                  <p className={styles.list_item_text}>{/*el.date*/}</p>
-                  <p className={styles.list_item_text}>{el.from.name}</p>
-                  <p className={styles.list_item_text}>{el.to.name}</p>
-                  <p
-                    className={styles.list_item_text}
-                  >{`Из блока ${el.target}`}</p>
-                  <p className={styles.list_item_text}>{el.text}</p>
-                  <div className={styles.icon_wrapper}>
-                    <img src={deleteIcon} />
-                  </div>
-                </li>
-              ))}
-            {word &&
-              result.map((el: any) => (
-                <li className={styles.list_item} key={el._id}>
-                  <p className={styles.list_item_text}>{/*el.cohort*/}</p>
-                  <p className={styles.list_item_text}>{/*el.date*/}</p>
-                  <p className={styles.list_item_text}>{el.from.name}</p>
-                  <p className={styles.list_item_text}>{el.to.name}</p>
-                  <p
-                    className={styles.list_item_text}
-                  >{`Из блока ${el.target}`}</p>
-                  <p className={styles.list_item_text}>{el.text}</p>
-                  <div className={styles.icon_wrapper}>
-                    <img src={deleteIcon} />
-                  </div>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
+      )}
     </>
   );
 };

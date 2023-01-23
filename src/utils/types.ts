@@ -9,7 +9,7 @@ export type TButton = {
   disabled?: boolean;
 };
 
-export type TAuth= {
+export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: {
@@ -18,14 +18,19 @@ export type TAuth= {
     email: string;
     cohort: string;
     name: string;
-
   } | null;
 };
 
-export type TContext = {
-  state: TAuth;
-  setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
-} | any;
+export type TContext =
+  | {
+      state: TAuth;
+      setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
+    }
+  | any;
 
-export type TProfileDataRequest = {
-}
+export type TProfileDataRequest = {};
+
+export type TFile = {
+  email: string;
+  cohort: string;
+};
