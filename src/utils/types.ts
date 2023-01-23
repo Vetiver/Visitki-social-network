@@ -50,6 +50,7 @@ export type TProfile = {
   };
   city: {
     value: string;
+    name?:string;
   };
   birthday: string;
   quote: string;
@@ -132,4 +133,8 @@ export type TProtectedLink = {
 export type TStateDataMapPage = {
   isDataRequest: boolean,
   usersData: TProfileID[] | null
+}
+
+export type TCards = {
+  users: TProfileID[] | null
 }
