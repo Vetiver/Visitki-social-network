@@ -1,11 +1,10 @@
 import { FC, useState, useRef, useEffect } from "react";
-import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
 import Card from "../../components/Card/Card";
-import { getProfiles } from "../../utils/api/api";
-import { TCards, TProfileID, TStateDataMapPage } from "../../utils/types";
+import { getDefaultProfiles } from "../../utils/api/api";
+import { TCards, TProfileID } from "../../utils/types";
 
 const data = [
   { city: "Все города" },
@@ -55,14 +54,13 @@ const MainPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    getProfiles().then((res) =>
+    getDefaultProfiles().then((res) =>
       setCards({
         ...cards,
         users: res.items,
       })
     );
   }, []);
-  console.log(cards);
   
 
   return (

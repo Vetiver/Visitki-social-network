@@ -2,7 +2,8 @@ import { FC, useEffect, useContext } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { AuthContext } from "../../services/AuthContext";
-import { TContext } from "../../utils/types";
+import { getUserProfile } from "../../utils/api/api";
+import { TContext, TProfileID } from "../../utils/types";
 import styles from "./LoginPage.module.css";
 
 const LoginPage: FC = () => {
@@ -12,7 +13,11 @@ const LoginPage: FC = () => {
   const tokenLocal = localStorage.getItem("token") || null;
 
   function logIn(tokenFromHash: string): void {
-    setState({ ...state, isAuth: true });
+    //Записываем данные первого пользователя полученного из массива переданного бекендом
+    //Данные администратор или нет, а так же id пользователя хардкодим.
+    getUserProfile(state.id).then((res: TProfileID) =>
+      setState({ ...state, isAuth: true, isAdmin: false, userData: res })
+    );
     localStorage.setItem("token", tokenFromHash);
     navigate("/");
   }

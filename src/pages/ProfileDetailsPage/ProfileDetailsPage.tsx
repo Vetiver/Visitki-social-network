@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useContext } from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
@@ -6,10 +6,13 @@ import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import ProfilePhotoTest from "../../images/ProfilePhotoTest.jpg";
 import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/ProfileDetailsOtherBlock";
 import styles from "./ProfileDetailsPage.module.css";
+import { AuthContext } from "../../services/AuthContext";
 
 const ProfileDetailsPage: FC = () => {
-
+  const { state } = useContext(AuthContext)
   const [theme , setTheme] = useState({profilePhotoStyle:"default", statusColor:"default", borderDetailsOther:"default"})
+  
+  console.log(state)
 
   return (
     <main className={styles.profileDetailsContainer}>
@@ -17,7 +20,7 @@ const ProfileDetailsPage: FC = () => {
       <div className={styles.profileDetailsMain}>
         <div className={styles.profileDetailsMainInfo}>
           <h1 className={styles.profileDetailsMainInfoName}>
-            Билли Херрингтон
+            Твой sucks slaves друг
           </h1>
           <p className={styles.profileDetailsMainInfoTown}>Нью-Йорк</p>
           <div className={styles.profileDetailsMainInfoIcons}>

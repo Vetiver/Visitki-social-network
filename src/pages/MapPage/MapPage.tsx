@@ -10,11 +10,13 @@ import {
   GeolocationControl,
   RouteButton,
 } from "@pbe/react-yandex-maps";
-import { getProfiles } from "../../utils/api/api";
+import { getDefaultProfiles } from "../../utils/api/api";
 import placeMarkIcon from "../../icons/placemark.svg";
-import { TStateDataMapPage } from "../../utils/types";
-
-
+import {
+  TDefaultProfileData,
+  TProfileID,
+  TStateDataMapPage,
+} from "../../utils/types";
 
 const MapPage = () => {
   const [dataRequest, setDataRequest] = useState<TStateDataMapPage>({
@@ -28,7 +30,7 @@ const MapPage = () => {
   };
 
   useEffect(() => {
-    getProfiles().then((res) =>
+    getDefaultProfiles().then((res) =>
       setDataRequest({
         ...dataRequest,
         isDataRequest: true,
@@ -36,7 +38,6 @@ const MapPage = () => {
       })
     );
   }, [dataRequest.isDataRequest]);
-  
 
   return (
     <>

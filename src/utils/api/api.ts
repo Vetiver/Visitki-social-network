@@ -1,4 +1,4 @@
-import { TProfile, TProfileInfo, TUserDataDetail } from "../types";
+import { TProfile, TProfileInfo } from "../types";
 
 const token = localStorage.getItem("token");
 
@@ -20,7 +20,7 @@ function request(url: string, options: RequestInit) {
   return fetch(url, options).then(checkResponse);
 }
 //Запрос пользователей. По умолчанию возвращает профили из той же когорты, что и пользователь, который сделал запрос, или ничего.
-export const getProfiles = async () => {
+export const getDefaultProfiles = async () => {
   return await request(`/profiles`, {
     method: "GET",
     headers: api.headers,
@@ -28,8 +28,8 @@ export const getProfiles = async () => {
 };
 
 //Запрос профиля конкретного пользователя.
-export const getUserProfile = async (_id: string) => {
-  return await request(`/profiles/:${_id}`, {
+export const getUserProfile = async (id: string | null) => {
+  return await request(`/profiles/${id}`, {
     method: "GET",
     headers: api.headers,
   });

@@ -1,5 +1,4 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { JsxChild } from "typescript";
 
 export type TFcVoid = () => void;
 
@@ -14,6 +13,7 @@ export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: any | null;
+  id: string | null;
 };
 
 export type TContext =
@@ -50,7 +50,7 @@ export type TProfile = {
   };
   city: {
     value: string;
-    name?:string;
+    name?: string;
   };
   birthday: string;
   quote: string;
@@ -125,16 +125,37 @@ export type TCommentsRequest = {
 };
 
 export type TProtectedLink = {
-  className: string,
-  to: string,
-  children: ReactNode
-}
+  className: string;
+  to: string;
+  children: ReactNode;
+};
 
 export type TStateDataMapPage = {
-  isDataRequest: boolean,
-  usersData: TProfileID[] | null
-}
+  isDataRequest: boolean;
+  usersData: TProfileID[] | null;
+};
 
 export type TCards = {
-  users: TProfileID[] | null
-}
+  users: TProfileID[] | null;
+};
+
+export type TDefaultProfileData = {
+  email: string;
+  cohort: string;
+  _id: string;
+  createdAt: number;
+  updatedAt: number;
+  profile: {
+    name: string;
+    photo: string;
+    city: {
+      name: string;
+      geocode: number[];
+    };
+  };
+};
+
+export type TDefaultProfilesData = {
+  total: number;
+  items: TDefaultProfileData[];
+};

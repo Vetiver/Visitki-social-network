@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { AuthContext } from "../../services/AuthContext";
-import { TAuth, TUsersDataDetail } from "../../utils/types";
+import { TAuth, TProfileID } from "../../utils/types";
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Layouts/Layout";
 import { ProtectedRoute } from "../../services/ProtectedRoute/ProtectedRoute";
@@ -11,13 +11,14 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
-import { getProfiles } from "../../utils/api/api";
+import { getUserProfile } from "../../utils/api/api";
 
 const App: FC = () => {
   const [state, setState] = useState<TAuth>({
     isAuth: false,
-    userData: null,
     isAdmin: false,
+    id: "e638ad9bce6d7efd1b5b035b",
+    userData: null,
   });
 
   //Проверяем, записан ли токен в локальном хранилище, если да,
@@ -27,8 +28,9 @@ const App: FC = () => {
   useEffect(() => {
     if (tokenLocal) {
       //Записываем данные первого пользователя полученного из массива переданного бекендом
-      getProfiles().then((res: TUsersDataDetail) =>
-        setState({ ...state, isAuth: true, userData: res.items[0] })
+      //Данные администратор или нет, а так же id пользователя хардкодим.
+      getUserProfile(state.id).then((res: TProfileID) =>
+        setState({ ...state, isAuth: true, isAdmin: false, userData: res })
       );
     }
   }, []);
