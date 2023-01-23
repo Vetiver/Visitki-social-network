@@ -1,16 +1,15 @@
 import { FC,  useState } from "react";
 import { Link } from "react-router-dom";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
+import { TCardProps } from "../../utils/types";
 import FeedbackBlock from "../FeedbackBlock/FeedbackBlock";
 import styles from "./Card.module.css";
 
-const Card:FC<any> = ({img, name, city}) => {
+const Card:FC<TCardProps> = ({img, name, city}): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const openFeedback = () => {
     setIsOpen(!isOpen);
   };
-
-  
 
   return (
     <div className={styles.card}>

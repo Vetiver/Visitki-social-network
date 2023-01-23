@@ -4,7 +4,7 @@ import { useState, useEffect, FC } from "react";
 import { getCommentsData } from "../../utils/api/api";
 import clearIcon from "../../images/clear.png";
 
-export const CommentList:FC = () => {
+export const CommentList:FC = (): JSX.Element => {
   let [commentsArr, setCommentsArr] = useState([]);
 
   const updateCommentList = () => {

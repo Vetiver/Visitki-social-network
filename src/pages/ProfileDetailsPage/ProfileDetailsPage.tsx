@@ -7,12 +7,12 @@ import ProfilePhotoTest from "../../images/ProfilePhotoTest.jpg";
 import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/ProfileDetailsOtherBlock";
 import styles from "./ProfileDetailsPage.module.css";
 import { AuthContext } from "../../services/AuthContext";
+import Preloader from "../../components/Preloader/Preloader";
 
-const ProfileDetailsPage: FC = () => {
+const ProfileDetailsPage: FC = (): JSX.Element => {
   const { state } = useContext(AuthContext)
   const [theme , setTheme] = useState({profilePhotoStyle:"default", statusColor:"default", borderDetailsOther:"default"})
-  
-  console.log(state)
+
 
   return (
     <main className={styles.profileDetailsContainer}>

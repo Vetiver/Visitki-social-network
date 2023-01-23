@@ -5,7 +5,7 @@ interface IChatIcon {
   count?: number;
 }
 
-const ChatIcon: FC<IChatIcon> = ({ count }) => {
+const ChatIcon: FC<IChatIcon> = ({ count }): JSX.Element => {
   
   const [isCount ,setIsCount] = useState(false)
   useEffect(() => {

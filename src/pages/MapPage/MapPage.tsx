@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import styles from "./MapPage.module.css";
 import {
   YMaps,
@@ -18,7 +18,7 @@ import {
   TStateDataMapPage,
 } from "../../utils/types";
 
-const MapPage = () => {
+const MapPage:FC = (): JSX.Element => {
   const [dataRequest, setDataRequest] = useState<TStateDataMapPage>({
     isDataRequest: false,
     usersData: null,

@@ -5,7 +5,7 @@ import AccountBox from "../AccountBox/AccountBox";
 import Logo from "../Logo/Logo";
 import styles from "./Header.module.css";
 
-const Header: FC = () => {
+const Header: FC = (): JSX.Element => {
   const { state } = useContext<TContext>(AuthContext);
   
   return (

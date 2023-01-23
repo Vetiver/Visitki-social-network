@@ -4,7 +4,7 @@ import styles from "./NotFoundPage.module.css"
 import Button from "../../components/Button/Button"
 import { FC } from "react"
 
-const NotFoundPage: FC = () => {
+const NotFoundPage: FC = (): JSX.Element => {
   return (
     <div className={styles.errorContainer}>
         <img className={styles.errorImg} src={imgErr} alt="Не существующий адрес" />

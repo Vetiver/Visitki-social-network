@@ -3,7 +3,7 @@ import ProtectedLink from "../../HOC/ProtectedLink";
 import { AuthContext } from "../../services/AuthContext";
 import styles from "./AccountBox.module.css";
 
-const AccountBox: FC = () => {
+const AccountBox: FC = (): JSX.Element => {
   const { state } = useContext(AuthContext)
   
   return (

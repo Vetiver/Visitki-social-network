@@ -2,12 +2,23 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export type TFcVoid = () => void;
 
+export type TLoaderProps = {
+  width: string,
+  height: string,
+}
+
 export type TButton = {
   click?: () => void;
   text: string;
   size: string;
   disabled?: boolean;
 };
+
+export type TCardProps = {
+  img: string,
+  name: string,
+  city: string
+}
 
 export type TAuth = {
   isAuth: boolean;

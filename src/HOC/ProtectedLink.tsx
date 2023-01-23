@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import { useLocation } from "react-router";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../services/AuthContext";
 import { TProtectedLink } from "../utils/types";
 
-const ProtectedLink = ({ children, to, className }: TProtectedLink) => {
+const ProtectedLink:FC<TProtectedLink> = ({ children, to, className }): JSX.Element => {
   const location = useLocation();
   //Нужен будет для логики админ или нет
   const { state, setState } = useContext(AuthContext);

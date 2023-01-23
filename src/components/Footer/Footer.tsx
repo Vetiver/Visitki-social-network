@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import styles from "./Footer.module.css"
 
-const Footer:FC = () => {
+const Footer:FC = (): JSX.Element => {
   return (
     <div className={styles.footer}>
         <p className={styles.footer__copyright}>© Визитки</p>

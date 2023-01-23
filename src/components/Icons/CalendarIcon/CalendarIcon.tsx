@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../icons/forms-icons/calendar.svg';
 
-const CalendarIcon: FC = () => {
+const CalendarIcon: FC = (): JSX.Element => {
   return (
     <HandySvg
         src={iconSrc}

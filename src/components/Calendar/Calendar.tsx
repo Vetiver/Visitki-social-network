@@ -3,7 +3,7 @@ import { months } from "../../utils/dates";
 import { FC, useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
 
-export const Calendar:FC = () => {
+export const Calendar:FC = (): JSX.Element => {
   let todayYear = 0;
   todayYear = new Date().getFullYear();
   let years = [];

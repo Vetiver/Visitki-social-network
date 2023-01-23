@@ -6,7 +6,7 @@ import styles from "./Button.module.css";
 // largeButton для кнопки входа, smallButton для кнопки выбора файла.
 // Третьим параметром передаем disabled={true/false} 
 
-const Button: FC<TButton> = ({ text, size, disabled, click }) => {
+const Button: FC<TButton> = ({ text, size, disabled, click }): JSX.Element => {
 
   const buttonStyle = (size: string) => {
     const largeButton = styles.largeButton;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Outlet, useLocation, Navigate } from "react-router-dom";
 
-export const ProtectedRoute: FC = () => {
+export const ProtectedRoute: FC = (): JSX.Element => {
   const location = useLocation();
   const tokenLocal = localStorage.getItem("token") || null;
 

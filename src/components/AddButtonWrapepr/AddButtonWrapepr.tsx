@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./AddButtonWrapepr.module.css";
 
-export const AddButtonWrapper:FC = () => {
+export const AddButtonWrapper:FC = (): JSX.Element => {
   return (
     <div className={styles.button_wrapper}>
       <p className={styles.button_title}>Добавить студентов</p>

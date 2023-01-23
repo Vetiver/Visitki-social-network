@@ -11,7 +11,7 @@ type TProfileDetailsOtherBlock = {
     description?:string
 };
 
-const ProfileDetailsOtherBlock:FC<TProfileDetailsOtherBlock> = ({theme, title, image, description }) => {
+const ProfileDetailsOtherBlock:FC<TProfileDetailsOtherBlock> = ({theme, title, image, description }): JSX.Element => {
     const [isImg, setIsImg] = React.useState(false)
 
     React.useEffect(()=>{

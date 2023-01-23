@@ -23,7 +23,7 @@ export const defaultReactionsArray = [
   { item: smiledIcon, count: 0 },
 ];
 
-const FeedbackBlock: FC<any> = ({ open }) => {
+const FeedbackBlock: FC<{open: boolean}> = ({ open }): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
   const [reactions, setReactions] = useState([{ item: thumbsUpIcon, count: 0 }]);
 

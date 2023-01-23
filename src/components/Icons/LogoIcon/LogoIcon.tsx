@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const LogoIcon: FC = () => {
+const LogoIcon: FC = (): JSX.Element => {
   return (
     <svg
       width="130"

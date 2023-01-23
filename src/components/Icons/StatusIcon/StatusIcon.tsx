@@ -3,7 +3,7 @@ import { FC } from "react";
 interface TStatusIcon {
   stroke?: string;
 }
-const StatusIcon: FC<TStatusIcon> = ({ stroke }) => {
+const StatusIcon: FC<TStatusIcon> = ({ stroke }): JSX.Element => {
   return (
     <svg
       width="62"

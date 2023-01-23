@@ -2,7 +2,7 @@ import { SyntheticEvent, useRef, useState } from "react";
 import styles from "./SelectRegionInput.module.css";
 import { Map, YMaps } from "@pbe/react-yandex-maps";
 
-function InputSelect() {
+function InputSelect(): JSX.Element {
   const selectForRegion = useRef<HTMLInputElement>(null);
   const [selectRegionData, setSelectRegionData] = useState({
     content: "",

@@ -13,7 +13,7 @@ import MapPage from "../../pages/MapPage/MapPage";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 import { getUserProfile } from "../../utils/api/api";
 
-const App: FC = () => {
+const App: FC = (): JSX.Element => {
   const [state, setState] = useState<TAuth>({
     isAuth: false,
     isAdmin: false,

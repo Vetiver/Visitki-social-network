@@ -6,7 +6,7 @@ import { getUserProfile } from "../../utils/api/api";
 import { TContext, TProfileID } from "../../utils/types";
 import styles from "./LoginPage.module.css";
 
-const LoginPage: FC = () => {
+const LoginPage: FC = (): JSX.Element => {
   const location = useLocation();
   const navigate = useNavigate();
   const { state, setState } = useContext<TContext>(AuthContext);

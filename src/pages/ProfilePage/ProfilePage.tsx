@@ -10,7 +10,7 @@ import { Calendar } from "../../components/Calendar/Calendar";
 import photo from "../../images/Ellipse.png";
 import SelectStyleInput from "../../components/SelectStyleInput/SelectStyleInput";
 
-const ProfilePage: FC = () => {
+const ProfilePage: FC = (): JSX.Element => {
   const [file, setFile] = useState<any>();
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));

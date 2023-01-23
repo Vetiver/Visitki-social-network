@@ -18,9 +18,7 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
-
-
-const MainPage: FC = () => {
+const MainPage: FC = (): JSX.Element => {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedItem, setSelectedItem] = useState({
     selected: "Все города",

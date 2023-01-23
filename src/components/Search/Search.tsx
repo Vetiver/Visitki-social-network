@@ -3,7 +3,7 @@ import { CommentList } from "../CommentList/CommentList";
 import { StudentList } from "../StudentList/StudentList";
 import styles from "./Search.module.css";
 
-export const Search: FC = () => {
+export const Search: FC = (): JSX.Element => {
   const [isUsers, setChange] = useState<boolean>(true);
   const changeMenu = () => {
     setChange((isUsers) => !isUsers);

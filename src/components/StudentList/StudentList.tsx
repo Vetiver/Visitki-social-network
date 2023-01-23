@@ -1,10 +1,10 @@
 import styles from "./StudentList.module.css";
 import clearIcon from "../../images/clear.png";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import { getUsersData } from "../../utils/api/api";
 import { AddButtonWrapper } from "../AddButtonWrapepr/AddButtonWrapepr";
 
-export const StudentList = () => {
+export const StudentList: FC = (): JSX.Element => {
   let [studentsArr, setStudentsArr] = useState([]);
   let [word, handleChange] = useState("");
   let [result, setResult] = useState([]);
