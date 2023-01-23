@@ -19,7 +19,11 @@ const MapPage = () => {
     isDataRequest: false,
     usersData: null,
   });
-  const mapDefaultState = { center: [55.75, 37.57], zoom: 7, controls: ["zoomControl", "fullscreenControl"], };
+  const mapDefaultState = {
+    center: [55.75, 37.57],
+    zoom: 7,
+    controls: ["zoomControl", "fullscreenControl"],
+  };
 
   useEffect(() => {
     getProfiles().then((res) =>
@@ -34,9 +38,18 @@ const MapPage = () => {
   return (
     <>
       {dataRequest.usersData && (
-        <YMaps query={{ lang: "ru_RU", apikey: '04277aa1-f5ec-4444-81ee-4e0b6eafdcaa' }}>
+        <YMaps
+          query={{
+            lang: "ru_RU",
+            apikey: "04277aa1-f5ec-4444-81ee-4e0b6eafdcaa",
+          }}
+        >
           <div className={styles.wrapper}>
-            <Map className={styles.map} defaultState={mapDefaultState} modules={["control.ZoomControl", "control.FullscreenControl"]}>
+            <Map
+              className={styles.map}
+              defaultState={mapDefaultState}
+              modules={["control.ZoomControl", "control.FullscreenControl"]}
+            >
               {dataRequest.usersData.map((student: any) => {
                 return (
                   <Placemark
