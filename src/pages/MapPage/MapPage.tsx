@@ -14,6 +14,8 @@ import { getProfiles } from "../../utils/api/api";
 import placeMarkIcon from "../../icons/placemark.svg";
 import { TStateDataMapPage } from "../../utils/types";
 
+
+
 const MapPage = () => {
   const [dataRequest, setDataRequest] = useState<TStateDataMapPage>({
     isDataRequest: false,
@@ -30,6 +32,7 @@ const MapPage = () => {
       })
     );
   }, [dataRequest.isDataRequest]);
+  
 
   return (
     <>

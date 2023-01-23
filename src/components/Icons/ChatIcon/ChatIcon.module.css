@@ -1,7 +1,6 @@
 .chatIconContainer{
     display: flex;
-    cursor: url("../../../icons/pointer_main.svg"), pointer;
-
+    cursor: pointer;
 }
 .chatIcon {
   position: relative;

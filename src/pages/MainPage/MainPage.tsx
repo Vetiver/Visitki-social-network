@@ -1,10 +1,11 @@
-
 import { FC, useState, useRef, useEffect } from "react";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
 import Card from "../../components/Card/Card";
+import { getProfiles } from "../../utils/api/api";
+import { TCards, TProfileID, TStateDataMapPage } from "../../utils/types";
 
 const data = [
   { city: "Все города" },
@@ -18,10 +19,15 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
+
+
 const MainPage: FC = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedItem, setSelectedItem] = useState({
     selected: "Все города",
+  });
+  const [cards, setCards] = useState<TCards>({
+    users: null,
   });
   const sortRef = useRef<any>(null);
 
@@ -47,6 +53,17 @@ const MainPage: FC = () => {
       document.body.removeEventListener("click", handleCloseOutsideClick);
     };
   }, []);
+
+  useEffect(() => {
+    getProfiles().then((res) =>
+      setCards({
+        ...cards,
+        users: res.items,
+      })
+    );
+  }, []);
+  console.log(cards);
+  
 
   return (
     <main className={styles.main}>
@@ -87,7 +104,14 @@ const MainPage: FC = () => {
         </ProtectedLink>
       </div>
       <div className={styles.cardContainer}>
-      <Card/>
+        {cards.users?.map((card: TProfileID) => (
+          <Card
+            key={card._id}
+            img={card.profile.photo}
+            name={card.profile.name}
+            city={card.profile.city.name}
+          />
+        ))}
       </div>
     </main>
   );

@@ -23,7 +23,6 @@
 }
 a {
   text-decoration: none;
-  cursor: url("../../icons/pointer_main.svg"), pointer;
   }
 @media screen and (max-width: 500px) {
   .main {

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
@@ -8,6 +8,9 @@ import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/
 import styles from "./ProfileDetailsPage.module.css";
 
 const ProfileDetailsPage: FC = () => {
+
+  const [theme , setTheme] = useState({profilePhotoStyle:"cocky", statusColor:"default", borderDetailsOther:"default"})
+
   return (
     <main className={styles.profileDetailsContainer}>
       {/* Верхняя часть профиля */}
@@ -24,7 +27,8 @@ const ProfileDetailsPage: FC = () => {
         </div>
         <div className={styles.profileDetailsMainInfoImgContainer}>
           <img
-            className={styles.profileDetailsMainInfoImg}
+            className={`${styles.profileDetailsMainInfoImg} 
+            ${theme.profilePhotoStyle=== "romantic" && styles.profileDetailsMainInfoImgRomantic}`}
             src={ProfilePhotoTest}
             alt="ProfilePhoto"
           />
@@ -60,6 +64,7 @@ const ProfileDetailsPage: FC = () => {
                       вышиваю крестиком и играю в настолки. Увлекаюсь программированием,
                       игрой на гитаре, вышиваю крестиком и играю в настолки."
         />
+        
       </div>
     </main>
   );
