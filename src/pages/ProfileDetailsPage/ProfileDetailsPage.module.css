@@ -85,6 +85,8 @@
   padding: 36px 0 0 15px;
   position: relative;
 }
+
+
 .profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon{
   visibility: visible;
 }
@@ -102,6 +104,9 @@
   line-height: 32px;
   max-width: 220px;
   padding-top: 3px;
+}
+.profileDetailsMainInfoColor{
+  color: #FF00A8;
 }
 
 .profileDetailsOther {
