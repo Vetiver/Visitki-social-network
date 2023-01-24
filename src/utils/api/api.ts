@@ -116,7 +116,7 @@ export const getCommentsData = async () => {
 
 //Удаление комментария. Для администратора.
 export const deleteComment = async (_id: string) => {
-  return await request(`/comments/:${_id}`, {
+  return await fetch(`/comments/38eb4bbe3da2fcf2d4cfcd59`, {
     method: "DELETE",
     headers: api.headers,
   });
