@@ -13,6 +13,7 @@ export type TAuth  = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: any | null;
+  _id: any;
 };
 
 //Работа с API бекенда

@@ -4,6 +4,24 @@
   width: 440px;
 }
 
+.photo__size {
+  margin: 0;
+  padding: 0;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.photo__load {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}
+
 .form {
   display: flex;
   max-width: 440px;

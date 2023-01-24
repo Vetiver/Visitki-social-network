@@ -1,8 +1,11 @@
-import { SyntheticEvent, useRef, useState } from "react";
+import { SyntheticEvent, useRef, useState, useEffect, useContext  } from "react";
 import styles from "./SelectRegionInput.module.css";
 import { Map, YMaps } from "@pbe/react-yandex-maps";
+import { AuthContext } from "../../services/AuthContext";
+import { TContext } from "../../utils/types";
 
 function InputSelect() {
+  const { state, setState } = useContext<TContext>(AuthContext);
   const selectForRegion = useRef<HTMLInputElement>(null);
   const [selectRegionData, setSelectRegionData] = useState({
     content: "",
@@ -34,6 +37,7 @@ function InputSelect() {
         onChange={setSelectRegionActive}
         onBlur={hideActiveness}
         type="text"
+        value={state.userData.profile.city.name}
         className={`form-control ${styles.select}`}
         id="suggest"
         onLoad={(ymaps) => loadSuggest(ymaps)}

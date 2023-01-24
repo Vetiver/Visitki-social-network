@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../services/AuthContext";
 import { TAuth, TUsersDataDetail } from "../../utils/types";
 import { Route, Routes } from "react-router-dom";
@@ -13,23 +13,33 @@ import MapPage from "../../pages/MapPage/MapPage";
 import { Search } from "../Search/Search";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 import { getProfiles } from "../../utils/api/api";
+import { getUserProfile } from "../../utils/api/api";
+import { TContext } from "../../utils/types";
+
 
 const App: FC = () => {
+  const [profile, setProfileInfo] = useState<any>(null);
   const [state, setState] = useState<TAuth>({
     isAuth: false,
     userData: null,
     isAdmin: false,
+    _id: null,
   });
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;
 
   useEffect(() => {
-    if (tokenLocal) {
+    if (tokenLocal !== null) {
       //Записываем данные первого пользователя полученного из массива переданного бекендом
       getProfiles().then((res: TUsersDataDetail) =>
-        setState({ ...state, isAuth: true, userData: res.items[0] })
+        setState({ ...state, isAuth: true, userData: res.items[0], _id: res.items[0]._id })
       );
+      if(state._id !== null) {
+        getUserProfile(state._id).then((res) =>
+      setProfileInfo(res)
+      );
+      }
     }
   }, []);
 
@@ -39,7 +49,7 @@ const App: FC = () => {
         <Route path="/" element={<Layout />}>
           <Route element={<ProtectedRoute />}>
             <Route index element={<MainPage />} />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile" element={<ProfilePage profile={profile}/>} />
             <Route path="details" element={<ProfileDetailsPage />} />
             <Route path="admin" element={<AdminPage />} />
             <Route path="map" element={<MapPage />} />
