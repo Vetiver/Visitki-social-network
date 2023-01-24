@@ -15,10 +15,8 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
   const [statusComments, setStatusComments] = useState<any>([]);
   const [jobComments, setJobComments] = useState<any>([]);
   const [photoComments, setPhotoComments] = useState<any>([]);
-
-
-
-
+ 
+  console.log(userComments);
   
 
   const openFeedback = () => {
@@ -51,7 +49,7 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
   
 
     // setPhotoComments(userComments.items.filter((item:any) => item.target === null));
-    console.log(hobbyComments, eduComments, statusComments, jobComments);
+    // console.log(hobbyComments, eduComments, statusComments, jobComments);
     
   
   

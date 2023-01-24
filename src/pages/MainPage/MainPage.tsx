@@ -1,11 +1,10 @@
-import { FC, useState, useRef, useEffect, useContext } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import arrowIcon from "../../icons/arrow_home.svg";
 import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
 import Card from "../../components/Card/Card";
 import { getDefaultProfiles } from "../../utils/api/api";
 import { TCards, TProfileID } from "../../utils/types";
-import { AuthContext } from "../../services/AuthContext";
 import Preloader from "../../components/Preloader/Preloader";
 
 const data = [
@@ -21,7 +20,6 @@ const data = [
 ];
 
 const MainPage: FC = (): JSX.Element => {
-  const { state } = useContext(AuthContext);
   const [isOpened, setIsOpened] = useState(false);
   const [selectedItem, setSelectedItem] = useState({
     selected: "Все города",
@@ -29,6 +27,7 @@ const MainPage: FC = (): JSX.Element => {
   const [cards, setCards] = useState<TCards>({
     users: null,
   });
+  console.log(cards.users)
   const sortRef: any = useRef(null);
 
   // Открытие/закрытие фильтра
