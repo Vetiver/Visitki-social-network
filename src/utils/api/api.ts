@@ -1,3 +1,5 @@
+import { TProfile, TProfileInfo, TUserDataDetail } from "../types";
+
 const token = localStorage.getItem("token");
 
 const api = {
@@ -17,15 +19,6 @@ export const checkResponse = (res: Response) => {
 function request(url: string, options: RequestInit) {
   return fetch(url, options).then(checkResponse);
 }
-
-//Запрос всех пользователей
-export const getUsersData = async () => {
-  return await request(`/users`, {
-    method: "GET",
-    headers: api.headers,
-  });
-};
-
 //Запрос пользователей. По умолчанию возвращает профили из той же когорты, что и пользователь, который сделал запрос, или ничего.
 export const getProfiles = async () => {
   return await request(`/profiles`, {
@@ -42,10 +35,10 @@ export const getUserProfile = async (_id: string) => {
   });
 };
 
-//Изменение данных пользователя
+//Изменение данных пользователя. Студентом.
 export const patchUserProfile = async (
   _id: string,
-  profileData: { profile: any; info: any }
+  profileData: { profile: TProfile; info: TProfileInfo }
 ) => {
   return await request(`/profiles/:${_id}`, {
     method: "PATCH",
@@ -64,7 +57,7 @@ export const getReactionsData = async (_id: string) => {
   });
 };
 
-//Получение всех реакций
+//Отправить реакцию
 export const postReactionsData = async (
   _id: string,
   reaction: { target: string; text: string }
@@ -76,7 +69,16 @@ export const postReactionsData = async (
   });
 };
 
-//Добавить нового пользователя Для администратора.
+
+//Запрос всех пользователей администратором
+export const getUsersData = async () => {
+  return await request(`/users`, {
+    method: "GET",
+    headers: api.headers,
+  });
+};
+
+//Добавить нового пользователя. Для администратора.
 export const postUsersData = async (email: string, cohort: string) => {
   return await request(`/users`, {
     method: "POST",

@@ -1,10 +1,10 @@
 import styles from "./CommentList.module.css";
 import deleteIcon from "../../images/delete.png";
-import { useState, useEffect } from "react";
 import { deleteComment, getCommentsData } from "../../utils/api/api";
+import { useState, useEffect, FC } from "react";
 import clearIcon from "../../images/clear.png";
 
-export const CommentList = () => {
+export const CommentList:FC = () => {
   let [commentsArr, setCommentsArr] = useState([]);
 
   const updateCommentList = () => {
@@ -27,7 +27,7 @@ export const CommentList = () => {
 
   const userInput = (evt: any) => {
     handleChange((word = evt.target.value));
-    if (word != "") {
+    if (word !== "") {
       searchInList();
     }
   };
@@ -70,6 +70,7 @@ export const CommentList = () => {
           src={clearIcon}
           className={styles.clearIcon}
           onClick={clearSearch}
+          alt="очистить"
         />
       </div>
 
@@ -106,6 +107,7 @@ export const CommentList = () => {
                       <img
                         src={deleteIcon}
                         onClick={() => removeComment(el._id)}
+                        alt="удалить"
                       />
                     </div>
                   </li>
@@ -113,8 +115,8 @@ export const CommentList = () => {
               {word &&
                 result.map((el: any) => (
                   <li className={styles.list_item} key={el._id}>
-                    <p className={styles.list_item_text}>{/*el.cohort*/}</p>
-                    <p className={styles.list_item_text}>{/*el.date*/}</p>
+                    <p className={styles.list_item_text}>{el.cohort}</p>
+                    <p className={styles.list_item_text}>{el.date}</p>
                     <p className={styles.list_item_text}>{el.from.name}</p>
                     <p className={styles.list_item_text}>{el.to.name}</p>
                     <p
@@ -125,6 +127,7 @@ export const CommentList = () => {
                       <img
                         src={deleteIcon}
                         onClick={() => removeComment(el._id)}
+                        alt="удалить"
                       />
                     </div>
                   </li>

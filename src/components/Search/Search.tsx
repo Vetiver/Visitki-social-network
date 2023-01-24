@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { CommentList } from "../CommentList/CommentList";
 import { StudentList } from "../StudentList/StudentList";
 import styles from "./Search.module.css";

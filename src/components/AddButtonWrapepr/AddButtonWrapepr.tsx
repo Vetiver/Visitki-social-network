@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { TFile } from "../../utils/types";
 import { postUsersData } from "../../utils/api/api";
 import styles from "./AddButtonWrapepr.module.css";

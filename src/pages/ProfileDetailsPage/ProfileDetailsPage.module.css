@@ -1,0 +1,118 @@
+.profileDetailsContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 177px);
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0 40px 0;
+}
+
+.profileDetailsMain {
+  width: 100%;
+  display: flex;
+  column-gap: 70px;
+  padding: 8px 0 72px;
+}
+
+.profileDetailsMainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  max-width: 443px;
+  max-height: 440px;
+}
+.profileDetailsMainInfoName {
+  color: #100c34;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 60px;
+  margin: 0 0 97px;
+  letter-spacing: 2.3px;
+}
+.profileDetailsMainInfoTown {
+  color: #100c34;
+  margin: 0 0 25px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.profileDetailsMainInfoIcons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80px;
+  width: 100%;
+}
+
+.profileDetailsMainInfoImgContainer {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+}
+.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon{
+  visibility: visible;
+}
+
+.profileDetailsMainInfoImg {
+  width: 440px;
+  height: 440px;
+  object-fit: cover;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.profileDetailsMainInfoImgRomantic{
+  border-radius: 220px;
+}
+
+
+
+
+
+.profileDetailsMainInfoChatIcon{
+  visibility: hidden;
+  position: absolute;
+  top:18px;
+  right: 18px;
+}
+
+.profileDetailsMainInfoStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 325px;
+  padding: 36px 0 0 15px;
+  position: relative;
+}
+
+
+.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon{
+  visibility: visible;
+}
+.profileDetailsMainInfoStatusIcon{
+  visibility: hidden;
+  position: absolute;
+  top:70px;
+  right: 18px;
+}
+.profileDetailsMainInfoStatusText {
+  color: #100c34;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  max-width: 220px;
+  padding-top: 3px;
+}
+.profileDetailsMainInfoColor{
+  color: #FF00A8;
+}
+
+.profileDetailsOther {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 70px;
+  width: 100%;
+  max-width: 1440px;
+}

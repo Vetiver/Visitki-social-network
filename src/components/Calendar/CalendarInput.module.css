@@ -5,6 +5,14 @@
   align-items: flex-end;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  cursor: pointer;
+}
+
 .icon {
   position: absolute;
   top: 14px;
@@ -92,11 +100,6 @@
   transition: 0.2s linear;
 }
 
-.active {
-  background-color: #ff00a8;
-  color: white;
-}
-
 .psevdo_box {
   font-size: 12px;
   line-height: 16px;
@@ -117,6 +120,11 @@
 .day_box:nth-child(7n + 6),
 .day_box:nth-child(7n) {
   color: #ff00a8;
+}
+
+.day_box.active {
+  background-color: #ff00a8;
+  color: #fff;
 }
 
 .pinky {

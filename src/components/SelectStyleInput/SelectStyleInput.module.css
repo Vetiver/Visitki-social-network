@@ -1,0 +1,80 @@
+.select {
+  padding: 14px 16px;
+  width: 100%;
+  max-height: 48px;
+  height: 48px;
+  background: #fff;
+  border: 1px solid #100c34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #100c34;
+  cursor: url("../../icons/pointer_main.svg"), auto;
+  background-image: url(../../images/logo/arrow-down.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: 97%;
+}
+
+.select:focus {
+  border-color: #000;
+  filter: none;
+  outline: none;
+}
+
+.select_active {
+  background-image: url(../../images/logo/arrow-up.svg);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select__container {
+  position: relative;
+}
+
+.select__content {
+  border: 1px solid #000;
+  display: block;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: absolute;
+  top: 75px;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  z-index: 2;
+  max-height: 192px;
+  overflow-y: scroll;
+}
+
+.select:hover + .select {
+  display: block;
+}
+
+.select__list {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.select__item {
+  padding: 6px 16px;
+  color: #100c34;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.select__item:hover {
+  color: #100c34;
+  background: #f9f9f9;
+}
+
+.select__item:active {
+  background: #ff00a8;
+  color: #fff;
+}

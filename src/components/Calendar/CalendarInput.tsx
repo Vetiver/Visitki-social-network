@@ -1,9 +1,9 @@
-import styles from "./Calendar.module.css";
+import styles from "./CalendarInput.module.css";
 import { months } from "../../utils/dates";
-import { useState } from "react";
+import { FC, useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
 
-export const Calendar = () => {
+export const CalendarInput:FC = () => {
   let todayYear = 0;
   todayYear = new Date().getFullYear();
   let years = [];
@@ -69,9 +69,10 @@ export const Calendar = () => {
 
   return (
     <div className={styles.section_wrapper}>
-      <img className={styles.icon} src={calendarIcon} onClick={showCalendar} />
+      <img className={styles.icon} src={calendarIcon} onClick={showCalendar} alt="Календарь"/>
       <input
         className={styles.input}
+        readOnly
         value={`${date}.${monthsNumbers[month]}.${year}`}
       ></input>
       {isShow && (

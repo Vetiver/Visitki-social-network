@@ -1,9 +1,6 @@
-
 .page {
   margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
