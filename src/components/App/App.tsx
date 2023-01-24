@@ -10,6 +10,7 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
+import { Search } from "../Search/Search";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 import { getProfiles } from "../../utils/api/api";
 
@@ -19,7 +20,6 @@ const App: FC = () => {
     userData: null,
     isAdmin: false,
   });
-
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;

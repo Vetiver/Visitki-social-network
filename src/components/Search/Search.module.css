@@ -12,7 +12,7 @@
 }
 
 .button {
-  color: black;
+  color: #a3a3a3;
   background-color: inherit;
   border: none;
   padding: 0;
@@ -20,6 +20,7 @@
   font-size: 14px;
   line-height: 18px;
   cursor: pointer;
+  transition: 0.3s linear;
 }
 
 .search_wrapper {
@@ -39,4 +40,8 @@
 
 .search_comments_page {
   margin-top: 48px;
+}
+
+.active {
+  color: black;
 }

@@ -1,7 +1,33 @@
 import { FC } from "react";
+import { TFile } from "../../utils/types";
+import { postUsersData } from "../../utils/api/api";
 import styles from "./AddButtonWrapepr.module.css";
 
-export const AddButtonWrapper:FC = () => {
+export const AddButtonWrapper = () => {
+  let xlsx = require("xlsx");
+
+  const sendStudents = (json: any) => {
+    json.map((el: any) => {
+      postUsersData(el.email, el.cohort);
+    });
+  };
+
+  const parseFileToJson = (path: any) => {
+    const res = xlsx.readFile(path);
+    const sheetNames = res.SheetNames;
+    const fistSheetName = sheetNames[0];
+    const firstSheet = res.Sheets[fistSheetName];
+    const json = xlsx.utils.sheet_to_json(firstSheet) as TFile[];
+    return json;
+  };
+
+  const uploadStudents = async (evt: any) => {
+    const [file] = evt.target.files;
+    let buffer = await file.arrayBuffer();
+    let json = parseFileToJson(buffer);
+    sendStudents(json);
+  };
+
   return (
     <div className={styles.button_wrapper}>
       <p className={styles.button_title}>Добавить студентов</p>
@@ -10,7 +36,10 @@ export const AddButtonWrapper:FC = () => {
         колонка должна содержать email студентов, вторая колонка — номер
         когорты.
       </p>
-      <button className={styles.button}>Выберите файл</button>
+      <label className={styles.button}>
+        Выберите файл
+        <input className={styles.input} type="file" onChange={uploadStudents} />
+      </label>
     </div>
   );
 };

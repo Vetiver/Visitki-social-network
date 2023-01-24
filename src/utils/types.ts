@@ -1,5 +1,4 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { JsxChild } from "typescript";
 
 export type TFcVoid = () => void;
 
@@ -10,18 +9,11 @@ export type TButton = {
   disabled?: boolean;
 };
 
-export type TAuth = {
+export type TAuth  = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: any | null;
 };
-
-export type TContext =
-  | {
-      state: TAuth;
-      setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
-    }
-  | any;
 
 //Работа с API бекенда
 //Краткая информация о студенте
@@ -113,15 +105,27 @@ export type TComment = {
   target: string;
   to: {
     _id: string;
-    name: string;
+    createdAt: null;
     email: string;
   };
 };
-
 //Получение всех комментариев пользователей
 export type TCommentsRequest = {
   total: number;
   items: TComment[];
+};
+
+export type TContext = {
+      state: TAuth;
+      setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
+    }
+  | any;
+
+export type TProfileDataRequest = {};
+
+export type TFile = {
+  email: string;
+  cohort: string;
 };
 
 export type TProtectedLink = {

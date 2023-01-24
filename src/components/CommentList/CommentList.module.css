@@ -148,3 +148,10 @@
   max-width: 1360px;
   overflow: auto;
 }
+
+.error {
+  margin: 48px 0 0 0;
+  color: #e90d41;
+  font-size: 16px;
+  line-height: 24px;
+}
