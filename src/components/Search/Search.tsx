@@ -3,23 +3,38 @@ import { CommentList } from "../CommentList/CommentList";
 import { StudentList } from "../StudentList/StudentList";
 import styles from "./Search.module.css";
 
-export const Search: FC = () => {
-  const [isUsers, setChange] = useState<boolean>(true);
-  const changeMenu = () => {
-    setChange((isUsers) => !isUsers);
+export const Search = () => {
+  let [isUsers, setChange] = useState("students");
+
+  const setUsers = () => {
+    setChange((isUsers = "students"));
+  };
+
+  const setComments = () => {
+    setChange((isUsers = "comments"));
   };
 
   return (
     <>
       <nav className={styles.button_wrapper}>
-        <button className={styles.button} onClick={changeMenu}>
+        <button
+          className={`${styles.button} ${
+            isUsers === "students" && styles.active
+          }`}
+          onClick={setUsers}
+        >
           СТУДЕНТЫ
         </button>
-        <button className={styles.button} onClick={changeMenu}>
+        <button
+          className={`${styles.button} ${
+            isUsers === "comments" && styles.active
+          }`}
+          onClick={setComments}
+        >
           КОММЕНТАРИИ
         </button>
       </nav>
-      {isUsers ? <StudentList /> : <CommentList />}
+      {isUsers === "students" ? <StudentList /> : <CommentList />}
     </>
   );
 };

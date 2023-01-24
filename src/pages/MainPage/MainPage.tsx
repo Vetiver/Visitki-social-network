@@ -62,7 +62,6 @@ const MainPage: FC = () => {
       })
     );
   }, []);
-  console.log(cards);
   
 
   return (

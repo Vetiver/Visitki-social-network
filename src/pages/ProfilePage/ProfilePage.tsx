@@ -1,12 +1,9 @@
-import  {
-  FC,
-  useState,
-} from "react";
+import { FC, useState } from "react";
 import SelectRegionInput from "../../components/SelectRegionInput/SelectRegionInput";
 import styles from "./ProfilePage.module.css";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
 import Avatar from "react-avatar";
-import { Calendar } from "../../components/Calendar/Calendar";
+import { CalendarInput } from "../../components/Calendar/CalendarInput";
 import photo from "../../images/Ellipse.png";
 import SelectStyleInput from "../../components/SelectStyleInput/SelectStyleInput";
 
@@ -45,7 +42,7 @@ const ProfilePage: FC = () => {
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-          <Calendar />
+          <CalendarInput />
         </div>
 
         <div className={styles.input__container}>
@@ -68,7 +65,7 @@ const ProfilePage: FC = () => {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Ник на гитхабе</p>
-          <label className={styles.input__label} htmlFor="">
+          <label className={styles.input__label}>
             <input
               className={styles.input}
               placeholder="@example"
@@ -79,7 +76,7 @@ const ProfilePage: FC = () => {
 
         <div className={styles.input__container}>
           <p className={styles.input__title}> Выберите шаблон *</p>
-          <SelectStyleInput/>
+          <SelectStyleInput />
         </div>
 
         <div className={styles.input__container}>
@@ -105,7 +102,7 @@ const ProfilePage: FC = () => {
           <textarea
             className={styles.textarea}
             placeholder="Не более 300 символов"
-            maxLength={100}
+            maxLength={300}
           ></textarea>
         </div>
 
@@ -125,7 +122,7 @@ const ProfilePage: FC = () => {
           <textarea
             className={styles.textarea}
             placeholder="Не более 300 символов"
-            maxLength={100}
+            maxLength={300}
           ></textarea>
         </div>
 
@@ -133,11 +130,10 @@ const ProfilePage: FC = () => {
           <p className={styles.input__title}>
             Из какой сферы пришёл? Кем работаешь?
           </p>
-
           <textarea
             className={styles.textarea}
             placeholder="Не более 300 символов"
-            maxLength={100}
+            maxLength={300}
           ></textarea>
         </div>
 
@@ -149,7 +145,7 @@ const ProfilePage: FC = () => {
           <textarea
             className={styles.textarea}
             placeholder="Не более 300 символов"
-            maxLength={100}
+            maxLength={300}
           ></textarea>
         </div>
 
@@ -160,6 +156,6 @@ const ProfilePage: FC = () => {
       </form>
     </main>
   );
-}
+};
 
 export default ProfilePage;

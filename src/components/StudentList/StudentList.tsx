@@ -1,7 +1,7 @@
 import styles from "./StudentList.module.css";
 import clearIcon from "../../images/clear.png";
 import { useEffect, useState } from "react";
-import { getUsersData } from "../../utils/api/api";
+import { getUsersData, changesUsersData } from "../../utils/api/api";
 import { AddButtonWrapper } from "../AddButtonWrapepr/AddButtonWrapepr";
 
 export const StudentList = () => {
@@ -19,11 +19,15 @@ export const StudentList = () => {
     });
   }, []);
 
-  const userInput = (evt: any) => {
+  const setUserInput = (evt: any) => {
     handleChange((word = evt.target.value));
     if (word != "") {
       searchInList();
     }
+  };
+
+  const updateUserInfo = (email: any, cohort: any, id: any) => {
+    changesUsersData(email, cohort, id);
   };
 
   const clearSearch = () => {
@@ -37,7 +41,9 @@ export const StudentList = () => {
       fake.push(el.name, el.email, el.cohort);
       fake.map((w) => {
         if (w.includes(word)) {
-          temp.push(el);
+          if (!temp.includes(el)) {
+            temp.push(el);
+          }
         }
       });
     });
@@ -53,7 +59,7 @@ export const StudentList = () => {
             className={styles.search}
             placeholder="По имени или фамилии или почте или номеру когорты (введите любой из этих параметров)"
             value={word}
-            onChange={userInput}
+            onInput={setUserInput}
           />
           <img
             src={clearIcon}
@@ -61,54 +67,64 @@ export const StudentList = () => {
             onClick={clearSearch}
           />
         </div>
-        <ul className={styles.list_flags}>
-          <li>Номер когорты</li>
-          <li>E-mail</li>
-          <li>Имя и фамилия студента</li>
-        </ul>
-        <div className={styles.list_wrapper}>
-          <ul className={styles.list}>
-            {!word
-              ? studentsArr?.map((el: any) => (
-                  <li className={styles.list_item} key={el._id}>
-                    <input
-                      className={styles.list_item_text}
-                      defaultValue={el.cohort}
-                      tabIndex={-1}
-                    ></input>
-                    <input
-                      tabIndex={-1}
-                      className={styles.list_item_text}
-                      defaultValue={el.email}
-                    ></input>
-                    <input
-                      tabIndex={-1}
-                      className={styles.list_item_text}
-                      defaultValue={el.name}
-                    ></input>
-                  </li>
-                ))
-              : result.map((el: any) => (
-                  <li className={styles.list_item} key={el._id}>
-                    <input
-                      className={styles.list_item_text}
-                      defaultValue={el.cohort}
-                      tabIndex={-1}
-                    ></input>
-                    <input
-                      tabIndex={-1}
-                      className={styles.list_item_text}
-                      defaultValue={el.email}
-                    ></input>
-                    <input
-                      tabIndex={-1}
-                      className={styles.list_item_text}
-                      defaultValue={el.name}
-                    ></input>
-                  </li>
-                ))}
-          </ul>
-        </div>
+        {result.length === 0 && word ? (
+          <p className={styles.error}>
+            Не удалось никого найти. Исправьте запрос или сбросьте фильтр
+          </p>
+        ) : (
+          <>
+            <ul className={styles.list_flags}>
+              <li>Номер когорты</li>
+              <li>E-mail</li>
+              <li>Имя и фамилия студента</li>
+            </ul>
+            <div className={styles.list_wrapper}>
+              <ul className={styles.list}>
+                {!word
+                  ? studentsArr?.map((el: any) => (
+                      <li className={styles.list_item} key={el._id}>
+                        <input
+                          className={styles.list_item_text}
+                          defaultValue={el.cohort}
+                          tabIndex={-1}
+                          onChange={() =>
+                            updateUserInfo(el.email, el.cohort, el._id)
+                          }
+                        ></input>
+                        <input
+                          tabIndex={-1}
+                          className={styles.list_item_text}
+                          defaultValue={el.email}
+                          onChange={() =>
+                            updateUserInfo(el.email, el.cohort, el._id)
+                          }
+                        ></input>
+                        <p tabIndex={-1} className={styles.list_item_text}>
+                          {el.name}
+                        </p>
+                      </li>
+                    ))
+                  : result.map((el: any) => (
+                      <li className={styles.list_item} key={el._id}>
+                        <input
+                          className={styles.list_item_text}
+                          defaultValue={el.cohort}
+                          tabIndex={-1}
+                        ></input>
+                        <input
+                          tabIndex={-1}
+                          className={styles.list_item_text}
+                          defaultValue={el.email}
+                        ></input>
+                        <p tabIndex={-1} className={styles.list_item_text}>
+                          {el.name}
+                        </p>
+                      </li>
+                    ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
       <AddButtonWrapper />
     </div>
