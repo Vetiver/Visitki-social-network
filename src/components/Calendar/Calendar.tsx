@@ -24,7 +24,10 @@ export const Calendar:FC = (): JSX.Element => {
 
   const setNewYear = (evt: any) => {
     setYear((year = evt.target.value));
+    console.log(evt.target)
   };
+
+   console.log(date)
 
   const setNewMonth = (evt: any) => {
     setMonth((month = evt.target.value));
@@ -72,7 +75,7 @@ export const Calendar:FC = (): JSX.Element => {
       <img className={styles.icon} src={calendarIcon} onClick={showCalendar} alt="Календарь"/>
       <input
         className={styles.input}
-        defaultValue={`${date}.${monthsNumbers[month]}.${year}`}
+        value={`${date}.${monthsNumbers[month]}.${year}`}
       ></input>
       {isShow && (
         <div className={styles.calendar_box}>
