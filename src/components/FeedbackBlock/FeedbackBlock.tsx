@@ -10,6 +10,7 @@ import surprisedIcon from "../../icons/reactions/😱️.svg";
 import smiledIcon from "../../icons/reactions/🙂️.svg";
 
 import styles from "./FeedbackBlock.module.css";
+import { type } from "@testing-library/user-event/dist/type";
 
 export const defaultReactionsArray = [
   { item: thumbsUpIcon, count: 2 },
@@ -23,7 +24,11 @@ export const defaultReactionsArray = [
   { item: smiledIcon, count: 0 },
 ];
 
-const FeedbackBlock: FC<{open: boolean}> = ({ open }): JSX.Element => {
+type TFeedbackBlock={
+  open: boolean
+}
+
+const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
   const [reactions, setReactions] = useState([{ item: thumbsUpIcon, count: 0 }]);
 

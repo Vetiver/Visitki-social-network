@@ -6,11 +6,12 @@ interface IChatIcon {
 }
 
 const ChatIcon: FC<IChatIcon> = ({ count }): JSX.Element => {
-  
-  const [isCount ,setIsCount] = useState(false)
+  const [isCount, setIsCount] = useState(false);
   useEffect(() => {
     if (count) {
-      setIsCount(true);
+      if (count > 0) {
+        setIsCount(true);
+      }
     }
   }, [count]);
 

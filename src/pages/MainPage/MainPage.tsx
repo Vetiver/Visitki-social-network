@@ -62,7 +62,7 @@ const MainPage: FC = (): JSX.Element => {
       })
     );
   }, []);
-
+  
   return (
     <div className={styles.main}>
       <div className={styles.mainOptions}>
