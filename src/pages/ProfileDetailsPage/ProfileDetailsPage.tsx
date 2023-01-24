@@ -9,7 +9,7 @@ import styles from "./ProfileDetailsPage.module.css";
 
 const ProfileDetailsPage: FC = () => {
 
-  const [theme , setTheme] = useState({profilePhotoStyle:"cocky", statusColor:"default", borderDetailsOther:"default"})
+  const [theme , setTheme] = useState({profilePhotoStyle:"default", statusColor:"default", borderDetailsOther:"default"})
 
   return (
     <main className={styles.profileDetailsContainer}>
@@ -40,10 +40,10 @@ const ProfileDetailsPage: FC = () => {
         <div className={styles.profileDetailsMainInfoStatus}>
           <div className={styles.profileDetailsMainInfoStatusIconContainer}>
             {/* Цвет в зависимости от темы передаем в stroke:#100C34 или #FF00A8  */}
-            <StatusIcon stroke="#100C34" />
+            <StatusIcon stroke={theme.statusColor!== "default" ? "#FF00A8" : "#100C34"} />
           </div>
 
-          <h3 className={styles.profileDetailsMainInfoStatusText}>
+          <h3 className={`${styles.profileDetailsMainInfoStatusText} ${theme.statusColor!== "default" && styles.profileDetailsMainInfoColor}`}>
             Эй, приятель, я думаю, ты ошибся дверью, клуб любителей кожаных
             вещей двумя этажами ниже.
           </h3>
@@ -56,7 +56,7 @@ const ProfileDetailsPage: FC = () => {
       {/* Нижняя часть с деталями */}
       <div className={styles.profileDetailsOther}>
         <ProfileDetailsOtherBlock
-          theme={false}
+          theme={theme.borderDetailsOther !== "default" ? true : false}
           title="Увлечения"
           image="https://icdn.lenta.ru/images/2021/09/15/18/20210915183555038/square_1280_125ceca6620766b9a6467fa3159615c9.jpg"
           description="Увлекаюсь программированием, игрой на гитаре, вышиваю крестиком и
