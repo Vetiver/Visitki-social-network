@@ -33,13 +33,6 @@ export type TAuth = {
   id: string | null;
 };
 
-export type TContext =
-  | {
-      state: TAuth;
-      setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
-    }
-  | any;
-
 //Работа с API бекенда
 //Краткая информация о студенте
 export type TUserDataDetail = {
@@ -124,15 +117,27 @@ export type TComment = {
   target: string;
   to: {
     _id: string;
-    name: string;
+    createdAt: null;
     email: string;
   };
 };
-
 //Получение всех комментариев пользователей
 export type TCommentsRequest = {
   total: number;
   items: TComment[];
+};
+
+export type TContext = {
+      state: TAuth;
+      setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
+    }
+  | any;
+
+export type TProfileDataRequest = {};
+
+export type TFile = {
+  email: string;
+  cohort: string;
 };
 
 export type TProtectedLink = {

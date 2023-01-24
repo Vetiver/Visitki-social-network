@@ -1,9 +1,9 @@
-import styles from "./Calendar.module.css";
+import styles from "./CalendarInput.module.css";
 import { months } from "../../utils/dates";
 import { FC, useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
 
-export const Calendar:FC = (): JSX.Element => {
+export const CalendarInput:FC = () => {
   let todayYear = 0;
   todayYear = new Date().getFullYear();
   let years = [];
@@ -24,10 +24,7 @@ export const Calendar:FC = (): JSX.Element => {
 
   const setNewYear = (evt: any) => {
     setYear((year = evt.target.value));
-    console.log(evt.target)
   };
-
-   console.log(date)
 
   const setNewMonth = (evt: any) => {
     setMonth((month = evt.target.value));
@@ -75,6 +72,7 @@ export const Calendar:FC = (): JSX.Element => {
       <img className={styles.icon} src={calendarIcon} onClick={showCalendar} alt="Календарь"/>
       <input
         className={styles.input}
+        readOnly
         value={`${date}.${monthsNumbers[month]}.${year}`}
       ></input>
       {isShow && (

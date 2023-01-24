@@ -20,7 +20,6 @@ const App: FC = (): JSX.Element => {
     id: "e638ad9bce6d7efd1b5b035b",
     userData: null,
   });
-
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;

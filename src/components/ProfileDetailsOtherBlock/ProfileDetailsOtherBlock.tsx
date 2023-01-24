@@ -26,13 +26,13 @@ const ProfileDetailsOtherBlock:FC<TProfileDetailsOtherBlock> = ({theme, title, i
       <img
         className={styles.profileDetailsOtherBlockBorder}
         src={theme? imgBorderZig : imgBorderSolid}
-        alt="border"
+        alt="рамка"
       />
       <h4 className={styles.profileDetailsOtherBlockTitle}>{title}</h4>
       {isImg && <img
         className={styles.profileDetailsOtherBlockImg}
         src={image}
-        alt="photo"
+        alt="фото"
       />}
       <p className={styles.profileDetailsOtherBlockDescription}>
         {description}

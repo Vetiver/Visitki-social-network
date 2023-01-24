@@ -32,8 +32,6 @@
   align-items: center;
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
-  /* После добавления роутинга text-decoration нужно удалить */
-  text-decoration: none;
 }
 
 .accountBox:hover {

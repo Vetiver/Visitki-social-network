@@ -27,7 +27,6 @@ const MainPage: FC = (): JSX.Element => {
   const [cards, setCards] = useState<TCards>({
     users: null,
   });
-  console.log(cards.users)
   const sortRef: any = useRef(null);
 
   // Открытие/закрытие фильтра

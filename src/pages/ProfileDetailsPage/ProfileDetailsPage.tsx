@@ -40,7 +40,7 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
           <div className={styles.profileDetailsMain}>
             <div className={styles.profileDetailsMainInfo}>
               <h1 className={styles.profileDetailsMainInfoName}>
-                {userData.profile.name}
+                {userData.profile.name}ffgdfgfdfgdfv
               </h1>
               <p className={styles.profileDetailsMainInfoTown}>
                 {userData.profile.city.name}

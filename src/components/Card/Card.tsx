@@ -15,9 +15,6 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
   const [statusComments, setStatusComments] = useState<any>([]);
   const [jobComments, setJobComments] = useState<any>([]);
   const [photoComments, setPhotoComments] = useState<any>([]);
- 
-  console.log(userComments);
-  
 
   const openFeedback = () => {
     setIsOpen(!isOpen);

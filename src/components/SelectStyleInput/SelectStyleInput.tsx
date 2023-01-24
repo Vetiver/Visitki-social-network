@@ -36,15 +36,15 @@ function SelectStyleInput(): JSX.Element {
         className={styles.select}
         ref={selectForStyles}
         onClick={setSelectStylesActive}
-      ></input>
+      />
       {selectStyleData.active && (
         <div className={styles.select__content}>
           <ul
             className={styles.select__list}
             onClick={setSelectStyleDataContent}
           >
-            {dataForSelectStyles.map((el) => (
-              <li className={styles.select__item}>{el}</li>
+            {dataForSelectStyles.map((el, index) => (
+              <li className={styles.select__item} key={index} >{el}</li>
             ))}
           </ul>
         </div>
