@@ -30,7 +30,7 @@ export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: any | null;
-  id: string | null;
+  id: string;
 };
 
 //Работа с API бекенда
@@ -112,15 +112,18 @@ export type TComment = {
   text: string;
   _id: string;
   from: {
-    value: string;
+    email: string,
+    name: string,
+    _id: string
   };
   target: string;
   to: {
     _id: string;
-    createdAt: null;
-    email: string;
+    name: string,
+    email: string
   };
 };
+
 //Получение всех комментариев пользователей
 export type TCommentsRequest = {
   total: number;

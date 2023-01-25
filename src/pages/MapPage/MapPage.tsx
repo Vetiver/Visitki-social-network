@@ -13,8 +13,6 @@ import {
 import { getDefaultProfiles } from "../../utils/api/api";
 import placeMarkIcon from "../../icons/placemark.svg";
 import {
-  TDefaultProfileData,
-  TProfileID,
   TStateDataMapPage,
 } from "../../utils/types";
 

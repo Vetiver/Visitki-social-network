@@ -51,7 +51,7 @@ export const patchUserProfile = async (
 
 //Получение всех реакций
 export const getReactionsData = async (_id: string) => {
-  return await request(`/profiles/:${_id}/reactions`, {
+  return await request(`/profiles/${_id}/reactions`, {
     method: "GET",
     headers: api.headers,
   });

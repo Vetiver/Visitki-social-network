@@ -10,11 +10,11 @@ import surprisedIcon from "../../icons/reactions/😱️.svg";
 import smiledIcon from "../../icons/reactions/🙂️.svg";
 
 import styles from "./FeedbackBlock.module.css";
-import { type } from "@testing-library/user-event/dist/type";
+import { getReactionsData } from "../../utils/api/api";
 
 export const defaultReactionsArray = [
-  { item: thumbsUpIcon, count: 2 },
-  { item: thumbsDownIcon, count: 1 },
+  { item: thumbsUpIcon, count: 0 },
+  { item: thumbsDownIcon, count: 0 },
   { item: waveIcon, count: 0 },
   { item: funnyIcon, count: 0 },
   { item: likedIcon, count: 0 },
@@ -24,13 +24,37 @@ export const defaultReactionsArray = [
   { item: smiledIcon, count: 0 },
 ];
 
-type TFeedbackBlock={
-  open: boolean
-}
+type TFeedbackBlock = {
+  open: boolean;
+  //Дописать тип для реакций
+  userData: any;
+  location: string;
+};
 
-const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
+const FeedbackBlock: FC<TFeedbackBlock> = ({
+  open,
+  userData,
+  location,
+}): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
-  const [reactions, setReactions] = useState([{ item: thumbsUpIcon, count: 0 }]);
+  const [reactians, setReactions] = useState(null);
+
+  useEffect(() => {
+    let reactionsForMainPage = null;
+    console.log(userData.reactians)
+    if (userData.reactians) {
+      if (
+        location === ("/" || `cohort/:${userData._id}`)
+      ) {
+        reactionsForMainPage = userData.reactians.items.filter(
+          (item: any) => item.target === "hobby"
+        ); console.log(reactionsForMainPage)
+        reactionsForMainPage
+          ? setReactions(reactionsForMainPage)
+          : setReactions(null);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -40,11 +64,8 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
     }
   }, [open]);
 
-  useEffect(() => {
-    setReactions(defaultReactionsArray)
-  }, []);
+  console.log(reactians);
   
-
   return (
     <div
       className={`${styles.feedback} ${
@@ -55,24 +76,122 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
       Классные у тебя увлечения, я тоже играю в настолки, любимая игра
       — Эволюция. Люблю еще музыку
     </p> */}
+      
       <textarea
         className={styles.feedbackTextArea}
         placeholder="Обратная связь"
       ></textarea>
       <div className={styles.feedbackReactions}>
-        {reactions?.map((reaction:any ,index:number) => (
-          <div key={index} className={styles.feedbackReaction} >
-            <img
-              className={styles.feedbackReactionImg}
-              src={reaction.item}
-              alt="emoji"
-            />
-           {reaction.count > 0 && <p className={styles.feedbackReactionCount}>{reaction.count}</p>}
-          </div>
-        ))}
+        {/* {reactians && reactians.map((data: any, index: number) => (
+            <div key={index} className={styles.feedbackReaction}>
+              <img
+                className={styles.feedbackReactionImg}
+                src={data.item}
+                alt="emoji"
+              />
+              <p className={styles.feedbackReactionCount}>{data.total.count}</p>
+            </div>
+          ))} */}
+
+        {/* {reactions.isRequest
+          ? reactions.reactionsData.map((reaction: any, index: number) => (
+              <div key={index} className={styles.feedbackReaction}>
+                <img
+                  className={styles.feedbackReactionImg}
+                  src={reaction.item}
+                  alt="emoji"
+                />
+                {reaction.count > 0 && (
+                  <p className={styles.feedbackReactionCount}>
+                    {reaction.count}
+                  </p>
+                )}
+              </div>
+            ))
+          : defaultReactionsArray.map((reaction: any, index: number) => (
+              <div key={index} className={styles.feedbackReaction}>
+                <img
+                  className={styles.feedbackReactionImg}
+                  src={reaction.item}
+                  alt="emoji"
+                />
+                {reaction.count > 0 && (
+                  <p className={styles.feedbackReactionCount}>
+                    {reaction.count}
+                  </p>
+                )}
+              </div>
+            ))} */}
       </div>
     </div>
   );
 };
 
 export default FeedbackBlock;
+
+// const [reactions, setReactions] = useState<any>([
+//   { item: null, count: 0 },
+// ]);
+
+// const [commentsData, setCommentsData] = useState<any>({
+//   isRequest: false,
+//   hobby: null,
+//   edu: null,
+//   status: null,
+//   job: null,
+//   photo: null,
+//   quote: null,
+// });
+
+// //Функция проверки есть ли комментарии
+// const checkComments = (commentsData: TCommentsRequest) => {
+//   return commentsData.items ? true : false;
+// };
+
+// //Функция фильтрации комментариев
+// const filterComments = (target: string) => {
+//   switch (target) {
+//     case "hobby":
+//       setCommentsData({ ...commentsData, hobby: target });
+//       console.log("1");
+//       break;
+//     case "job":
+//       setCommentsData({ ...commentsData, job: target });
+//       console.log("2");
+//       break;
+//     case "status":
+//       setCommentsData({ ...commentsData, status: target });
+//       console.log("3");
+//       break;
+//     case "quote":
+//       setCommentsData({ ...commentsData, quote: target });
+//       console.log("4");
+//       break;
+//     case "photo":
+//       setCommentsData({ ...commentsData, photo: target });
+//       console.log("5");
+//       break;
+//     default:
+//       break;
+//   }
+// };
+
+// const getComments = useCallback(() => {
+//   if (!commentsData.isRequest) {
+//     getCommentsData().then((res) => {
+//       if (checkComments(res)) {
+//         const commentsDataArray = res.items;
+//         for (let index = 0; index < commentsDataArray.length; index++) {
+//           let commentData = commentsDataArray[index];
+//           //Почините бекенд!
+//           if (commentData.target === null) {
+//             commentData.target = "photo"
+//           }
+//           filterComments(commentData.target);
+//           console.log(commentsData)
+//         }
+//       }
+//     });
+//   }
+//   console.log(commentsData);
+// }, [profileID]);

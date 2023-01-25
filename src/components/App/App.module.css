@@ -14,7 +14,7 @@
   justify-content: space-between;
   width: 100%;
 }
-.main{
+.main {
   display: flex;
   min-height: calc(100vh - 177px);
   width: 100%;
@@ -23,7 +23,7 @@
 }
 a {
   text-decoration: none;
-  }
+}
 @media screen and (max-width: 500px) {
   .main {
     min-height: calc(100vh - 145px);

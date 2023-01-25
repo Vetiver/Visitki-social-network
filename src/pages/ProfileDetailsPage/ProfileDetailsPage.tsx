@@ -1,19 +1,28 @@
-import { FC, useState, useContext, useEffect } from "react";
+import {
+  FC,
+  useState,
+  useEffect,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
 import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
-import ProfilePhotoTest from "../../images/ProfilePhotoTest.jpg";
 import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/ProfileDetailsOtherBlock";
 import styles from "./ProfileDetailsPage.module.css";
-import { AuthContext } from "../../services/AuthContext";
 import Preloader from "../../components/Preloader/Preloader";
-import { getUserProfile } from "../../utils/api/api";
-import { TProfileDetailsID, TProfileID } from "../../utils/types";
+import { getCommentsData, getUserProfile } from "../../utils/api/api";
+import {
+  TProfileDetailsID,
+  TProfileID
+} from "../../utils/types";
 import { useLocation } from "react-router";
 
-const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
+const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
   const location = useLocation();
+  const [userData, setUserData] = useState<TProfileID | null>(null);
   //С сервера не приходят данные о теме.
   //Варианты для тестирования "default", "daring", "romantic".
   const [theme, setTheme] = useState({
@@ -21,12 +30,78 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
     statusColor: "default",
     borderDetailsOther: "default",
   });
-  const [userData, setUserData] = useState<TProfileID | null>(null);
-  const profileId = location.pathname.split(":")[1] || null;
+
+  //Получение ID пользователя
+  const profileID = useMemo(() => {
+    return location.pathname.split(":")[1] || null;
+  }, [location.pathname]);
+
+  // const [commentsData, setCommentsData] = useState<any>({
+  //   isRequest: false,
+  //   hobby: null,
+  //   edu: null,
+  //   status: null,
+  //   job: null,
+  //   photo: null,
+  //   quote: null,
+  // });
+
+  // //Функция проверки есть ли комментарии
+  // const checkComments = (commentsData: TCommentsRequest) => {
+  //   return commentsData.items ? true : false;
+  // };
+
+  // //Функция фильтрации комментариев
+  // const filterComments = (target: string) => {
+  //   switch (target) {
+  //     case "hobby":
+  //       setCommentsData({ ...commentsData, hobby: target });
+  //       console.log("1");
+  //       break;
+  //     case "job":
+  //       setCommentsData({ ...commentsData, job: target });
+  //       console.log("2");
+  //       break;
+  //     case "status":
+  //       setCommentsData({ ...commentsData, status: target });
+  //       console.log("3");
+  //       break;
+  //     case "quote":
+  //       setCommentsData({ ...commentsData, quote: target });
+  //       console.log("4");
+  //       break;
+  //     case "photo":
+  //       setCommentsData({ ...commentsData, photo: target });
+  //       console.log("5");
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  // const getComments = useCallback(() => {
+  //   if (!commentsData.isRequest) {
+  //     getCommentsData().then((res) => {
+  //       if (checkComments(res)) {
+  //         const commentsDataArray = res.items;
+  //         for (let index = 0; index < commentsDataArray.length; index++) {
+  //           let commentData = commentsDataArray[index];
+  //           //Почините бекенд!
+  //           if (commentData.target === null) {
+  //             commentData.target = "photo"
+  //           }
+  //           filterComments(commentData.target);
+  //           console.log(commentsData)
+  //         }
+  //       }
+  //     });
+  //   }
+  //   console.log(commentsData);
+  // }, [profileID]);
 
   useEffect(() => {
-    if (profileId) {
-      getUserProfile(profileId).then((res: TProfileID) => setUserData(res));
+    if (profileID) {
+      getUserProfile(profileID).then((res: TProfileID) => setUserData(res));
     }
   }, []);
 
@@ -36,11 +111,10 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
         <Preloader />
       ) : (
         <>
-          {/* Верхняя часть профиля */}
           <div className={styles.profileDetailsMain}>
             <div className={styles.profileDetailsMainInfo}>
               <h1 className={styles.profileDetailsMainInfoName}>
-                {userData.profile.name}ffgdfgfdfgdfv
+                {userData.profile.name}
               </h1>
               <p className={styles.profileDetailsMainInfoTown}>
                 {userData.profile.city.name}
