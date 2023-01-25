@@ -3,7 +3,8 @@
   top: 40px;
   right: 0px;
   width: 100%;
-  max-width: 325px;
+  /* max-width: 325px; */
+  max-width: 100%;
   max-height: 273px;
   min-height: 89px;
   background: #ffffff;
@@ -15,6 +16,7 @@
   padding: 12px 12px 0;
   visibility: hidden;
   box-sizing: border-box;
+  z-index: 10;
 }
 .feedbackVisibility {
   visibility: visible;
@@ -23,6 +25,8 @@
 .feedbackText {
   margin: 0;
   max-width: 297px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #100c34;
 }
 .feedbackTextArea {
   max-width: 297px;
@@ -38,12 +42,39 @@
   resize: none;
   border-radius: 4px;
 }
+
+::-webkit-input-placeholder {
+  transform: translateY(0.5rem);
+}
+
+:-moz-placeholder {
+  transform: translateY(0.5rem);
+}
+
+::-moz-placeholder {
+  transform: translateY(0.5rem);
+}
+
+:-ms-input-placeholder {
+  transform: translateY(0.5rem);
+}
+
+/* Для изменения размеров */
+.feedbackTextAreaForDetailsOther {
+  max-width: 416px;
+}
+
 .feedbackReactions {
   max-width: 297px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 6px;
+}
+
+/* Для изменения размеров */
+.feedbackReactionsForDetailsOther {
+  max-width: 406px;
 }
 
 .feedbackReaction {

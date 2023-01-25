@@ -1,11 +1,4 @@
-import {
-  FC,
-  useState,
-  useEffect,
-  useContext,
-  useCallback,
-  useMemo,
-} from "react";
+import { FC, useState, useEffect, SyntheticEvent, useMemo } from "react";
 import TelegramIcon from "../../components/Icons/TelegramIcon/TelegramIcon";
 import GitHubIcon from "../../components/Icons/GitHubIcon/GitHubIcon";
 import StatusIcon from "../../components/Icons/StatusIcon/StatusIcon";
@@ -14,11 +7,9 @@ import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/
 import styles from "./ProfileDetailsPage.module.css";
 import Preloader from "../../components/Preloader/Preloader";
 import { getCommentsData, getUserProfile } from "../../utils/api/api";
-import {
-  TProfileDetailsID,
-  TProfileID
-} from "../../utils/types";
+import { TProfileDetailsID, TProfileID } from "../../utils/types";
 import { useLocation } from "react-router";
+import FeedbackBlock from "../../components/FeedbackBlock/FeedbackBlock";
 
 const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
   const location = useLocation();
@@ -30,6 +21,21 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
     statusColor: "default",
     borderDetailsOther: "default",
   });
+
+  const [isOpen, setIsOpen] = useState({
+    status: false,
+    photo: false,
+  });
+
+  const openFeedback = (item: string) => {
+    item === "status"
+      ? !isOpen.status
+        ? setIsOpen({ ...isOpen, status: true })
+        : setIsOpen({ ...isOpen, status: false })
+      : !isOpen.photo
+      ? setIsOpen({ ...isOpen, photo: true })
+      : setIsOpen({ ...isOpen, photo: false });
+  };
 
   //Получение ID пользователя
   const profileID = useMemo(() => {
@@ -135,6 +141,11 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
               </div>
             </div>
             <div className={styles.profileDetailsMainInfoImgContainer}>
+              <FeedbackBlock
+                open={isOpen.photo}
+                userData={userData}
+                location={location.pathname}
+              />
               <img
                 className={`${styles.profileDetailsMainInfoImg} 
               ${
@@ -146,11 +157,19 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
                 src={userData.profile.photo}
                 alt="ProfilePhoto"
               />
-              <div className={styles.profileDetailsMainInfoChatIcon}>
+              <div
+                className={styles.profileDetailsMainInfoChatIcon}
+                onClick={() => openFeedback("photo")}
+              >
                 <ChatIcon count={2} />
               </div>
             </div>
             <div className={styles.profileDetailsMainInfoStatus}>
+              <FeedbackBlock
+                open={isOpen.status}
+                userData={userData}
+                location={location.pathname}
+              />
               <div className={styles.profileDetailsMainInfoStatusIconContainer}>
                 {/* Цвет в зависимости от темы передаем в stroke:#100C34 или #FF00A8  */}
                 <StatusIcon
@@ -170,7 +189,10 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = (): any => {
                 Эй, приятель, я думаю, ты ошибся дверью, клуб любителей кожаных
                 вещей двумя этажами ниже.
               </h3>
-              <div className={styles.profileDetailsMainInfoStatusIcon}>
+              <div
+                className={styles.profileDetailsMainInfoStatusIcon}
+                onClick={() => openFeedback("status")}
+              >
                 <ChatIcon count={1} />
               </div>
             </div>
