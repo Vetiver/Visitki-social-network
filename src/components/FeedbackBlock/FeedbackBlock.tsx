@@ -8,20 +8,20 @@ import sadIcon from "../../icons/reactions/😞️.svg";
 import dissatisfiedIcon from "../../icons/reactions/😬️.svg";
 import surprisedIcon from "../../icons/reactions/😱️.svg";
 import smiledIcon from "../../icons/reactions/🙂️.svg";
-
+import hurtIcon from "../../icons/reactions/❤️.svg"
 import styles from "./FeedbackBlock.module.css";
-import { getReactionsData } from "../../utils/api/api";
 
 export const defaultReactionsArray = [
   { item: thumbsUpIcon, count: 0 },
   { item: thumbsDownIcon, count: 0 },
   { item: waveIcon, count: 0 },
-  { item: funnyIcon, count: 0 },
-  { item: likedIcon, count: 0 },
+  { item: smiledIcon, count: 0 },
   { item: sadIcon, count: 0 },
+  { item: funnyIcon, count: 0 },
   { item: dissatisfiedIcon, count: 0 },
   { item: surprisedIcon, count: 0 },
-  { item: smiledIcon, count: 0 },
+  { item: likedIcon, count: 0 },
+  { item: hurtIcon, count: 0 },
 ];
 
 type TFeedbackBlock = {
@@ -37,24 +37,41 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
   location,
 }): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
-  const [reactians, setReactions] = useState(null);
+  const [reactians, setReactions] = useState<any>({
+    reactiansData: null,
+    emotionsData: null,
+  });
 
   useEffect(() => {
     let reactionsForMainPage = null;
-    console.log(userData.reactians)
+    let emotions = null;
     if (userData.reactians) {
-      if (
-        location === ("/" || `cohort/:${userData._id}`)
-      ) {
+      console.log(userData.reactians);
+
+      if (location === ("/" || `cohort/:${userData._id}`)) {
+        //Для страницы main отображаются реакции к hobby хозяина выбранной карточки
         reactionsForMainPage = userData.reactians.items.filter(
           (item: any) => item.target === "hobby"
-        ); console.log(reactionsForMainPage)
+        );
+        emotions = reactionsForMainPage.filter((item: any) => item.emotion);
+        //Проверяем, если в полученных реакциях есть emotion, то добавляем их в хранилище,
+        //если нет, то добавляем только комментарии. Если нет ни комментариев ни смайликов,
+        //то возвращаем исходное состояние.
         reactionsForMainPage
-          ? setReactions(reactionsForMainPage)
-          : setReactions(null);
+          ? emotions.lengh > 0
+            ? setReactions({
+                ...reactians,
+                reactiansData: reactionsForMainPage,
+                emotionsData: emotions,
+              })
+            : setReactions({
+                ...reactians,
+                reactiansData: reactionsForMainPage,
+              })
+          : setReactions({ reactiansData: null, emotionsData: null });
       }
     }
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (open) {
@@ -64,64 +81,48 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
     }
   }, [open]);
 
-  console.log(reactians);
-  
   return (
     <div
       className={`${styles.feedback} ${
         feedbackVisibility && styles.feedbackVisibility
       }`}
     >
-      {/* <p className={styles.feedbackText}>
-      Классные у тебя увлечения, я тоже играю в настолки, любимая игра
-      — Эволюция. Люблю еще музыку
-    </p> */}
-      
+      {reactians.reactiansData && (
+        <p className={styles.feedbackText}>
+          {reactians.reactiansData.map((reaction: any) => reaction.text)}
+        </p>
+      )}
       <textarea
         className={styles.feedbackTextArea}
         placeholder="Обратная связь"
       ></textarea>
       <div className={styles.feedbackReactions}>
-        {/* {reactians && reactians.map((data: any, index: number) => (
+        {reactians.emotians &&
+          reactians.emotians.map((reaction: any, index: number) => (
             <div key={index} className={styles.feedbackReaction}>
               <img
                 className={styles.feedbackReactionImg}
-                src={data.item}
+                src={reaction.item}
                 alt="emoji"
               />
-              <p className={styles.feedbackReactionCount}>{data.total.count}</p>
+              {reaction.count > 0 && (
+                <p className={styles.feedbackReactionCount}>{reaction.count}</p>
+              )}
             </div>
-          ))} */}
-
-        {/* {reactions.isRequest
-          ? reactions.reactionsData.map((reaction: any, index: number) => (
-              <div key={index} className={styles.feedbackReaction}>
-                <img
-                  className={styles.feedbackReactionImg}
-                  src={reaction.item}
-                  alt="emoji"
-                />
-                {reaction.count > 0 && (
-                  <p className={styles.feedbackReactionCount}>
-                    {reaction.count}
-                  </p>
-                )}
-              </div>
-            ))
-          : defaultReactionsArray.map((reaction: any, index: number) => (
-              <div key={index} className={styles.feedbackReaction}>
-                <img
-                  className={styles.feedbackReactionImg}
-                  src={reaction.item}
-                  alt="emoji"
-                />
-                {reaction.count > 0 && (
-                  <p className={styles.feedbackReactionCount}>
-                    {reaction.count}
-                  </p>
-                )}
-              </div>
-            ))} */}
+          ))}
+        {!reactians.emotians &&
+          defaultReactionsArray.map((reaction: any, index: number) => (
+            <div key={index} className={styles.feedbackReaction}>
+              <img
+                className={styles.feedbackReactionImg}
+                src={reaction.item}
+                alt="emoji"
+              />
+              {reaction.count > 0 && (
+                <p className={styles.feedbackReactionCount}>{reaction.count}</p>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -129,69 +130,3 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
 
 export default FeedbackBlock;
 
-// const [reactions, setReactions] = useState<any>([
-//   { item: null, count: 0 },
-// ]);
-
-// const [commentsData, setCommentsData] = useState<any>({
-//   isRequest: false,
-//   hobby: null,
-//   edu: null,
-//   status: null,
-//   job: null,
-//   photo: null,
-//   quote: null,
-// });
-
-// //Функция проверки есть ли комментарии
-// const checkComments = (commentsData: TCommentsRequest) => {
-//   return commentsData.items ? true : false;
-// };
-
-// //Функция фильтрации комментариев
-// const filterComments = (target: string) => {
-//   switch (target) {
-//     case "hobby":
-//       setCommentsData({ ...commentsData, hobby: target });
-//       console.log("1");
-//       break;
-//     case "job":
-//       setCommentsData({ ...commentsData, job: target });
-//       console.log("2");
-//       break;
-//     case "status":
-//       setCommentsData({ ...commentsData, status: target });
-//       console.log("3");
-//       break;
-//     case "quote":
-//       setCommentsData({ ...commentsData, quote: target });
-//       console.log("4");
-//       break;
-//     case "photo":
-//       setCommentsData({ ...commentsData, photo: target });
-//       console.log("5");
-//       break;
-//     default:
-//       break;
-//   }
-// };
-
-// const getComments = useCallback(() => {
-//   if (!commentsData.isRequest) {
-//     getCommentsData().then((res) => {
-//       if (checkComments(res)) {
-//         const commentsDataArray = res.items;
-//         for (let index = 0; index < commentsDataArray.length; index++) {
-//           let commentData = commentsDataArray[index];
-//           //Почините бекенд!
-//           if (commentData.target === null) {
-//             commentData.target = "photo"
-//           }
-//           filterComments(commentData.target);
-//           console.log(commentsData)
-//         }
-//       }
-//     });
-//   }
-//   console.log(commentsData);
-// }, [profileID]);

@@ -35,13 +35,12 @@ const Card: FC<TCardProps> = ({ img, name, city, id }): JSX.Element => {
       });
       //если карточка пренадлежит не пользвоателю и не администратору
     } else if (id !== state.id) {
-      console.log("user");
       setUserData({
         ...userData,
-        data: state.userData
+        data: state.userData,
       });
     } else {
-      console.log("gost");
+      //console.log("gost");
       getUserProfile(id).then((resData: TProfileID) => {
         getReactionsData(id).then((resReactians) => {
           setUserData({ ...userData, data: resData, reactians: resReactians });
@@ -52,15 +51,20 @@ const Card: FC<TCardProps> = ({ img, name, city, id }): JSX.Element => {
 
   return (
     <div className={styles.card}>
-      <Link to={`details/:${id}`}>
-        <div className={styles.cardImgContainer}>
+      <div className={styles.cardImgContainer}>
+        <Link to={`details/:${id}`}>
           <img className={styles.cardImg} src={img} alt="ProfilePhoto" />
-          <FeedbackBlock open={isOpen} userData={userData} location={location.pathname} />
-        </div>
-
+        </Link>
+        <FeedbackBlock
+          open={isOpen}
+          userData={userData}
+          location={location.pathname}
+        />
+      </div>
+      <Link to={`details/:${id}`}>
         <p className={styles.cardName}>{name}</p>
+        <p className={styles.cardPlace}>{city}</p>
       </Link>
-      <p className={styles.cardPlace}>{city}</p>
 
       <div className={styles.cardIcon} onClick={openFeedback}>
         <ChatIcon

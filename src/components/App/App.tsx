@@ -11,12 +11,12 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
-import { getReactionsData, getUserProfile } from "../../utils/api/api";
+import { getUserProfile } from "../../utils/api/api";
 
 const App: FC = (): JSX.Element => {
   const [state, setState] = useState<TAuth>({
     isAuth: false,
-    isAdmin: false,
+    isAdmin: true,
     id: "2cb3baaa7528a9bb5e2c20d9",
     userData: null
   });
