@@ -22,7 +22,6 @@ select {
 }
 
 .calendar_box {
-  margin-top: 4px;
   width: 216px;
   height: 184px;
   border: 1px solid black;
@@ -33,7 +32,7 @@ select {
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  top: 47px;
+  top: 80px;
   right: 0;
 }
 

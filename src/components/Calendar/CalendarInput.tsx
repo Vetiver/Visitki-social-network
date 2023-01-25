@@ -1,51 +1,9 @@
 import styles from "./CalendarInput.module.css";
 import { months } from "../../utils/dates";
-import { FC, useState } from "react";
+import { useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
 
-export const CalendarInput:FC = () => {
-  let todayYear = 0;
-  todayYear = new Date().getFullYear();
-  let years = [];
-  let days: number[] = [];
-  let psevdoDays: number[] = [];
-  for (let i = todayYear; i > 1960; i--) {
-    years.push(i);
-  }
-
-  let [isShow, setShow] = useState(false);
-  let [date, setDay] = useState(1);
-  let [year, setYear] = useState(todayYear);
-  let [month, setMonth] = useState("Январь");
-
-  const showCalendar = () => {
-    setShow((isShow) => !isShow);
-  };
-
-  const setNewYear = (evt: any) => {
-    setYear((year = evt.target.value));
-  };
-
-  const setNewMonth = (evt: any) => {
-    setMonth((month = evt.target.value));
-    prepareDays();
-  };
-
-  const setNewDay = (evt: any) => {
-    setDay((date = evt.target.value));
-  };
-
-  const prepareDays = () => {
-    for (let el of months) {
-      if (el.name === month) {
-        for (let i = 1; i <= el.days; i++) {
-          days.push(i);
-        }
-      }
-    }
-  };
-  prepareDays();
-
+export const CalendarInput = ({ info }: any) => {
   const monthsNumbers: { [key: string]: string } = {
     Январь: "01",
     Февраль: "02",
@@ -60,6 +18,61 @@ export const CalendarInput:FC = () => {
     Ноябрь: "11",
     Декабрь: "12",
   };
+  let todayYear = 0;
+  todayYear = new Date().getFullYear();
+  let years = [];
+  let days: number[] = [];
+  let psevdoDays: number[] = [];
+  for (let i = todayYear; i > 1960; i--) {
+    years.push(i);
+  }
+
+  let someDay: string[] = [];
+
+  if (info) {
+    someDay = new Date(info.profile.birthday)
+      .toLocaleString("ru", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      })
+      .split(".");
+    console.log(someDay);
+  }
+
+  let [isShow, setShow] = useState(false);
+  let [date, setDay] = useState(Number(someDay[0]));
+  let [year, setYear] = useState(someDay[2]);
+  let [month, setMonth] = useState(someDay[1]);
+
+  const showCalendar = () => {
+    setShow((isShow) => !isShow);
+  };
+
+  const setNewYear = (evt: any) => {
+    setYear((year = evt.target.value));
+  };
+
+  const setNewMonth = (evt: any) => {
+    setMonth((month = monthsNumbers[evt.target.value]));
+    prepareDays();
+  };
+
+  const setNewDay = (evt: any) => {
+    setDay((date = evt.target.value));
+  };
+
+  const prepareDays = () => {
+    console.log(month);
+    for (let el of months) {
+      if (el.number === month) {
+        for (let i = 1; i <= el.days; i++) {
+          days.push(i);
+        }
+      }
+    }
+  };
+  prepareDays();
 
   const psevdoDaysLeft = 35 - days.length;
 
@@ -68,13 +81,15 @@ export const CalendarInput:FC = () => {
   }
 
   return (
-    <div className={styles.section_wrapper}>
-      <img className={styles.icon} src={calendarIcon} onClick={showCalendar} alt="Календарь"/>
-      <input
-        className={styles.input}
-        readOnly
-        value={`${date}.${monthsNumbers[month]}.${year}`}
-      ></input>
+    <>
+      <div className={styles.section_wrapper} onClick={showCalendar}>
+        <img className={styles.icon} src={calendarIcon} alt="Календарь" />
+        <input
+          className={styles.input}
+          readOnly
+          value={`${date}.${month}.${year}`}
+        ></input>
+      </div>
       {isShow && (
         <div className={styles.calendar_box}>
           <div className={styles.buttons_wrapper}>
@@ -118,6 +133,6 @@ export const CalendarInput:FC = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };

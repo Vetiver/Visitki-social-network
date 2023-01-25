@@ -8,8 +8,47 @@
   box-sizing: border-box;
   max-height: 105px;
   padding: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: auto;
+  position: relative;
+}
+
+.profile_wrapper {
+  padding: 40px 24px 32px 24px;
+  position: absolute;
+  width: 296px;
+  height: 32px;
+  overflow: hidden;
+  box-sizing: border-box;
+  right: 0;
+  top: 0;
+  transition: 0.2s ease-in-out;
+  z-index: 2;
+  background-color: white;
+}
+
+.profile_button {
+  background-color: inherit;
+  border: none;
+  margin-top: 16px;
+  height: 36px;
+  width: 100%;
+  border-radius: 4px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 8px 143px 8px 36px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.profile_button:hover {
+  background-color: #f9f9f9;
+}
+
+.profile_wrapper:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 10px 10px;
+  height: 156px;
 }
 
 @media screen and (max-width: 500px) {

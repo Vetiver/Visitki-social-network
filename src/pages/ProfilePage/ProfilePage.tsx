@@ -11,16 +11,16 @@ import { AuthContext } from "../../services/AuthContext";
 import { TContext } from "../../utils/types";
 
 interface ProfileProps {
-  profile: any
+  profile: any;
 }
 
-const ProfilePage: FC<ProfileProps> = ({profile}) => {
+const ProfilePage: FC<ProfileProps> = ({ profile }) => {
   const { state, setState } = useContext<TContext>(AuthContext);
   const [file, setFile] = useState<any>();
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-
+  console.log(profile);
 
   return !!profile ? (
     <main className={styles.main}>
@@ -31,7 +31,11 @@ const ProfilePage: FC<ProfileProps> = ({profile}) => {
           <Avatar
             style={{ position: "relative", border: "1px solid black" }}
             className={styles.cover}
-            src={(file == null && state.userData.profile !== null) ? `${state.userData.profile.photo}` : file}
+            src={
+              file == null && state.userData.profile !== null
+                ? `${state.userData.profile.photo}`
+                : file
+            }
             color="white"
             round="100px"
             size="150px"
@@ -50,7 +54,7 @@ const ProfilePage: FC<ProfileProps> = ({profile}) => {
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-          <CalendarInput />
+          <CalendarInput info={profile} />
         </div>
 
         <div className={styles.input__container}>
@@ -169,7 +173,7 @@ const ProfilePage: FC<ProfileProps> = ({profile}) => {
         <button className={styles.profile__button}>Сохранить</button>
       </form>
     </main>
-  ) : null
-}
+  ) : null;
+};
 
 export default ProfilePage;
