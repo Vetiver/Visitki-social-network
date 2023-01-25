@@ -16,30 +16,32 @@ import { getProfiles } from "../../utils/api/api";
 import { getUserProfile } from "../../utils/api/api";
 import { TContext } from "../../utils/types";
 
-
 const App: FC = () => {
   const [profile, setProfileInfo] = useState<any>(null);
   const [state, setState] = useState<TAuth>({
     isAuth: false,
     userData: null,
-    isAdmin: false,
+    isAdmin: true,
     _id: null,
     allUsers: null,
   });
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;
-  console.log(profile)
+  console.log(profile);
   useEffect(() => {
     if (tokenLocal !== null) {
       //Записываем данные первого пользователя полученного из массива переданного бекендом
       getProfiles().then((res: TUsersDataDetail) =>
-        setState({ ...state, isAuth: true, userData: res.items[0], _id: res.items[0]._id, allUsers: res.items })
+        setState({
+          ...state,
+          isAuth: true,
+          userData: res.items[0],
+          _id: res.items[0]._id,
+          allUsers: res.items,
+        })
       );
-        getUserProfile(state._id).then((res) =>
-      setProfileInfo(res)
-      );
-      
+      getUserProfile(state._id).then((res) => setProfileInfo(res));
     }
   }, [state._id]);
 
@@ -49,8 +51,11 @@ const App: FC = () => {
         <Route path="/" element={<Layout />}>
           <Route element={<ProtectedRoute />}>
             <Route index element={<MainPage />} />
-            <Route path="profile" element={<ProfilePage profile={profile}/>} />
-            <Route path="details/:id" element={<ProfileDetailsPage allUsers={state.allUsers}/>} />
+            <Route path="profile" element={<ProfilePage profile={profile} />} />
+            <Route
+              path="details/:id"
+              element={<ProfileDetailsPage allUsers={state.allUsers} />}
+            />
             <Route path="admin" element={<AdminPage />} />
             <Route path="map" element={<MapPage />} />
           </Route>

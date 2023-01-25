@@ -10,7 +10,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  color: #100C34;
+  color: #100c34;
   margin: 0;
   max-width: 212px;
   max-height: 20px;
@@ -20,17 +20,12 @@
 }
 
 .accountBox {
+  width: 248px;
   display: flex;
   align-items: center;
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
   /* После добавления роутинга text-decoration нужно удалить */
   text-decoration: none;
-}
-
-.accountBox:hover {
-  opacity: 0.85;
-  cursor: url('../../icons/pointer_main.svg'), auto;
+  cursor: default;
 }
 
 @media screen and (max-width: 500px) {
