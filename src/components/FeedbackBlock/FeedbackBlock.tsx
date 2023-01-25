@@ -37,20 +37,20 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
   location,
 }): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
-  const [reactians, setReactions] = useState<any>({
-    reactiansData: null,
+  const [reactions, setReactions] = useState<any>({
+    reactionsData: null,
     emotionsData: null,
   });
 
   useEffect(() => {
     let reactionsForMainPage = null;
     let emotions = null;
-    if (userData.reactians) {
-      console.log(userData.reactians);
+    if (userData.reactions) {
+      console.log(userData.reactions);
 
       if (location === ("/" || `cohort/:${userData._id}`)) {
         //Для страницы main отображаются реакции к hobby хозяина выбранной карточки
-        reactionsForMainPage = userData.reactians.items.filter(
+        reactionsForMainPage = userData.reactions.items.filter(
           (item: any) => item.target === "hobby"
         );
         emotions = reactionsForMainPage.filter((item: any) => item.emotion);
@@ -60,15 +60,15 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
         reactionsForMainPage
           ? emotions.lengh > 0
             ? setReactions({
-                ...reactians,
-                reactiansData: reactionsForMainPage,
+                ...reactions,
+                reactionsData: reactionsForMainPage,
                 emotionsData: emotions,
               })
             : setReactions({
-                ...reactians,
-                reactiansData: reactionsForMainPage,
+                ...reactions,
+                reactionsData: reactionsForMainPage,
               })
-          : setReactions({ reactiansData: null, emotionsData: null });
+          : setReactions({ reactionsData: null, emotionsData: null });
       }
     }
   }, [open]);
@@ -87,9 +87,9 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
         feedbackVisibility && styles.feedbackVisibility
       }`}
     >
-      {reactians.reactiansData && (
+      {reactions.reactionsData && (
         <p className={styles.feedbackText}>
-          {reactians.reactiansData.map((reaction: any) => reaction.text)}
+          {reactions.reactionsData.map((reaction: any) => reaction.text)}
         </p>
       )}
       <textarea
@@ -97,8 +97,8 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
         placeholder="Обратная связь"
       ></textarea>
       <div className={styles.feedbackReactions}>
-        {reactians.emotians &&
-          reactians.emotians.map((reaction: any, index: number) => (
+        {reactions.emotians &&
+          reactions.emotians.map((reaction: any, index: number) => (
             <div key={index} className={styles.feedbackReaction}>
               <img
                 className={styles.feedbackReactionImg}
@@ -110,7 +110,7 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({
               )}
             </div>
           ))}
-        {!reactians.emotians &&
+        {!reactions.emotians &&
           defaultReactionsArray.map((reaction: any, index: number) => (
             <div key={index} className={styles.feedbackReaction}>
               <img
