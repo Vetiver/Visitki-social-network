@@ -112,6 +112,16 @@
   top: 70px;
   right: 18px;
 }
+
+.profileDetailsMainInfoStatusFeedback{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 60px;
+  right: 0px;
+}
+
+
 .profileDetailsMainInfoStatusText {
   color: #100c34;
   margin: 0;

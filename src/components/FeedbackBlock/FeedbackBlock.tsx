@@ -8,9 +8,7 @@ import sadIcon from "../../icons/reactions/😞️.svg";
 import dissatisfiedIcon from "../../icons/reactions/😬️.svg";
 import surprisedIcon from "../../icons/reactions/😱️.svg";
 import smiledIcon from "../../icons/reactions/🙂️.svg";
-
 import styles from "./FeedbackBlock.module.css";
-import { type } from "@testing-library/user-event/dist/type";
 
 export const defaultReactionsArray = [
   { item: thumbsUpIcon, count: 2 },
@@ -25,11 +23,15 @@ export const defaultReactionsArray = [
 ];
 
 type TFeedbackBlock={
-  open: boolean
+  open?: boolean,
+  comment?:string,
+  size?:string
 }
 
-const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
+const FeedbackBlock: FC<TFeedbackBlock> = ({ open, comment, size }): JSX.Element => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
+  // размеры для size: forCards, forDetails
+  const [feedbackSize, setFeedbackSize] = useState<any>("");
   const [reactions, setReactions] = useState([{ item: thumbsUpIcon, count: 0 }]);
 
   useEffect(() => {
@@ -44,24 +46,28 @@ const FeedbackBlock: FC<TFeedbackBlock> = ({ open }): JSX.Element => {
     setReactions(defaultReactionsArray)
   }, []);
   
+  useEffect(() => {
+    setFeedbackSize(size)
+  }, [size]);
+
+  
+  
 
   return (
     <div
       className={`${styles.feedback} ${
-        feedbackVisibility && styles.feedbackVisibility
-      }`}
+        feedbackVisibility && styles.feedbackVisibility}
+        ${feedbackSize === "forDetails" && styles.feedbackForDetailsOther}
+      `}
     >
-      {/* <p className={styles.feedbackText}>
-      Классные у тебя увлечения, я тоже играю в настолки, любимая игра
-      — Эволюция. Люблю еще музыку
-    </p> */}
+      {comment && <p className={styles.feedbackText}>{comment}</p>}
       <textarea
-        className={styles.feedbackTextArea}
+        className={`${styles.feedbackTextArea} ${feedbackSize === "forDetails" && styles.feedbackTextAreaForDetailsOther}`}
         placeholder="Обратная связь"
       ></textarea>
-      <div className={styles.feedbackReactions}>
+      <div className={`${styles.feedbackReactions} ${feedbackSize === "forDetails" && styles.feedbackReactionsForDetailsOther}`}>
         {reactions?.map((reaction:any ,index:number) => (
-          <div key={index} className={styles.feedbackReaction} >
+          <div key={index} className={`${styles.feedbackReaction} ${feedbackSize === "forDetails" && styles.feedbackReactionForDetailsOther}`} >
             <img
               className={styles.feedbackReactionImg}
               src={reaction.item}

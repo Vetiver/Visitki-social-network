@@ -15,11 +15,9 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
   const [statusComments, setStatusComments] = useState<any>([]);
   const [jobComments, setJobComments] = useState<any>([]);
   const [photoComments, setPhotoComments] = useState<any>([]);
+  const [photoCommentsForId, setPhotoCommentsForId] = useState<any>([]);
 
 
-
-
-  
 
   const openFeedback = () => {
     setIsOpen(!isOpen);
@@ -32,27 +30,27 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
     }
   }, []);
 
+//Получаем все комменты кучей
   useEffect(() => {
     if (id) {
       getCommentsData().then((res: any) => setUserComments(res));
     }
   }, []);
-
+  //Фильтруем комменты и рассовываем по хранилищам, пока всё достал тут, но надо будет перенести
   useEffect(() => {
     setHobbyComments(userComments.items?.filter((item:any)=>(item.target === 'hobby')));
     setEduComments(userComments.items?.filter((item:any)=>(item.target === 'edu')));
     setStatusComments(userComments.items?.filter((item:any)=>(item.target === 'status')));
     setJobComments(userComments.items?.filter((item:any)=>(item.target === 'job')));
     setPhotoComments(userComments.items?.filter((item:any)=>(item.target === null)));
+    if(photoComments){
+      setPhotoCommentsForId(photoComments?.filter((item:any)=>(item.from._id === id)));
+      
+     }
+  }, []);  
 
-  }, []);
 
   
-  
-
-    // setPhotoComments(userComments.items.filter((item:any) => item.target === null));
-    console.log(hobbyComments, eduComments, statusComments, jobComments);
-    
   
   
 
@@ -65,11 +63,12 @@ const Card:FC<TCardProps> = ({img, name, city, id}): JSX.Element => {
           src={img}
           alt="ProfilePhoto"
         />
-        <FeedbackBlock open={isOpen}/>
       </div>
       
         <p className={styles.cardName}>{name}</p>
       </Link>
+      <FeedbackBlock open={isOpen} comment={''}/>
+
       <p className={styles.cardPlace}>{city}</p>
 
       <div className={styles.cardIcon} onClick={openFeedback}>

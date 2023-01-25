@@ -11,17 +11,20 @@ import Preloader from "../../components/Preloader/Preloader";
 import { getUserProfile } from "../../utils/api/api";
 import { TProfileDetailsID, TProfileID } from "../../utils/types";
 import { useLocation } from "react-router";
+import FeedbackBlock from "../../components/FeedbackBlock/FeedbackBlock";
 
 const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
   const location = useLocation();
   //С сервера не приходят данные о теме.
   //Варианты для тестирования "default", "daring", "romantic".
   const [theme, setTheme] = useState({
-    profilePhotoStyle: "daring",
+    profilePhotoStyle: "default",
     statusColor: "default",
     borderDetailsOther: "default",
   });
   const [userData, setUserData] = useState<TProfileID | null>(null);
+  const [isOpenPhotoFeedback, setIsOpenPhotoFeedback] = useState(false);
+  const [isOpenInfoStatus, setIsOpenInfoStatus] = useState(false);
   const profileId = location.pathname.split(":")[1] || null;
 
   useEffect(() => {
@@ -29,6 +32,14 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
       getUserProfile(profileId).then((res: TProfileID) => setUserData(res));
     }
   }, []);
+
+  const openFeedbackPhoto = () => {
+    setIsOpenPhotoFeedback(!isOpenPhotoFeedback);
+  };
+  const openFeedbackInfoStatus = () => {
+    setIsOpenInfoStatus(!isOpenInfoStatus);
+  };
+
 
   return (
     <div className={styles.profileDetailsContainer}>
@@ -72,9 +83,12 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
                 src={userData.profile.photo}
                 alt="ProfilePhoto"
               />
-              <div className={styles.profileDetailsMainInfoChatIcon}>
+              <div className={styles.profileDetailsMainInfoChatIcon} onClick={openFeedbackPhoto}>
                 <ChatIcon count={2} />
               </div>
+              {/* Размер forDetails */}
+              <FeedbackBlock open={isOpenPhotoFeedback} size="forDetails"/>
+
             </div>
             <div className={styles.profileDetailsMainInfoStatus}>
               <div className={styles.profileDetailsMainInfoStatusIconContainer}>
@@ -96,8 +110,13 @@ const ProfileDetailsPage: FC<TProfileDetailsID> = ({ id }): JSX.Element => {
                 Эй, приятель, я думаю, ты ошибся дверью, клуб любителей кожаных
                 вещей двумя этажами ниже.
               </h3>
-              <div className={styles.profileDetailsMainInfoStatusIcon}>
+              <div className={styles.profileDetailsMainInfoStatusIcon} onClick={openFeedbackInfoStatus}>
                 <ChatIcon count={1} />
+              </div>
+              {/* Размер forCards */}
+              <div className={styles.profileDetailsMainInfoStatusFeedback}>
+              <FeedbackBlock open={isOpenInfoStatus} size="forCards"/>
+
               </div>
             </div>
           </div>
