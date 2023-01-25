@@ -4,7 +4,7 @@ import ChatIcon from "../../components/Icons/ChatIcon/ChatIcon";
 import FeedbackBlock from "../FeedbackBlock/FeedbackBlock";
 import styles from "./Card.module.css";
 
-const Card:FC<any> = ({img, name, city}) => {
+const Card:FC<any> = ({img, name, city, _id}) => {
   const [isOpen, setIsOpen] = useState(false);
   const openFeedback = () => {
     setIsOpen(!isOpen);
@@ -14,7 +14,7 @@ const Card:FC<any> = ({img, name, city}) => {
 
   return (
     <div className={styles.card}>
-      <Link to="details">
+      <Link to={`details/${_id}`}>
       <div className={styles.cardImgContainer}>
         <img
           className={styles.cardImg}

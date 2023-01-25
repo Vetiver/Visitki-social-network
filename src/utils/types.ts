@@ -14,6 +14,7 @@ export type TAuth  = {
   isAdmin: boolean;
   userData: any | null;
   _id: any;
+  allUsers?: any;
 };
 
 //Работа с API бекенда
@@ -25,6 +26,7 @@ export type TUserDataDetail = {
   createdAt: number;
   updatedAt: number;
   name: string;
+  allUsers?: any;
 };
 
 //Получение списка студентов

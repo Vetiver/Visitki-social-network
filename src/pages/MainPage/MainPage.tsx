@@ -106,6 +106,7 @@ const MainPage: FC = () => {
         {cards.users?.map((card: TProfileID) => (
           <Card
             key={card._id}
+            _id={card._id}
             img={card.profile.photo}
             name={card.profile.name}
             city={card.profile.city.name}

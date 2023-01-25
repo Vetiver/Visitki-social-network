@@ -17,10 +17,10 @@ interface ProfileProps {
 const ProfilePage: FC<ProfileProps> = ({profile}) => {
   const { state, setState } = useContext<TContext>(AuthContext);
   const [file, setFile] = useState<any>();
-  console.log(profile)
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+
 
   return !!profile ? (
     <main className={styles.main}>
