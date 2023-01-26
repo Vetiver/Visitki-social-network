@@ -3,7 +3,7 @@
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  padding: 0 30px 0;
+  padding: 0 40px 0;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@
 }
 .mainOptions {
   width: 100%;
-  max-width: 1360px;
   padding: 10px 0 40px;
   display: flex;
   align-items: center;
@@ -50,23 +49,22 @@
   width: 15px;
   height: 7.5px;
   padding: 20px 16px 20px 0;
-  
 }
 
 .mainTownFilterMenu {
   z-index: 2;
   position: absolute;
-  top:46px;
+  top: 46px;
   right: -1px;
   max-width: 325px;
   max-height: 225px;
   width: 100%;
   margin: 0;
   padding: 0;
-  border-right: 1px solid #100C34;
-  border-left: 1px solid #100C34;
-  border-bottom: 1px solid #100C34;
-  background: white; 
+  border-right: 1px solid #100c34;
+  border-left: 1px solid #100c34;
+  border-bottom: 1px solid #100c34;
+  background: white;
   overflow-y: auto;
   overflow-x: hidden;
   border-radius: 0 0 8px 8px;
@@ -78,21 +76,16 @@
   background-color: #dbd3d3;
   border-radius: 12px;
 }
-.mainTownFilterMenuItem{
+.mainTownFilterMenuItem {
   z-index: 2;
   list-style-type: none;
   padding: 12px 16px;
   margin: 0;
   cursor: pointer;
 }
-.mainTownFilterMenuItem:hover{
+.mainTownFilterMenuItem:hover {
   background-color: #d5d5d5;
 }
-
-
-
-
-
 
 .mainOptionsMapLink {
   text-decoration: none;
@@ -109,11 +102,39 @@
 .cardContainer {
   z-index: 1;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(calc(325px + 52px), 1fr));
+  gap: 39px 20px;
   font-weight: 400;
 }
 
+@media screen and (max-width: 768px) {
+  .cardContainer {
+    grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(calc(342px + 52px), 1fr));
+  }
+  .main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
 
+@media screen and (max-width: 580px) {
+  .mainOptions {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 24px;
+  }
 
+  .mainTownFilter {
+    width: 100%;
+    min-width: 100%;
+  }
+}
 
+@media screen and (max-width: 400px) {
+  .cardContainer {
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  }
+}

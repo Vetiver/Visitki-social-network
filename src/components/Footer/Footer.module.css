@@ -7,10 +7,11 @@
   max-height: 72px;
   height: 100%;
   padding: 24px 40px;
-  background-color: #ffffff;
+  background-color: #fff;
   margin: 0 auto;
   border-top: 1px solid rgba(16, 12, 52, 0.3);
   color: rgba(16, 12, 52, 0.5);
+  margin-top: 79px;
 }
 
 .footer__copyright {
