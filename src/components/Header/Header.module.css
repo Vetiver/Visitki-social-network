@@ -14,16 +14,15 @@
 }
 
 .profile_wrapper {
-  padding: 40px 24px 32px 24px;
+  padding: 40px;
   position: absolute;
-  width: 296px;
-  height: 32px;
+  max-width: 296px;
   overflow: hidden;
   box-sizing: border-box;
   right: 0;
   top: 0;
   transition: 0.2s ease-in-out;
-  z-index: 2;
+  z-index: 3;
   background-color: white;
 }
 
@@ -33,12 +32,13 @@
   margin-top: 16px;
   height: 36px;
   width: 100%;
-  border-radius: 4px;
+  text-align: start;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  padding: 8px 143px 8px 36px;
+  padding: 0;
   font-size: 16px;
   line-height: 20px;
+  display: none;
 }
 
 .profile_button:hover {
@@ -51,8 +51,30 @@
   height: 156px;
 }
 
-@media screen and (max-width: 500px) {
+.profile_wrapper:hover .profile_button {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
   .header {
     padding: 24px;
+  }
+  .profile_wrapper {
+    padding: 24px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .profile_wrapper:hover {
+    height: 80px;
+  }
+  .profile_button:hover {
+    background-color: none;
+  }
+  .profile_button {
+    width: fit-content;
+    padding: 0;
+    margin: 0;
   }
 }
