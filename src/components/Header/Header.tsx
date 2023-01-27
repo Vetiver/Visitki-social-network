@@ -10,7 +10,7 @@ const Header: FC = () => {
   const { state } = useContext<TContext>(AuthContext);
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <Logo />
       {state.isAuth && (
         <div className={styles.profile_wrapper}>
@@ -20,7 +20,7 @@ const Header: FC = () => {
           </ProtectedLink>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 
