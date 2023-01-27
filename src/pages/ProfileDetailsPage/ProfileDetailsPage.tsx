@@ -25,8 +25,6 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
     }
   }, []);
 
-  console.log(userInfo);
-
   const [theme, setTheme] = useState({
     profilePhotoStyle: "default",
     statusColor: "default",

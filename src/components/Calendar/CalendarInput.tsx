@@ -37,7 +37,6 @@ export const CalendarInput = ({ info }: any) => {
         day: "numeric",
       })
       .split(".");
-    console.log(someDay);
   }
 
   let [isShow, setShow] = useState(false);
@@ -63,7 +62,6 @@ export const CalendarInput = ({ info }: any) => {
   };
 
   const prepareDays = () => {
-    console.log(month);
     for (let el of months) {
       if (el.number === month) {
         for (let i = 1; i <= el.days; i++) {

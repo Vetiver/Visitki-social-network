@@ -20,7 +20,6 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-  console.log(profile);
 
   return !!profile ? (
     <main className={styles.main}>

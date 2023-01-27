@@ -37,7 +37,6 @@ export const CommentList:FC = () => {
   };
 
   const removeComment = (id: any) => {
-    console.log(id)
     deleteComment(id);
   };
 

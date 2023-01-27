@@ -28,7 +28,6 @@ const App: FC = () => {
   //Проверяем, записан ли токен в локальном хранилище, если да,
   //то записываем в переменную.
   const tokenLocal = localStorage.getItem("token") || null;
-  console.log(profile);
   useEffect(() => {
     if (tokenLocal !== null) {
       //Записываем данные первого пользователя полученного из массива переданного бекендом
@@ -43,7 +42,7 @@ const App: FC = () => {
       );
       getUserProfile(state._id).then((res) => setProfileInfo(res));
     }
-  }, [state._id]);
+  }, [state._id, tokenLocal]);
 
   return (
     <AuthContext.Provider value={{ state, setState }}>

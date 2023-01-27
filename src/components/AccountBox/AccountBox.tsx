@@ -5,7 +5,7 @@ import { TContext } from "../../utils/types";
 
 const AccountBox: FC = () => {
   const { state, setState } = useContext<TContext>(AuthContext);
-  return (
+  return state.userData !== null ?(
     //Тут будет не профиль
     <div className={styles.accountBox}>
       <img
@@ -15,7 +15,7 @@ const AccountBox: FC = () => {
       />
       <p className={styles.profileName}>{state.userData.profile.name}</p>
     </div>
-  );
+  ) : null;
 };
 
 export default AccountBox;
