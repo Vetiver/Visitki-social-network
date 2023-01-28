@@ -2,8 +2,9 @@ import styles from "./CalendarInput.module.css";
 import { months } from "../../utils/dates";
 import { useState } from "react";
 import calendarIcon from "../../icons/forms-icons/calendar.svg";
+import { TCalendarInfo } from "../../utils/types";
 
-export const CalendarInput = ({ info }: any) => {
+export const CalendarInput = ({ info }: TCalendarInfo) => {
   const monthsNumbers: { [key: string]: string } = {
     Январь: "01",
     Февраль: "02",
@@ -30,7 +31,7 @@ export const CalendarInput = ({ info }: any) => {
   let someDay: string[] = [];
 
   if (info) {
-    someDay = new Date(info.profile.birthday)
+    someDay = new Date(info.birthday)
       .toLocaleString("ru", {
         year: "numeric",
         month: "numeric",
@@ -48,11 +49,11 @@ export const CalendarInput = ({ info }: any) => {
     setShow((isShow) => !isShow);
   };
 
-  const setNewYear = (evt: any) => {
+  const setNewYear = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setYear((year = evt.target.value));
   };
 
-  const setNewMonth = (evt: any) => {
+  const setNewMonth = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setMonth((month = monthsNumbers[evt.target.value]));
     prepareDays();
   };
@@ -91,14 +92,17 @@ export const CalendarInput = ({ info }: any) => {
       {isShow && (
         <div className={styles.calendar_box}>
           <div className={styles.buttons_wrapper}>
-            <select className={styles.years_button} onChange={setNewYear}>
+            <select className={styles.years_button} onChange={() => setNewYear}>
               {years.map((el, index) => (
                 <option value={el} key={index}>
                   {el}
                 </option>
               ))}
             </select>
-            <select className={styles.months_button} onChange={setNewMonth}>
+            <select
+              className={styles.months_button}
+              onChange={() => setNewMonth}
+            >
               {months.map((el, index) => (
                 <option value={el.name} key={index}>
                   {el.name}

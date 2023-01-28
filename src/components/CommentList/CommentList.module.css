@@ -58,7 +58,7 @@
   width: 100%;
   margin-top: 11px;
   padding-right: 24px;
-  height: calc(100vh - 360px);
+
   overflow: auto;
   box-sizing: border-box;
 }
@@ -154,4 +154,29 @@
   color: #e90d41;
   font-size: 16px;
   line-height: 24px;
+}
+
+.adaptive_box {
+  overflow-x: auto;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 320px) {
+  .adaptive_box {
+    width: 290px;
+    height: calc(100vh - 360px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .list_wrapper {
+    width: 1360px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .list_flags_wrapper {
+    min-width: 1360px;
+  }
 }

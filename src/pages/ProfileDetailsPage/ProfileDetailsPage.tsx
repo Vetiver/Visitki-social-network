@@ -8,24 +8,27 @@ import ProfileDetailsOtherBlock from "../../components/ProfileDetailsOtherBlock/
 import styles from "./ProfileDetailsPage.module.css";
 import { useParams } from "react-router-dom";
 import { getUserProfile } from "../../utils/api/api";
+import { TProfileID } from "../../utils/types";
 
 interface ProfileDetailsProps {
-  allUsers: any;
+
+  allUsers: TProfileID[] | null;
 }
 
 const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
   const tokenLocal = localStorage.getItem("token") || null;
   const [userInfo, setUserInfo] = useState<any>(null);
   const { id } = useParams();
-  const main = allUsers.find((el: any) => el._id === id);
+  const main = allUsers?.find((el: any) => el._id === id);
 
   useEffect(() => {
     if (main !== null) {
-      getUserProfile(main._id)
-        .then((res) => setUserInfo(res))
-        .catch((err) => console.log(err));
+      getUserProfile(main?._id).then((res) => setUserInfo(res));
     }
   }, []);
+
+  console.log(userInfo);
+
 
   const [theme, setTheme] = useState({
     profilePhotoStyle: "default",

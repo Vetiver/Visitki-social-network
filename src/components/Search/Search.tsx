@@ -3,7 +3,7 @@ import { CommentList } from "../CommentList/CommentList";
 import { StudentList } from "../StudentList/StudentList";
 import styles from "./Search.module.css";
 
-export const Search = () => {
+export const Search: FC = () => {
   let [isUsers, setChange] = useState("students");
 
   const setUsers = () => {

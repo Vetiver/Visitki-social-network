@@ -1,5 +1,4 @@
-import { FC, useState, useEffect, useContext } from "react";
-import { getUserProfile } from "../../utils/api/api";
+import { FC, useState, useContext } from "react";
 import SelectRegionInput from "../../components/SelectRegionInput/SelectRegionInput";
 import styles from "./ProfilePage.module.css";
 import { ReactComponent as Clip } from "../../images/logo/clip.svg";
@@ -8,15 +7,16 @@ import { CalendarInput } from "../../components/Calendar/CalendarInput";
 import photo from "../../images/Ellipse.png";
 import SelectStyleInput from "../../components/SelectStyleInput/SelectStyleInput";
 import { AuthContext } from "../../services/AuthContext";
-import { TContext } from "../../utils/types";
+import { TContext, TProfileID } from "../../utils/types";
 
 interface ProfileProps {
-  profile: any;
+  profile: TProfileID;
 }
 
 const ProfilePage: FC<ProfileProps> = ({ profile }) => {
   const { state, setState } = useContext<TContext>(AuthContext);
   const [file, setFile] = useState<any>();
+
   function handleChange(e: any) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
@@ -53,7 +53,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
       <form className={styles.form} action="">
         <div className={styles.input__container}>
           <p className={styles.input__title}> Дата рождения *</p>
-          <CalendarInput info={profile} />
+          <CalendarInput info={profile.profile} />
         </div>
 
         <div className={styles.input__container}>

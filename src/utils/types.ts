@@ -9,7 +9,7 @@ export type TButton = {
   disabled?: boolean;
 };
 
-export type TAuth  = {
+export type TAuth = {
   isAuth: boolean;
   isAdmin: boolean;
   userData: any | null;
@@ -37,15 +37,11 @@ export type TUsersDataDetail = {
 
 //Информация для профиля пользователя
 export type TProfile = {
-  name: {
-    value: string;
-  };
-  photo: {
-    value: string;
-  };
+  name: string;
+  photo: string;
   city: {
     value: string;
-    name?:string;
+    name: string;
   };
   birthday: string;
   quote: string;
@@ -57,16 +53,16 @@ export type TProfile = {
 //Информация о личной жизни студента
 export type TProfileInfo = {
   hobby: {
-    value: string;
+    text: string;
   };
   status: {
-    value: string;
+    text: string;
   };
   job: {
-    value: string;
+    text: string;
   };
   edu: {
-    value: string;
+    text: string;
   };
 };
 
@@ -76,7 +72,7 @@ export type TProfileID = {
   cohort: string;
   _id: string;
   createdAt: number;
-  updatedAt: number;
+  updatedAt: number | null;
   profile: TProfile;
   info: TProfileInfo;
   reactions: number;
@@ -103,10 +99,12 @@ export type TComment = {
   text: string;
   _id: string;
   from: {
+    name: string;
     value: string;
   };
   target: string;
   to: {
+    name: string;
     _id: string;
     createdAt: null;
     email: string;
@@ -118,7 +116,8 @@ export type TCommentsRequest = {
   items: TComment[];
 };
 
-export type TContext = {
+export type TContext =
+  | {
       state: TAuth;
       setState?: Dispatch<SetStateAction<TAuth>> | TFcVoid;
     }
@@ -132,16 +131,41 @@ export type TFile = {
 };
 
 export type TProtectedLink = {
-  className: string,
-  to: string,
-  children: ReactNode
-}
+  className: string;
+  to: string;
+  children: ReactNode;
+};
 
 export type TStateDataMapPage = {
-  isDataRequest: boolean,
-  usersData: TProfileID[] | null
-}
+  isDataRequest: boolean;
+  usersData: TProfileID[] | null;
+};
 
 export type TCards = {
-  users: TProfileID[] | null
-}
+  users: TProfileID[] | null;
+};
+
+export type TNewStudentCard = {
+  cohort: string;
+  email: string;
+};
+
+export type TCalendarInfo = {
+  info: TProfile;
+};
+
+export type TFeedBackBlock = {
+  open: Boolean;
+};
+
+export type TReaction = {
+  count: number;
+  item: string;
+};
+
+export type TCard = {
+  img: string;
+  name: string;
+  city: string;
+  _id: string;
+};

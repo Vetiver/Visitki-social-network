@@ -28,7 +28,7 @@ export const getProfiles = async () => {
 };
 
 //Запрос профиля конкретного пользователя.
-export const getUserProfile = async (_id: string) => {
+export const getUserProfile = async (_id: string | undefined) => {
   return await request(`/profiles/${_id}`, {
     method: "GET",
     headers: api.headers,
@@ -68,7 +68,6 @@ export const postReactionsData = async (
     body: JSON.stringify({ reaction }),
   });
 };
-
 
 //Запрос всех пользователей администратором
 export const getUsersData = async () => {

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useContext } from "react";
+import { FC, useState, useEffect } from "react";
 import { AuthContext } from "../../services/AuthContext";
 import { TAuth, TUsersDataDetail } from "../../utils/types";
 import { Route, Routes } from "react-router-dom";
@@ -10,11 +10,9 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { AdminPage } from "../../pages/AdminPage/AdminPage";
 import MapPage from "../../pages/MapPage/MapPage";
-import { Search } from "../Search/Search";
 import ProfileDetailsPage from "../../pages/ProfileDetailsPage/ProfileDetailsPage";
 import { getProfiles } from "../../utils/api/api";
 import { getUserProfile } from "../../utils/api/api";
-import { TContext } from "../../utils/types";
 
 const App: FC = () => {
   const [profile, setProfileInfo] = useState<any>(null);

@@ -5,7 +5,7 @@ import styles from "./MainPage.module.css";
 import ProtectedLink from "../../HOC/ProtectedLink";
 import Card from "../../components/Card/Card";
 import { getProfiles } from "../../utils/api/api";
-import { TCards, TProfileID, TStateDataMapPage } from "../../utils/types";
+import { TCards, TProfileID } from "../../utils/types";
 
 const data = [
   { city: "Все города" },

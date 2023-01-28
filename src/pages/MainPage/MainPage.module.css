@@ -109,32 +109,3 @@
   font-weight: 400;
 }
 
-@media screen and (max-width: 768px) {
-  .cardContainer {
-    grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(calc(342px + 52px), 1fr));
-  }
-  .main {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  .mainOptions {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    gap: 24px;
-  }
-
-  .mainTownFilter {
-    width: 100%;
-    min-width: 100%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .cardContainer {
-    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  }
-}
