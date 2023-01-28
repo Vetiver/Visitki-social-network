@@ -14,8 +14,6 @@ import { getProfiles } from "../../utils/api/api";
 import placeMarkIcon from "../../icons/placemark.svg";
 import { TStateDataMapPage } from "../../utils/types";
 
-
-
 const MapPage = () => {
   const [dataRequest, setDataRequest] = useState<TStateDataMapPage>({
     isDataRequest: false,
@@ -28,15 +26,16 @@ const MapPage = () => {
   };
 
   useEffect(() => {
-    getProfiles().then((res) =>
-      setDataRequest({
-        ...dataRequest,
-        isDataRequest: true,
-        usersData: res.items,
-      })
-    );
+    getProfiles()
+      .then((res) =>
+        setDataRequest({
+          ...dataRequest,
+          isDataRequest: true,
+          usersData: res.items,
+        })
+      )
+      .catch((err) => console.log(err));
   }, [dataRequest.isDataRequest]);
-  
 
   return (
     <>

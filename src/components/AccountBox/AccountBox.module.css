@@ -20,16 +20,18 @@
 }
 
 .accountBox {
-  width: 248px;
   display: flex;
   align-items: center;
-  /* После добавления роутинга text-decoration нужно удалить */
-  text-decoration: none;
   cursor: default;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
   .profileName {
     display: none;
+  }
+  .profilePhoto {
+    margin-right: 0;
   }
 }

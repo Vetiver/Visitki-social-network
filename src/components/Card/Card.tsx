@@ -5,6 +5,7 @@ import { TCard } from "../../utils/types";
 import FeedbackBlock from "../FeedbackBlock/FeedbackBlock";
 import styles from "./Card.module.css";
 
+
 const Card: FC<TCard> = ({ img, name, city, _id }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openFeedback = () => {
@@ -18,11 +19,10 @@ const Card: FC<TCard> = ({ img, name, city, _id }) => {
           <img className={styles.cardImg} src={img} alt="ProfilePhoto" />
           <FeedbackBlock open={isOpen} />
         </div>
-
         <p className={styles.cardName}>{name}</p>
       </Link>
+      <p className={styles.cardName}>{name}</p>
       <p className={styles.cardPlace}>{city}</p>
-
       <div className={styles.cardIcon} onClick={openFeedback}>
         <ChatIcon count={2} />
       </div>

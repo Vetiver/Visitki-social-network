@@ -3,7 +3,7 @@
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  padding: 0 30px 0;
+  padding: 0 40px 0;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@
 }
 .mainOptions {
   width: 100%;
-  max-width: 1360px;
   padding: 10px 0 40px;
   display: flex;
   align-items: center;
@@ -103,7 +102,10 @@
 .cardContainer {
   z-index: 1;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(calc(325px + 52px), 1fr));
+  gap: 39px 20px;
   font-weight: 400;
 }
+

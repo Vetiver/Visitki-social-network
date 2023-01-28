@@ -1,7 +1,6 @@
 .main {
   margin-left: auto;
   margin-right: auto;
-  width: 440px;
 }
 
 .photo__size {
@@ -31,7 +30,6 @@
 }
 
 .photo__container {
-  width: 440px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -190,7 +188,6 @@ input[type="file"] {
   right: 15px;
 }
 
-
 .photo__hover {
   width: 152px;
   height: 152px;
@@ -253,8 +250,18 @@ input[type="file"] {
   }
 
   .profile__button {
-    width: 250px;
+    width: 100%;
     height: 60px;
     margin: 0 0 158px 0;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .form {
+    padding-top: 16px;
   }
 }

@@ -1,25 +1,29 @@
 .profileDetailsContainer {
-  display: flex;
-  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
   min-height: calc(100vh - 177px);
   max-width: 1440px;
+  width: fit-content;
   background-color: #ffffff;
 }
 
 .profileDetailsMain {
   width: 100%;
-  display: flex;
-  column-gap: 70px;
-  padding: 8px 0 72px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 440px)) minmax(200px, 325px);
+  grid-template-areas:
+    "username avatar quote"
+    "hobby family ."
+    "sphere study .";
+  padding-top: 8px;
+  gap: 70px 70px;
 }
 
 .profileDetailsMainInfo {
   display: flex;
-  padding-left: 40px;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  max-width: 443px;
   max-height: 440px;
 }
 .profileDetailsMainInfoName {
@@ -27,12 +31,13 @@
   font-weight: 500;
   font-size: 60px;
   line-height: 60px;
-  margin: 0 0 97px;
+  align-self: center;
   letter-spacing: 2.3px;
+  grid-area: username;
 }
 .profileDetailsMainInfoTown {
   color: #100c34;
-  margin: 0 0 25px 0;
+  margin: 0 0 24px 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -48,30 +53,27 @@
   position: relative;
   display: flex;
   box-sizing: border-box;
+  grid-area: avatar;
 }
-.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon{
+.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon {
   visibility: visible;
 }
 
 .profileDetailsMainInfoImg {
-  width: 440px;
-  height: 440px;
+  aspect-ratio: 1/1;
+  max-width: 100%;
   object-fit: cover;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
-.profileDetailsMainInfoImgRomantic{
+.profileDetailsMainInfoImgRomantic {
   border-radius: 220px;
 }
 
-
-
-
-
-.profileDetailsMainInfoChatIcon{
+.profileDetailsMainInfoChatIcon {
   visibility: hidden;
   position: absolute;
-  top:18px;
+  top: 18px;
   right: 18px;
 }
 
@@ -79,19 +81,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 325px;
-  padding: 36px 0 0 15px;
+  padding: 0;
   position: relative;
+  grid-area: quote;
 }
 
-
-.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon{
+.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon {
   visibility: visible;
 }
-.profileDetailsMainInfoStatusIcon{
+.profileDetailsMainInfoStatusIcon {
   visibility: hidden;
   position: absolute;
-  top:70px;
+  top: 70px;
   right: 18px;
 }
 .profileDetailsMainInfoStatusText {
@@ -103,8 +104,8 @@
   max-width: 220px;
   padding-top: 3px;
 }
-.profileDetailsMainInfoColor{
-  color: #FF00A8;
+.profileDetailsMainInfoColor {
+  color: #ff00a8;
 }
 
 .profileDetailsOther {
@@ -114,12 +115,71 @@
   width: 100%;
   max-width: 1440px;
 }
+.profileDetailsOther_hobby {
+  grid-area: hobby;
+}
+
+.profileDetailsOther_family {
+  grid-area: family;
+}
+
+.profileDetailsOther_sphere {
+  grid-area: sphere;
+}
+
+.profileDetailsOther_study {
+  grid-area: study;
+}
 
 .otherContainer {
-  padding-left: 40px;
   width: 936px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 440px);
   grid-template-rows: auto;
-  gap: 70px 56px; 
+  gap: 70px 56px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profileDetailsMain {
+    grid-template-columns: repeat(2, minmax(250px, 342px));
+    grid-template-areas:
+      "username avatar"
+      ". quote"
+      "hobby family"
+      "sphere study";
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profileDetailsContainer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .profileDetailsMainInfoName {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .profileDetailsMain {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    grid-template-areas:
+      "username"
+      "avatar"
+      "quote"
+      "hobby"
+      "family"
+      "sphere"
+      "study";
+  }
+  .profileDetailsMainInfoName {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 40px;
+    align-self: self-start;
+    max-width: 240px;
+  }
 }

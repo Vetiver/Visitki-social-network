@@ -11,6 +11,7 @@ export const StudentList: FC = () => {
   let [result, setResult] = useState<TUserDataDetail[]>([]);
 
   useEffect(() => {
+
     getUsersData().then((res) => {
       let temp: TUserDataDetail[] = [];
       res.items.map((el: TUserDataDetail) => {

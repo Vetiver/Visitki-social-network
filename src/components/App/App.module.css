@@ -7,7 +7,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  background: #f5f5f5;
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@
   min-height: calc(100vh - 177px);
   width: 100%;
   max-width: 1440px;
-  background: #ffffff;
+  background: #fff;
 }
 a {
   text-decoration: none;

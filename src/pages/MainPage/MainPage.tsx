@@ -53,12 +53,14 @@ const MainPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    getProfiles().then((res) =>
-      setCards({
-        ...cards,
-        users: res.items,
-      })
-    );
+    getProfiles()
+      .then((res) =>
+        setCards({
+          ...cards,
+          users: res.items,
+        })
+      )
+      .catch((err) => console.log(err));
   }, []);
 
   return (

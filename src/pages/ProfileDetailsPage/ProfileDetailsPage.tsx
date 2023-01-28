@@ -11,6 +11,7 @@ import { getUserProfile } from "../../utils/api/api";
 import { TProfileID } from "../../utils/types";
 
 interface ProfileDetailsProps {
+
   allUsers: TProfileID[] | null;
 }
 
@@ -28,6 +29,7 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
 
   console.log(userInfo);
 
+
   const [theme, setTheme] = useState({
     profilePhotoStyle: "default",
     statusColor: "default",
@@ -38,6 +40,7 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
     <main className={styles.profileDetailsContainer}>
       {/* Верхняя часть профиля */}
       <div className={styles.profileDetailsMain}>
+        {/* имя юзера */}
         <div className={styles.profileDetailsMainInfo}>
           <h1 className={styles.profileDetailsMainInfoName}>
             {userInfo.profile.name}
@@ -54,6 +57,7 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
             </a>
           </div>
         </div>
+        {/* фото юзера */}
         <div className={styles.profileDetailsMainInfoImgContainer}>
           <img
             className={`${styles.profileDetailsMainInfoImg} 
@@ -68,6 +72,7 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
             <ChatIcon count={userInfo.info.edu.reactions} />
           </div>
         </div>
+        {/* статус юзера */}
         <div className={styles.profileDetailsMainInfoStatus}>
           <div className={styles.profileDetailsMainInfoStatusIconContainer}>
             {/* Цвет в зависимости от темы передаем в stroke:#100C34 или #FF00A8  */}
@@ -88,11 +93,10 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
             <ChatIcon count={userInfo.info.status.reactions} />
           </div>
         </div>
-      </div>
-
-      {/* Нижняя часть с деталями */}
-      <div className={styles.otherContainer}>
-        <div className={styles.profileDetailsOther}>
+        {/* хобби юзера */}
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_hobby}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="Увлечения"
@@ -100,7 +104,10 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
             description={userInfo.info.hobby.text}
           />
         </div>
-        <div className={styles.profileDetailsOther}>
+        {/* семья юзера */}
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_family}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="Семья"
@@ -108,14 +115,20 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
             description={userInfo.info.status.text}
           />
         </div>
-        <div className={styles.profileDetailsOther}>
+        {/* сфера юзера */}
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_sphere}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="сфера"
             description={userInfo.info.job.text}
           />
         </div>
-        <div className={styles.profileDetailsOther}>
+        {/* учеба юзера */}
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_study}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="учеба"
@@ -123,6 +136,8 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
           />
         </div>
       </div>
+
+      {/* Нижняя часть с деталями */}
     </main>
   ) : null;
 };

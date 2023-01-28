@@ -1,12 +1,11 @@
 .card {
   z-index: -1;
   position: relative;
-  max-width: 325px;
-  max-height: 393px;
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px 39px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto min-content min-content;
 }
+
 .card:hover .cardImgContainer {
   outline: 2px solid #ff00a8;
 }
@@ -22,21 +21,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 .cardImg {
   box-sizing: border-box;
   object-fit: cover;
-  width: 325px;
-  height: 325px;
+  width: 100%;
+  height: 100%;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
-
-
-
-
-
-
 
 .cardName {
   margin: 0;

@@ -6,6 +6,7 @@ import clearIcon from "../../images/clear.png";
 import { TComment } from "../../utils/types";
 
 export const CommentList: FC = () => {
+
   let [commentsArr, setCommentsArr] = useState<TComment[]>([]);
 
   const updateCommentList = () => {
@@ -37,6 +38,7 @@ export const CommentList: FC = () => {
   const clearSearch = () => {
     handleChange((word = ""));
   };
+
 
   const removeComment = (id: string) => {
     deleteComment(id);

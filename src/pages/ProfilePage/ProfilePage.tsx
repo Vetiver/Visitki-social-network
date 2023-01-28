@@ -70,7 +70,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
               className={styles.input}
               placeholder="@example"
               type="text"
-              value={profile.profile.telegram}
+              defaultValue={profile.profile.telegram}
             />
           </label>
         </div>
@@ -82,7 +82,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
               className={styles.input}
               placeholder="@example"
               type="text"
-              value={profile.profile.github}
+              defaultValue={profile.profile.github}
             />
           </label>
         </div>
@@ -98,7 +98,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
             className={styles.textarea}
             placeholder="Не более 100 символов"
             maxLength={100}
-            value={profile.profile.quote}
+            defaultValue={profile.profile.quote}
           ></textarea>
         </div>
 
@@ -117,7 +117,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
             className={styles.textarea}
             placeholder="Не более 300 символов"
             maxLength={300}
-            value={profile.info.hobby.text}
+            defaultValue={profile.info.hobby.text}
           ></textarea>
         </div>
 
@@ -138,7 +138,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
             className={styles.textarea}
             placeholder="Не более 300 символов"
             maxLength={300}
-            value={profile.info.edu.text}
+            defaultValue={profile.info.edu.text}
           ></textarea>
         </div>
 
@@ -150,7 +150,7 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
             className={styles.textarea}
             placeholder="Не более 300 символов"
             maxLength={300}
-            value={profile.info.job.text}
+            defaultValue={profile.info.job.text}
           ></textarea>
         </div>
 
