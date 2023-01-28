@@ -240,6 +240,8 @@ input[type="file"] {
 
 .cover {
   object-fit: cover;
+  position: relative;
+  border: 1px solid black;
 }
 
 @media screen and (max-width: 500px) {

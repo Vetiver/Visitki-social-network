@@ -28,7 +28,6 @@ const ProfilePage: FC<ProfileProps> = ({ profile }) => {
         <p className={styles.photo__size}>(размер не менее 440х440)</p>
         <label className={styles.avatar} htmlFor="file">
           <Avatar
-            style={{ position: "relative", border: "1px solid black" }}
             className={styles.cover}
             src={
               file == null && state.userData.profile !== null
