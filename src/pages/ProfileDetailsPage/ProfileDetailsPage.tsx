@@ -21,7 +21,9 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
 
   useEffect(() => {
     if (main !== null) {
-      getUserProfile(main._id).then((res) => setUserInfo(res));
+      getUserProfile(main._id)
+        .then((res) => setUserInfo(res))
+        .catch((err) => console.log(err));
     }
   }, []);
 
@@ -89,7 +91,9 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
           </div>
         </div>
         {/* хобби юзера */}
-        <div className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_hobby}`}>
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_hobby}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="Увлечения"
@@ -98,7 +102,9 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
           />
         </div>
         {/* семья юзера */}
-        <div className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_family}`}>
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_family}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="Семья"
@@ -107,7 +113,9 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
           />
         </div>
         {/* сфера юзера */}
-        <div className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_sphere}`}>
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_sphere}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="сфера"
@@ -115,7 +123,9 @@ const ProfileDetailsPage: FC<ProfileDetailsProps> = ({ allUsers }) => {
           />
         </div>
         {/* учеба юзера */}
-        <div className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_study}`}>
+        <div
+          className={`${styles.profileDetailsOther} ${styles.profileDetailsOther_study}`}
+        >
           <ProfileDetailsOtherBlock
             theme={theme.borderDetailsOther !== "default" ? true : false}
             title="учеба"

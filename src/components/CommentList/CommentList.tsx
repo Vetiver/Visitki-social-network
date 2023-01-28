@@ -4,17 +4,19 @@ import { deleteComment, getCommentsData } from "../../utils/api/api";
 import { useState, useEffect, FC } from "react";
 import clearIcon from "../../images/clear.png";
 
-export const CommentList:FC = () => {
+export const CommentList: FC = () => {
   let [commentsArr, setCommentsArr] = useState([]);
 
   const updateCommentList = () => {
-    getCommentsData().then((res) => {
-      let temp: any = [];
-      res.items.map((el: any) => {
-        temp.push(el);
-      });
-      setCommentsArr((commentsArr = temp));
-    });
+    getCommentsData()
+      .then((res) => {
+        let temp: any = [];
+        res.items.map((el: any) => {
+          temp.push(el);
+        });
+        setCommentsArr((commentsArr = temp));
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

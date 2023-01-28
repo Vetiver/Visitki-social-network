@@ -10,13 +10,15 @@ export const StudentList = () => {
   let [result, setResult] = useState([]);
 
   useEffect(() => {
-    getUsersData().then((res) => {
-      let temp: any = [];
-      res.items.map((el: any) => {
-        temp.push(el);
-      });
-      setStudentsArr((studentsArr = temp));
-    });
+    getUsersData()
+      .then((res) => {
+        let temp: any = [];
+        res.items.map((el: any) => {
+          temp.push(el);
+        });
+        setStudentsArr((studentsArr = temp));
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const setUserInput = (evt: any) => {

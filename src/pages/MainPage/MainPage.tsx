@@ -19,8 +19,6 @@ const data = [
   { city: "Темирчеркасск" },
 ];
 
-
-
 const MainPage: FC = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [selectedItem, setSelectedItem] = useState({
@@ -55,14 +53,15 @@ const MainPage: FC = () => {
   }, []);
 
   useEffect(() => {
-    getProfiles().then((res) =>
-      setCards({
-        ...cards,
-        users: res.items,
-      })
-    );
+    getProfiles()
+      .then((res) =>
+        setCards({
+          ...cards,
+          users: res.items,
+        })
+      )
+      .catch((err) => console.log(err));
   }, []);
-  
 
   return (
     <main className={styles.main}>
