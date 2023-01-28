@@ -10,6 +10,7 @@ import surprisedIcon from "../../icons/reactions/😱️.svg";
 import smiledIcon from "../../icons/reactions/🙂️.svg";
 
 import styles from "./FeedbackBlock.module.css";
+import { TFeedBackBlock, TReaction } from "../../utils/types";
 
 export const defaultReactionsArray = [
   { item: thumbsUpIcon, count: 2 },
@@ -23,9 +24,11 @@ export const defaultReactionsArray = [
   { item: smiledIcon, count: 0 },
 ];
 
-const FeedbackBlock: FC<any> = ({ open }) => {
+const FeedbackBlock: FC<TFeedBackBlock> = ({ open }) => {
   const [feedbackVisibility, setFeedbackVisibility] = useState(false);
-  const [reactions, setReactions] = useState([{ item: thumbsUpIcon, count: 0 }]);
+  const [reactions, setReactions] = useState([
+    { item: thumbsUpIcon, count: 0 },
+  ]);
 
   useEffect(() => {
     if (open) {
@@ -36,9 +39,8 @@ const FeedbackBlock: FC<any> = ({ open }) => {
   }, [open]);
 
   useEffect(() => {
-    setReactions(defaultReactionsArray)
+    setReactions(defaultReactionsArray);
   }, []);
-  
 
   return (
     <div
@@ -55,14 +57,16 @@ const FeedbackBlock: FC<any> = ({ open }) => {
         placeholder="Обратная связь"
       ></textarea>
       <div className={styles.feedbackReactions}>
-        {reactions?.map((reaction:any ,index:number) => (
-          <div key={index} className={styles.feedbackReaction} >
+        {reactions?.map((reaction: TReaction, index: number) => (
+          <div key={index} className={styles.feedbackReaction}>
             <img
               className={styles.feedbackReactionImg}
               src={reaction.item}
               alt="emoji"
             />
-           {reaction.count > 0 && <p className={styles.feedbackReactionCount}>{reaction.count}</p>}
+            {reaction.count > 0 && (
+              <p className={styles.feedbackReactionCount}>{reaction.count}</p>
+            )}
           </div>
         ))}
       </div>

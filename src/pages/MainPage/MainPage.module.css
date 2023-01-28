@@ -50,23 +50,22 @@
   width: 15px;
   height: 7.5px;
   padding: 20px 16px 20px 0;
-  
 }
 
 .mainTownFilterMenu {
   z-index: 2;
   position: absolute;
-  top:46px;
+  top: 46px;
   right: -1px;
   max-width: 325px;
   max-height: 225px;
   width: 100%;
   margin: 0;
   padding: 0;
-  border-right: 1px solid #100C34;
-  border-left: 1px solid #100C34;
-  border-bottom: 1px solid #100C34;
-  background: white; 
+  border-right: 1px solid #100c34;
+  border-left: 1px solid #100c34;
+  border-bottom: 1px solid #100c34;
+  background: white;
   overflow-y: auto;
   overflow-x: hidden;
   border-radius: 0 0 8px 8px;
@@ -78,21 +77,16 @@
   background-color: #dbd3d3;
   border-radius: 12px;
 }
-.mainTownFilterMenuItem{
+.mainTownFilterMenuItem {
   z-index: 2;
   list-style-type: none;
   padding: 12px 16px;
   margin: 0;
   cursor: pointer;
 }
-.mainTownFilterMenuItem:hover{
+.mainTownFilterMenuItem:hover {
   background-color: #d5d5d5;
 }
-
-
-
-
-
 
 .mainOptionsMapLink {
   text-decoration: none;
@@ -113,7 +107,3 @@
   flex-wrap: wrap;
   font-weight: 400;
 }
-
-
-
-

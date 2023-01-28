@@ -1,39 +1,40 @@
 import styles from "./StudentList.module.css";
 import clearIcon from "../../images/clear.png";
-import { useEffect, useState } from "react";
+import { useEffect, FC, useState } from "react";
 import { getUsersData, changesUsersData } from "../../utils/api/api";
 import { AddButtonWrapper } from "../AddButtonWrapepr/AddButtonWrapepr";
+import { TUserDataDetail } from "../../utils/types";
 
-export const StudentList = () => {
-  let [studentsArr, setStudentsArr] = useState([]);
+export const StudentList: FC = () => {
+  let [studentsArr, setStudentsArr] = useState<TUserDataDetail[]>([]);
   let [word, handleChange] = useState("");
-  let [result, setResult] = useState([]);
+  let [result, setResult] = useState<TUserDataDetail[]>([]);
 
   useEffect(() => {
     getUsersData().then((res) => {
-      let temp: any = [];
-      res.items.map((el: any) => {
+      let temp: TUserDataDetail[] = [];
+      res.items.map((el: TUserDataDetail) => {
         temp.push(el);
       });
       setStudentsArr((studentsArr = temp));
     });
   }, []);
 
-  const setUserInput = (evt: any) => {
+  const setUserInput = (evt: React.ChangeEvent<HTMLInputElement>) => {
     handleChange((word = evt.target.value));
     if (word != "") {
       searchInList();
     }
   };
 
-  const updateUserInfo = (email: any, cohort: any, id: any) => {
+  const updateUserInfo = (email: string, cohort: string, id: string) => {
     changesUsersData(email, cohort, id);
   };
 
   const clearSearch = () => {
     handleChange((word = ""));
   };
-  let temp: any = [];
+  let temp: TUserDataDetail[] = [];
 
   const searchInList = () => {
     studentsArr.map((el: any) => {
@@ -72,7 +73,7 @@ export const StudentList = () => {
             Не удалось никого найти. Исправьте запрос или сбросьте фильтр
           </p>
         ) : (
-          <>
+          <div className={styles.adaptive_box}>
             <ul className={styles.list_flags}>
               <li>Номер когорты</li>
               <li>E-mail</li>
@@ -81,11 +82,11 @@ export const StudentList = () => {
             <div className={styles.list_wrapper}>
               <ul className={styles.list}>
                 {!word
-                  ? studentsArr?.map((el: any) => (
+                  ? studentsArr?.map((el) => (
                       <li className={styles.list_item} key={el._id}>
                         <input
                           className={styles.list_item_text}
-                          defaultValue={el.cohort}
+                          value={el.cohort}
                           tabIndex={-1}
                           onChange={() =>
                             updateUserInfo(el.email, el.cohort, el._id)
@@ -94,7 +95,7 @@ export const StudentList = () => {
                         <input
                           tabIndex={-1}
                           className={styles.list_item_text}
-                          defaultValue={el.email}
+                          value={el.email}
                           onChange={() =>
                             updateUserInfo(el.email, el.cohort, el._id)
                           }
@@ -104,17 +105,17 @@ export const StudentList = () => {
                         </p>
                       </li>
                     ))
-                  : result.map((el: any) => (
+                  : result.map((el) => (
                       <li className={styles.list_item} key={el._id}>
                         <input
                           className={styles.list_item_text}
-                          defaultValue={el.cohort}
+                          value={el.cohort}
                           tabIndex={-1}
                         ></input>
                         <input
                           tabIndex={-1}
                           className={styles.list_item_text}
-                          defaultValue={el.email}
+                          value={el.email}
                         ></input>
                         <p tabIndex={-1} className={styles.list_item_text}>
                           {el.name}
@@ -123,7 +124,7 @@ export const StudentList = () => {
                     ))}
               </ul>
             </div>
-          </>
+          </div>
         )}
       </div>
       <AddButtonWrapper />

@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useState, useEffect, useContext  } from "react";
+import { SyntheticEvent, useRef, useState, useEffect, useContext } from "react";
 import styles from "./SelectRegionInput.module.css";
 import { Map, YMaps } from "@pbe/react-yandex-maps";
 import { AuthContext } from "../../services/AuthContext";

@@ -3,16 +3,18 @@ import deleteIcon from "../../images/delete.png";
 import { deleteComment, getCommentsData } from "../../utils/api/api";
 import { useState, useEffect, FC } from "react";
 import clearIcon from "../../images/clear.png";
+import { TComment } from "../../utils/types";
 
-export const CommentList:FC = () => {
-  let [commentsArr, setCommentsArr] = useState([]);
+export const CommentList: FC = () => {
+  let [commentsArr, setCommentsArr] = useState<TComment[]>([]);
 
   const updateCommentList = () => {
     getCommentsData().then((res) => {
-      let temp: any = [];
-      res.items.map((el: any) => {
+      let temp: TComment[] = [];
+      res.items.map((el: TComment) => {
         temp.push(el);
       });
+
       setCommentsArr((commentsArr = temp));
     });
   };
@@ -21,11 +23,11 @@ export const CommentList:FC = () => {
     updateCommentList();
   }, []);
 
-  let temp: any = [];
-  let [result, setResult] = useState([]);
+  let temp: TComment[] = [];
+  let [result, setResult] = useState<TComment[]>([]);
   let [word, handleChange] = useState("");
 
-  const userInput = (evt: any) => {
+  const userInput = (evt: React.ChangeEvent<HTMLInputElement>) => {
     handleChange((word = evt.target.value));
     if (word !== "") {
       searchInList();
@@ -36,14 +38,13 @@ export const CommentList:FC = () => {
     handleChange((word = ""));
   };
 
-  const removeComment = (id: any) => {
-    console.log(id)
+  const removeComment = (id: string) => {
     deleteComment(id);
   };
 
   const searchInList = () => {
-    commentsArr.map((el: any) => {
-      let fake = [];
+    let fake: string[] = [];
+    commentsArr.map((el: TComment) => {
       fake.push(el.from.name);
       fake.map((w) => {
         if (w.includes(word)) {
@@ -80,60 +81,62 @@ export const CommentList:FC = () => {
           Не удалось никого найти. Исправьте запрос или сбросьте фильтр
         </p>
       ) : (
-        <div className={styles.content_wrapper}>
-          <div className={styles.list_flags_wrapper}>
-            <ul className={styles.list_flags}>
-              <li>Когорта</li>
-              <li>Дата</li>
-              <li>Отправитель</li>
-              <li>Получатель</li>
-              <li>Откуда комментарий</li>
-              <li>Текст комментария</li>
-            </ul>
-          </div>
-          <div className={styles.list_wrapper}>
-            <ul className={styles.list}>
-              {!word &&
-                commentsArr?.map((el: any) => (
-                  <li className={styles.list_item} key={el._id}>
-                    <p className={styles.list_item_text}>{/*el.cohort*/}</p>
-                    <p className={styles.list_item_text}>{/*el.date*/}</p>
-                    <p className={styles.list_item_text}>{el.from.name}</p>
-                    <p className={styles.list_item_text}>{el.to.name}</p>
-                    <p
-                      className={styles.list_item_text}
-                    >{`Из блока ${el.target}`}</p>
-                    <p className={styles.list_item_text}>{el.text}</p>
-                    <div className={styles.icon_wrapper}>
-                      <img
-                        src={deleteIcon}
-                        onClick={() => removeComment(el._id)}
-                        alt="удалить"
-                      />
-                    </div>
-                  </li>
-                ))}
-              {word &&
-                result.map((el: any) => (
-                  <li className={styles.list_item} key={el._id}>
-                    <p className={styles.list_item_text}>{el.cohort}</p>
-                    <p className={styles.list_item_text}>{el.date}</p>
-                    <p className={styles.list_item_text}>{el.from.name}</p>
-                    <p className={styles.list_item_text}>{el.to.name}</p>
-                    <p
-                      className={styles.list_item_text}
-                    >{`Из блока ${el.target}`}</p>
-                    <p className={styles.list_item_text}>{el.text}</p>
-                    <div className={styles.icon_wrapper}>
-                      <img
-                        src={deleteIcon}
-                        onClick={() => removeComment(el._id)}
-                        alt="удалить"
-                      />
-                    </div>
-                  </li>
-                ))}
-            </ul>
+        <div className={styles.adaptive_box}>
+          <div className={styles.content_wrapper}>
+            <div className={styles.list_flags_wrapper}>
+              <ul className={styles.list_flags}>
+                <li>Когорта</li>
+                <li>Дата</li>
+                <li>Отправитель</li>
+                <li>Получатель</li>
+                <li>Откуда комментарий</li>
+                <li>Текст комментария</li>
+              </ul>
+            </div>
+            <div className={styles.list_wrapper}>
+              <ul className={styles.list}>
+                {!word &&
+                  commentsArr?.map((el: TComment) => (
+                    <li className={styles.list_item} key={el._id}>
+                      <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                      <p className={styles.list_item_text}>{/*el.date*/}</p>
+                      <p className={styles.list_item_text}>{el.from.name}</p>
+                      <p className={styles.list_item_text}>{el.to.name}</p>
+                      <p
+                        className={styles.list_item_text}
+                      >{`Из блока ${el.target}`}</p>
+                      <p className={styles.list_item_text}>{el.text}</p>
+                      <div className={styles.icon_wrapper}>
+                        <img
+                          src={deleteIcon}
+                          onClick={() => removeComment(el._id)}
+                          alt="удалить"
+                        />
+                      </div>
+                    </li>
+                  ))}
+                {word &&
+                  result.map((el: TComment) => (
+                    <li className={styles.list_item} key={el._id}>
+                      <p className={styles.list_item_text}>{/*el.cohort*/}</p>
+                      <p className={styles.list_item_text}>{/*el.date*/}</p>
+                      <p className={styles.list_item_text}>{el.from.name}</p>
+                      <p className={styles.list_item_text}>{el.to.name}</p>
+                      <p
+                        className={styles.list_item_text}
+                      >{`Из блока ${el.target}`}</p>
+                      <p className={styles.list_item_text}>{el.text}</p>
+                      <div className={styles.icon_wrapper}>
+                        <img
+                          src={deleteIcon}
+                          onClick={() => removeComment(el._id)}
+                          alt="удалить"
+                        />
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}

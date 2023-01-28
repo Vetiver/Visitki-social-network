@@ -1,18 +1,18 @@
-import { FC } from "react";
-import { TFile } from "../../utils/types";
+import { TFile, TNewStudentCard } from "../../utils/types";
 import { postUsersData } from "../../utils/api/api";
 import styles from "./AddButtonWrapepr.module.css";
+import { FC } from "react";
 
-export const AddButtonWrapper = () => {
+export const AddButtonWrapper: FC = () => {
   let xlsx = require("xlsx");
 
-  const sendStudents = (json: any) => {
-    json.map((el: any) => {
+  const sendStudents = (json: TNewStudentCard[]) => {
+    json.map((el: TNewStudentCard) => {
       postUsersData(el.email, el.cohort);
     });
   };
 
-  const parseFileToJson = (path: any) => {
+  const parseFileToJson = (path: ArrayBuffer) => {
     const res = xlsx.readFile(path);
     const sheetNames = res.SheetNames;
     const fistSheetName = sheetNames[0];
