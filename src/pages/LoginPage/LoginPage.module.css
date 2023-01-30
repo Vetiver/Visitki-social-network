@@ -1,0 +1,26 @@
+.login {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 177px);
+  width: 100%;
+  background-color: #ffffff;
+  transition: all 0.7s ease-out;
+}
+
+.login__title {
+  color: #000000;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  margin: 200px 0 72px;
+}
+
+@media screen and (max-width: 420px) {
+  .login__title {
+    font-size: 32px;
+    line-height: 42px;
+    margin: 108px 0 32px;
+  }
+}

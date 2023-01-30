@@ -1,0 +1,185 @@
+.profileDetailsContainer {
+  padding-left: 40px;
+  padding-right: 40px;
+  min-height: calc(100vh - 177px);
+  max-width: 1440px;
+  width: fit-content;
+  background-color: #ffffff;
+}
+
+.profileDetailsMain {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 440px)) minmax(200px, 325px);
+  grid-template-areas:
+    "username avatar quote"
+    "hobby family ."
+    "sphere study .";
+  padding-top: 8px;
+  gap: 70px 70px;
+}
+
+.profileDetailsMainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  max-height: 440px;
+}
+.profileDetailsMainInfoName {
+  color: #100c34;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 60px;
+  align-self: center;
+  letter-spacing: 2.3px;
+  grid-area: username;
+}
+.profileDetailsMainInfoTown {
+  color: #100c34;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.profileDetailsMainInfoIcons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80px;
+  width: 100%;
+}
+
+.profileDetailsMainInfoImgContainer {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  grid-area: avatar;
+}
+.profileDetailsMainInfoImgContainer:hover .profileDetailsMainInfoChatIcon {
+  visibility: visible;
+}
+
+.profileDetailsMainInfoImg {
+  aspect-ratio: 1/1;
+  max-width: 100%;
+  object-fit: cover;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+.profileDetailsMainInfoImgRomantic {
+  border-radius: 220px;
+}
+
+.profileDetailsMainInfoChatIcon {
+  visibility: hidden;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.profileDetailsMainInfoStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  grid-area: quote;
+}
+
+.profileDetailsMainInfoStatus:hover .profileDetailsMainInfoStatusIcon {
+  visibility: visible;
+}
+.profileDetailsMainInfoStatusIcon {
+  visibility: hidden;
+  position: absolute;
+  top: 70px;
+  right: 18px;
+}
+.profileDetailsMainInfoStatusText {
+  color: #100c34;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  max-width: 220px;
+  padding-top: 3px;
+}
+.profileDetailsMainInfoColor {
+  color: #ff00a8;
+}
+
+.profileDetailsOther {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 70px;
+  width: 100%;
+  max-width: 1440px;
+}
+.profileDetailsOther_hobby {
+  grid-area: hobby;
+}
+
+.profileDetailsOther_family {
+  grid-area: family;
+}
+
+.profileDetailsOther_sphere {
+  grid-area: sphere;
+}
+
+.profileDetailsOther_study {
+  grid-area: study;
+}
+
+.otherContainer {
+  width: 936px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 440px);
+  grid-template-rows: auto;
+  gap: 70px 56px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profileDetailsMain {
+    grid-template-columns: repeat(2, minmax(250px, 342px));
+    grid-template-areas:
+      "username avatar"
+      ". quote"
+      "hobby family"
+      "sphere study";
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profileDetailsContainer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .profileDetailsMainInfoName {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .profileDetailsMain {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    grid-template-areas:
+      "username"
+      "avatar"
+      "quote"
+      "hobby"
+      "family"
+      "sphere"
+      "study";
+  }
+  .profileDetailsMainInfoName {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 40px;
+    align-self: self-start;
+    max-width: 240px;
+  }
+}

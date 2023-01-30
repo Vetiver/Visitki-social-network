@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* В макете ширина указана 1440px, но если накинуть пёрфект пиксель, то вообще не совпадает
+      Пока оставлю так, если что поправишь. P.S В футере тоже самое */
+  max-width: 1440px;
+  box-sizing: border-box;
+  max-height: 105px;
+  padding: 40px;
+  background-color: #ffffff;
+  margin: auto;
+  position: relative;
+}
+
+.profile_wrapper {
+  padding: 40px;
+  position: absolute;
+  max-width: 296px;
+  overflow: hidden;
+  box-sizing: border-box;
+  right: 0;
+  top: 0;
+  transition: 0.2s ease-in-out;
+  z-index: 3;
+  background-color: white;
+}
+
+.profile_button {
+  background-color: inherit;
+  border: none;
+  margin-top: 16px;
+  height: 36px;
+  width: 100%;
+  text-align: start;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  line-height: 20px;
+  display: none;
+}
+
+.profile_button:hover {
+  background-color: #f9f9f9;
+}
+
+.profile_wrapper:hover {
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 0px 0px 10px 10px;
+  height: 156px;
+}
+
+.profile_wrapper:hover .profile_button {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 24px;
+  }
+  .profile_wrapper {
+    padding: 24px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .profile_wrapper:hover {
+    height: 80px;
+  }
+  .profile_button:hover {
+    background-color: none;
+  }
+  .profile_button {
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+  }
+}

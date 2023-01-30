@@ -1,0 +1,18 @@
+.search_page {
+  padding-top: 92px;
+  width: calc(100% - 80px);
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px) {
+  .search_page {
+    padding-top: 62px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search_page {
+    width: calc(100% - 40px);
+    padding-top: 46px;
+  }
+}

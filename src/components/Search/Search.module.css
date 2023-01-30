@@ -1,0 +1,47 @@
+.content_box {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 40px;
+}
+
+.button_wrapper {
+  width: 100%;
+  display: flex;
+  gap: 81px;
+}
+
+.button {
+  color: #a3a3a3;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.search_wrapper {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.serch_users_page {
+  margin-top: 48px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(250px, 1015px) 1fr;
+  column-gap: 40px;
+}
+
+.search_comments_page {
+  margin-top: 48px;
+}
+
+.active {
+  color: black;
+}

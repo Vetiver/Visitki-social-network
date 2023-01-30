@@ -1,0 +1,37 @@
+.profilePhoto {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 80%;
+  margin: 0 5px 0 0;
+}
+
+.profileName {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #100c34;
+  margin: 0;
+  max-width: 212px;
+  max-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.accountBox {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .profileName {
+    display: none;
+  }
+  .profilePhoto {
+    margin-right: 0;
+  }
+}

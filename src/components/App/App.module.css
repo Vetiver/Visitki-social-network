@@ -1,0 +1,33 @@
+.page {
+  margin: 0 auto;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: calc(100vh - 177px);
+  width: 100%;
+  max-width: 1440px;
+  background: #fff;
+}
+a {
+  text-decoration: none;
+}
+@media screen and (max-width: 500px) {
+  .main {
+    min-height: calc(100vh - 145px);
+  }
+}

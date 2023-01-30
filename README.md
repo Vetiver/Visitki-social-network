@@ -1,46 +1,23 @@
-# Getting Started with Create React App
+# Проект платформы-визитницы VISITKI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Ссылка на макет проекта](https://www.figma.com/file/nKBudPP12bvNm15W486Y9R/WEB_RUS_STUD_soft_skills?t=bKfp4S1GRIKJ6k4g-6)
+[Ссылка на бриф проекта](https://www.notion.so/VISITKI-89b6b56fbef743c5833b6fb483c50817)
 
-## Available Scripts
+## О проекте
+Visitki - своеобразная внутренняя социальная сеть для студентов Яндекс.Практикум. Проект содержит личные страницы студентов, кураторов и наставников. Платформа позволяет учащимся лучше узнать друг друга, так как каждый пользователь может указать:
+* Любимую цитату
+* Местоположение
+* Интересы, хобби, сферу работы и многое другое!
+У студентов так же есть возможность оставлять комментарии под каждой "визиткой".
 
-In the project directory, you can run:
+## Инструкция по запуску проекта
+1. Открыть проект локально
+2. Установить зависимости - `npm i`
+3. Запустить проект - `npm start`
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Стек технологий
+* Адаптивная, кроссбраузерная верстка с использованием Flexbox и Grid Layout
+- Авторизация с помощью Яндекс ID 
+- Работа с картами и подсказками городов при помощи API Яндекс.Карт 
+- React Router 6
+- TypeScript

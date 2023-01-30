@@ -1,0 +1,46 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(269.17deg, #3b23b7 30.28%, #c914e7 63.24%);
+  color: #f0f0f0;
+  border-radius: 4px;
+  border: none;
+  cursor: url(/public/cursor.png) 25 25, pointer;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
+.button:hover {
+  opacity: 0.85;
+}
+.button:active {
+  transform: scale(0.99);
+  opacity: 0.8;
+}
+.button:disabled{
+  background: #BFBFBF;
+}
+
+.largeButton{
+  width: 440px;
+  height: 68px;
+}
+.smallButton{
+  width: 260px;
+  height: 44px;
+}
+
+.buttonText {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 500px) {
+  .button {
+    width: 272px;
+    height: 60px;
+  }
+}

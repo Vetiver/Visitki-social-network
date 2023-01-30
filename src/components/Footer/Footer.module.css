@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  max-height: 72px;
+  height: 100%;
+  padding: 24px 40px;
+  background-color: #fff;
+  margin: 0 auto;
+  border-top: 1px solid rgba(16, 12, 52, 0.3);
+  color: rgba(16, 12, 52, 0.5);
+  margin-top: 79px;
+}
+
+.footer__copyright {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__author {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    padding: 24px;
+  }
+}

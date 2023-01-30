@@ -1,0 +1,70 @@
+ymaps[class$="custom-scroll"] {
+  box-shadow: none;
+  border-radius: 6px;
+}
+
+ymaps[class$="balloon__content"] {
+  display: flex;
+  padding: 6px;
+}
+
+ymaps[class$="balloon__layout"] {
+  padding: 0px;
+  border-radius: 6px;
+}
+
+ymaps[class$="balloon__tail"] {
+  display: none;
+}
+
+.wrapper {
+  width: 100%;
+  max-height: 100%;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.balloonWrapper {
+  display: flex;
+  gap: 4px;
+  height: 54px;
+  width: max-content;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.textBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "IBM Plex Sans";
+}
+
+.name {
+  margin: 0;
+  padding: 0;  
+  color: #100C34;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.city {
+  margin: 0;
+  padding: 0;  
+  color: #A3A3A3;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+
+
